@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('templates/principal');
+    return view('templates.panel');
+});
+
+Route::get('/login', function () {
+    return view('login');
 });
