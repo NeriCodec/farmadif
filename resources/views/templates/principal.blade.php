@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Reddit</title>
+	<title>FARMADIF</title>
 	<!-- Bootstrap Core CSS -->
     <link href="/pvendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -19,7 +19,7 @@
 
 </head>
 <body>
-
+	<div id="wrapper">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -301,6 +301,15 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
+        </div>
+         <div id="page-wrapper">
+         	<div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">TITULO</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+         </div>
 
         <!-- jQuery -->
     <script src="/pvendor/jquery/jquery.min.js"></script>
