@@ -14,6 +14,12 @@
     <!-- Custom Fonts -->
     <link href="/pvendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- DataTables CSS -->
+    <link href="/pvendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/pvendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
     <!-- Estilos -->
     <link href="/css/estilos.css" rel="stylesheet" type="text/css">
 
@@ -22,7 +28,7 @@
 	
 @yield('contenedor')
 
-    <!-- jQuery -->
+<!-- jQuery -->
 <script src="/pvendor/jquery/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
@@ -31,8 +37,22 @@
 <!-- Metis Menu Plugin JavaScript -->
 <script src="/pvendor/metisMenu/metisMenu.min.js"></script>
 
+<!-- DataTables JavaScript -->
+<script src="/pvendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/pvendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="/pvendor/datatables-responsive/dataTables.responsive.js"></script>
+
 <!-- Custom Theme JavaScript -->
 <script src="/dist/js/sb-admin-2.js"></script>
+
+ <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script>
+$(document).ready(function() {
+    $('#dataTables-example').DataTable({
+        responsive: true
+    });
+});
+</script>
 
 </body>
 </html>	
