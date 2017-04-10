@@ -14,22 +14,25 @@
     <!-- Custom Fonts -->
     <link href="/pvendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Estilos -->
+    <link href="/css/estilos.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 	
-	@yield('contenedor')
+@yield('contenedor')
 
-        <!-- jQuery -->
-    <script src="/pvendor/jquery/jquery.min.js"></script>
+    <!-- jQuery -->
+<script src="/pvendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/pvendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="/pvendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/pvendor/metisMenu/metisMenu.min.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="/pvendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="/dist/js/sb-admin-2.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="/dist/js/sb-admin-2.js"></script>
 
 </body>
 </html>	

@@ -10,7 +10,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">FARMADIF v1.0</a>
+        <a class="navbar-brand" href="#">FARMADIF v1.0</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -183,7 +183,7 @@
                     <a href="#"><i class="fa fa-user fa-fw"></i> Beneficiario<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">Registro beneficiario</a>
+                            <a href="{{ route('ruta_beneficiario_registro') }}">Registro beneficiario</a>
                         </li>
                         <li>
                             <a href="#">Beneficiarios</a>
@@ -247,11 +247,11 @@
 <div id="page-wrapper">
 	<div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">TITULO</h1>
+        <h2 class="page-header">...</h2>
     </div>
 </div>
 
-@yield('contenedor')
+@yield('panel-contenedor')
 
 </div>
 
