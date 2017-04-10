@@ -1,18 +1,31 @@
 @extends('templates.panel')
 @section('panel-contenedor')
+
+@if(count($errors) > 0)
+	<div class="alert alert-danger">
+		<ul>
+			@foreach($errors->all() as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	</div>
+@endif
+
+<form action="{{ route('ruta_beneficiario_registrar') }}" method="post">
+	{{ csrf_field() }}
 	<div class="row">
 		<div class="col-md-12">
 			<div class="form-group">
 		        <label>Ingrese el nombre</label>
-		        <input class="form-control" placeholder="Ingrese el nombre">
+		        <input class="form-control" name='nombre' id='nombre' placeholder="Ingrese el nombre" value="{{ old('nombre') }}">
 		    </div>
 		    <div class="form-group">
 		        <label>Ingrese el apellido paterno</label>
-		        <input class="form-control" placeholder="Ingrese el apellido paterno">
+		        <input class="form-control" name='ap_paterno' id='ap_paterno' placeholder="Ingrese el apellido paterno" value="{{ old('ap_paterno') }}">
 		    </div>
 		    <div class="form-group">
 		        <label>Ingrese el apellido materno</label>
-		        <input class="form-control" placeholder="Ingrese el apellido materno">
+		        <input class="form-control" name='ap_materno' id='ap_materno' placeholder="Ingrese el apellido materno" value="{{ old('ap_materno') }}">
 		    </div>
 		    <div class="form-group">
 		        <label>Ingrese la fecha de nacimiento</label>
@@ -75,6 +88,7 @@
 		          </div>
 		          <div class="col-xs-4">
 		            <select class="form-control" name="anio">
+
 		              <?php
 		                  for($i=date("Y"); $i>=1905; $i--) {
 		                     echo "<option value=$i>$i</option>";
@@ -84,20 +98,18 @@
 		          </div>
 		        </div>
 		    </div>
-			
-
-
 		    <div class="form-group">
 		        <label>Ingrese el domicilio</label>
-		        <input class="form-control" placeholder="Ingrese el domicilio">
+		        <input class="form-control" name='domicilio' id='domicilio' placeholder="Ingrese el domicilio" value="{{ old('domicilio') }}">
 		    </div>
 		    <div class="form-group">
 		        <label>Ingrese la comunidad</label>
-		        <input class="form-control" placeholder="Ingrese la comunidad">
+		        <input class="form-control" name='comunidad' id='comunidad' placeholder="Ingrese la comunidad" value="{{ old('comunidad') }}">
 		    </div>
 		</div>
 		<div class="col-md-12">
-	    	<button type="button" style="float: right;" class="btn btn-success btn-md">Guardar <i class="fa fa-check"></i>
+	    	<button type="submit" style="float: right;" class="btn btn-success btn-md">Guardar <i class="fa fa-check"></i>
 	    </div>
     </div>
+</form>
 @endsection

@@ -186,7 +186,7 @@
                             <a href="{{ route('ruta_beneficiario_registro') }}">Registro beneficiario</a>
                         </li>
                         <li>
-                            <a href="#">Beneficiarios</a>
+                            <a href="{{ route('ruta_beneficiarios') }}">Beneficiarios</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
