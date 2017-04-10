@@ -10,7 +10,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">FARMADIF v1.0</a>
+        <a class="navbar-brand" href="#">FarmaDIF</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -210,7 +210,7 @@
                             <a href="#">Entrada de medicamentos</a>
                         </li>
                         <li>
-                            <a href="#">Salida de medicamentos</a>
+                            <a href="{{ route('ruta_salida_medicamento') }}">Salida de medicamentos</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->

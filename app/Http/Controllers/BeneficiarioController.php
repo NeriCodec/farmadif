@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Beneficiario;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegistrarBeneficiarioRequest;
-use App\Beneficiario;
 
 class BeneficiarioController extends Controller
 {

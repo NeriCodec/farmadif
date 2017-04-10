@@ -6,7 +6,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Beneficiarios registrados
+                Salida de medicamento
             </div>
             <div class="panel-body">
                 <table width="100%" class="table table-striped table-bordered table-hover" id="tb_beneficiarios">
@@ -17,6 +17,7 @@
                             <th>Comunidad</th>
                             <th>Fecha de nacimiento</th>
                             <th>Fecha de registro</th>
+                            <th>Salida medicamento</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,6 +28,9 @@
                             <td>{{ $beneficiario->comunidad }}</td>
                             <td>{{ $beneficiario->fecha_nacimiento }}</td>
                             <td>{{ $beneficiario->fecha_registro }}</td>
+                            <td>
+                                <center><button class="btn btn-success btn-small "> <i class="fa fa-external-link fa-fw"></i></button></center>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
