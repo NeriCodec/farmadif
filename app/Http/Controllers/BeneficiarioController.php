@@ -31,6 +31,7 @@ class BeneficiarioController extends Controller
     	$beneficiario->fecha_nacimiento = $fecha;
     	$beneficiario->domicilio = $request->get('domicilio');
     	$beneficiario->comunidad = $request->get('comunidad');
+    	$beneficiario->fecha_registro = date("Y-m-d");
     	$beneficiario->tb_usuarios_id_usuario = 1;
 
     	$beneficiario->save();
