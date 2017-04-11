@@ -65,37 +65,7 @@
             </ul>
             <!-- /.dropdown-messages -->
         </li>
-        <!-- /.dropdown -->
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-tasks">
-                <li>
-                    <a href="#">
-                        <div>
-                            <p>
-                                <strong>Task 1</strong>
-                                <span class="pull-right text-muted">40% Complete</span>
-                            </p>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                    <span class="sr-only">40% Complete (success)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <a class="text-center" href="#">
-                        <strong>See All Tasks</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.dropdown-tasks -->
-        </li>
+        
         <!-- /.dropdown -->
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -210,7 +180,7 @@
                             <a href="#">Entrada de medicamentos</a>
                         </li>
                         <li>
-                            <a href="{{ route('ruta_salida_medicamento') }}">Salida de medicamentos</a>
+                            <a href="{{ route('ruta_salida_medicamentos') }}">Salida de medicamentos</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
@@ -245,9 +215,9 @@
 </div>
 
 <div id="page-wrapper">
-	<div class="row">
+<div class="row">
     <div class="col-lg-12">
-        <h2 class="page-header">...</h2>
+        <h2 class="page-header"></h2>
     </div>
 </div>
 
