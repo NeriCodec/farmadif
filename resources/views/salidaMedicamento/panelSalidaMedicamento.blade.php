@@ -38,7 +38,6 @@
         <a href="{{ route('ruta_salida_medicamentos') }}">
             <button class="btn btn-default btn-small" style="float: right; margin-right: 1%;">Volver</button>
         </a>
-        
     </div>
 </div>
 

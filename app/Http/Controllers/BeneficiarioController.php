@@ -10,7 +10,7 @@ class BeneficiarioController extends Controller
 {
     public function index()
     {
-    	$beneficiarios = Beneficiario::all();
+    	$beneficiarios = Beneficiario::paginate(10);
     	return view('beneficiario.beneficiarios')->with('beneficiarios', $beneficiarios);
     }
 

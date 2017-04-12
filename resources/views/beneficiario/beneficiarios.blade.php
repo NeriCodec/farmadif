@@ -9,7 +9,7 @@
                 Beneficiarios registrados
             </div>
             <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover" id="tb_beneficiarios">
+                <table width="100%" class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -34,6 +34,7 @@
             </div>
         </div>
     </div>
+    <center>{{ $beneficiarios->links() }}</center>
 </div>
 
    

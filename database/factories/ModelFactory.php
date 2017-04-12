@@ -22,3 +22,31 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
+   
+    return [
+        'nombre' => $faker->name,
+        'ap_paterno' => $faker->firstName,
+        'ap_materno' => $faker->lastName,
+        'domicilio' => '13 de enero #45 bucharest',
+        'comunidad' => 'Huichapan',
+        'fecha_nacimiento' => date("Y-m-d"),
+        'fecha_registro' => date("Y-m-d h:m:s"),
+        'tb_usuarios_id_usuario' => 1,
+    ];
+});
+
+$factory->define(App\Medicamento::class, function (Faker\Generator $faker) {
+   
+    return [
+        'nombre_comercial' => $faker->name,
+        'nombre_compuesto' => $faker->firstName,
+        'num_etiqueta' => 'D-12',
+        'num_folio' => 'GR-9934',
+        'fecha_caducidad' =>  date("Y-m-d"),
+        'cantidad' => 20,
+        'solucion_tableta' => 'tableta',
+        'tipo_contenido' => 'gr',
+    ];
+});
