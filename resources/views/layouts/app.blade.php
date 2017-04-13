@@ -103,16 +103,10 @@
                                     </li>
                                 </ul>
                             </li>
-                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Salida medicamento <span class="caret"></span>
+                            <li>
+                                <a href="{{ route('ruta_salida_medicamentos') }}">
+                                    Salida medicamento</span>
                                 </a>
-                                
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('ruta_salida_medicamentos') }}">Salida</a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
