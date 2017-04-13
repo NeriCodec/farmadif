@@ -68,6 +68,20 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Donadores <span class="caret"></span>
+                                </a>
+                                
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ route('ruta_donadores') }}">Listar</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('ruta_donador_registro') }}">Registrar</a>
+                                    </li>
+                                </ul>
+                            </li>
                              <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Salida medicamento <span class="caret"></span>

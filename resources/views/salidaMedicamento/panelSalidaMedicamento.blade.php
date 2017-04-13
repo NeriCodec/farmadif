@@ -98,7 +98,7 @@
                 <div class="form-group input-group">
                     <input type="text" name="dato" class="form-control" placeholder="Buscar medicamento">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i>
+                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-th" aria-hidden="true"></span>
                         </button>
                     </span>
                 </div>
