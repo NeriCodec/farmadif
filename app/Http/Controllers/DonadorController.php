@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Donador;
 use Illuminate\Http\Request;
+use App\Http\Data\DonadorData;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegistrarDonadorRequest;
 
@@ -16,7 +17,7 @@ class DonadorController extends Controller
     
     public function index()
     {
-    	$donadores = Donador::paginate(5);
+    	$donadores = Donador::paginate(10);
     	return view('donador.donadores')->with('donadores', $donadores);
     }
 
@@ -27,18 +28,7 @@ class DonadorController extends Controller
 
     public function registrar(RegistrarDonadorRequest $request)
     {
-    	$donador = new Donador();
-
-    	$donador->nombre = $request->get('nombre');
-    	$donador->domicilio = $request->get('domicilio');
-    	$donador->num_telefonico = $request->get('telefono');
-    	$donador->codigo_postal = $request->get('codigo');
-    	$donador->observaciones = $request->get('observaciones');
-    	$donador->fecha_registro = date("Y-m-d h:m:s");
-    	$donador->tb_usuarios_id_usuario = Auth::id();
-
-    	$donador->save();
-
+        DonadorData::guardarDonador($request);
     	return redirect()->route('ruta_donadores');
     }
 }
