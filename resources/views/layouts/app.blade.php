@@ -51,9 +51,30 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Iniciar sesion</a></li>
-                            {{-- <li><a href="{{ route('register') }}">Register</a></li> --}}
                         @else
-                            {{-- <li><a href="{{ route('ruta_beneficiarios') }}">Beneficiarios</a></li> --}}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Inventarios <span class="caret"></span>
+                                </a>
+                                
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Medicamentos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Medicamentos vencidos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Medicamentos prox. vencer</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Entrada de medicamentos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Salida de medicamentos</a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Beneficiarios <span class="caret"></span>
@@ -91,9 +112,6 @@
                                     <li>
                                         <a href="{{ route('ruta_salida_medicamentos') }}">Salida</a>
                                     </li>
-                                    {{-- <li>
-                                        <a href="{{ route('ruta_beneficiario_registro') }}">Salida</a>
-                                    </li> --}}
                                 </ul>
                             </li>
                             <li class="dropdown">

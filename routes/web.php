@@ -22,7 +22,7 @@ Route::name('ruta_beneficiario_registrar')->post('/beneficiario/registrar', 'Ben
 
 # Rutas para el Donadores
 Route::name('ruta_donadores')->get('/donadores', 'DonadorController@index');
-Route::name('ruta_donador_registro')->get('/donador/registro', 'DonadorController@registro');
+Route::name('ruta_donador_registro')->get('/donador/registro', 'DonadorController@mostrarRegistro');
 Route::name('ruta_donador_registrar')->post('/donador/registrar', 'DonadorController@registrar');
 
 # Rutas para la salida de medicamento

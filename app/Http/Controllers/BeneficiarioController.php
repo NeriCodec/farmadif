@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Beneficiario;
-use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegistrarBeneficiarioRequest;
 
 class BeneficiarioController extends Controller
@@ -38,7 +38,7 @@ class BeneficiarioController extends Controller
     	$beneficiario->domicilio = $request->get('domicilio');
     	$beneficiario->comunidad = $request->get('comunidad');
     	$beneficiario->fecha_registro = date("Y-m-d h:m:s");
-    	$beneficiario->tb_usuarios_id_usuario = 1;
+    	$beneficiario->tb_usuarios_id_usuario = Auth::id();
 
     	$beneficiario->save();
     	

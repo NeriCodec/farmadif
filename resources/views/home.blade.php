@@ -8,7 +8,7 @@
                 <div class="panel-heading">Bienvenido</div>
 
                 <div class="panel-body">
-                    <center><h3>Usted a iniciado sesion en Farmadif <v1 class="0"></v1></h3></center>
+                    <center><h3>Usted a iniciado sesión en Farmadif <v1 class="0"></v1></h3></center>
                 </div>
             </div>
         </div>
