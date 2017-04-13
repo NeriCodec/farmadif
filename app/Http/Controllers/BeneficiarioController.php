@@ -20,12 +20,6 @@ class BeneficiarioController extends Controller
     	return view('beneficiario.beneficiarios')->with('beneficiarios', $beneficiarios);
     }
 
-    public function beneficiario($id)
-    {
-        $beneficiario = Beneficiario::find($id);
-
-    }
-
     public function registro()
     {
     	return view('beneficiario.registro');
