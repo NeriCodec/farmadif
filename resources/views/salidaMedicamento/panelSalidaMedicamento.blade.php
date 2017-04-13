@@ -80,7 +80,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- @include('templates.panel_buscar') --}}
             </div>
         </div>
     </div>
@@ -91,14 +90,15 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Medicamentos
+                Buscar medicamentos
             </div>
             <div class="panel-body">
             <form action="" method="post">
                 <div class="form-group input-group">
                     <input type="text" name="dato" class="form-control" placeholder="Buscar medicamento">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+                        <button class="btn btn-default" type="submit">
+                            Buscar
                         </button>
                     </span>
                 </div>

@@ -32,7 +32,7 @@
                                 <center>
                                     <a href="{{ route('ruta_salida_medicamento', ['id' => $beneficiario->id_beneficiario]) }}">
                                         <button class="btn btn-success btn-small ">
-                                            <span class="glyphicon glyphicon-barcode"></span> 
+                                            Ir
                                         </button> 
                                     </a>
                                 </center>

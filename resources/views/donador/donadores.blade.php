@@ -17,6 +17,7 @@
                             <th>No. telefonico</th>
                             <th>Codigo postal</th>
                             <th>Fecha de registro</th>
+                            <th>Actualizar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,6 +28,11 @@
                             <td>{{ $donador->num_telefonico}}</td>
                             <td>{{ $donador->codigo_postal}}</td>
                             <td>{{ $donador->fecha_registro}}</td>
+                            <td>
+                                <center><button class="btn btn-primary btn-small">
+                                    Ir
+                                </button></center>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

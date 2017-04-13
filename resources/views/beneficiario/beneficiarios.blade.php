@@ -17,6 +17,7 @@
                             <th>Comunidad</th>
                             <th>Fecha de nacimiento</th>
                             <th>Fecha de registro</th>
+                            <th>Actualizar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,6 +28,11 @@
                             <td>{{ $beneficiario->comunidad }}</td>
                             <td>{{ $beneficiario->fecha_nacimiento }}</td>
                             <td>{{ $beneficiario->fecha_registro }}</td>
+                            <td>
+                                <center><button class="btn btn-primary btn-small">
+                                    Ir
+                                </button></center>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
