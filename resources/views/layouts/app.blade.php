@@ -59,7 +59,7 @@
                                 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="#">Medicamentos</a>
+                                        <a href="{{ route('ruta_medicamentos') }}">Medicamentos</a>
                                     </li>
                                     <li>
                                         <a href="#">Medicamentos vencidos</a>

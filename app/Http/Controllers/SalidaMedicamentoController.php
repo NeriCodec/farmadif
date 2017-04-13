@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 
 use App\Beneficiario;
 use App\Medicamento;
-use Session;
 use Illuminate\Http\Request;
 
 class SalidaMedicamentoController extends Controller

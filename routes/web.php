@@ -29,6 +29,9 @@ Route::name('ruta_donador_registrar')->post('/donador/registrar', 'DonadorContro
 Route::name('ruta_salida_medicamentos')->get('/salida-medicamentos', 'SalidaMedicamentoController@index');
 Route::name('ruta_salida_medicamento')->get('/salida-medicamento/{id}', 'SalidaMedicamentoController@salida');
 
+# Rutas del medicamento
+Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
