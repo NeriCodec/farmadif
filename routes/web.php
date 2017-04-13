@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('templates.panel');
+    return view('auth.login');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+// Route::get('/login', function () {
+//     return view('login');
+// });
 
 # Rutas para el beneficiario
 Route::name('ruta_beneficiarios')->get('/beneficiarios', 'BeneficiarioController@index');
@@ -29,4 +29,7 @@ Route::name('ruta_beneficiario')->post('/beneficiario/{id}', 'BeneficiarioContro
 Route::name('ruta_salida_medicamentos')->get('/salida-medicamentos', 'SalidaMedicamentoController@index');
 Route::name('ruta_salida_medicamento')->get('/salida-medicamento/{id}', 'SalidaMedicamentoController@salida');
 # Ruta de donador
-Route::name('ruta_login')->get('/login','LoginController@autenticacion');
+//Route::name('ruta_login')->get('/login','LoginController@autenticacion');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

@@ -1,5 +1,6 @@
-@extends('templates.panel')
-@section('panel-contenedor')
+@extends('layouts.app')
+
+@section('content')
 
 @if(count($errors) > 0)
 	<div class="alert alert-danger">
@@ -45,40 +46,40 @@
 		                  for($i=1; $i<=12; $i++) {
 		                      switch($i) {
 		                       case 1:
-		                          $mestexto = "enero";
+		                          $mestexto = "Enero";
 		                          break;
 		                        case 2:
-		                          $mestexto = "febrero";
+		                          $mestexto = "Febrero";
 		                          break;
 		                        case 3:
-		                          $mestexto = "marzo";
+		                          $mestexto = "Marzo";
 		                          break;
 		                        case 4:
-		                          $mestexto = "abril";
+		                          $mestexto = "Abril";
 		                          break;
 		                        case 5:
-		                          $mestexto = "mayo";
+		                          $mestexto = "Mayo";
 		                          break;
 		                        case 6:
-		                          $mestexto = "junio";
+		                          $mestexto = "Junio";
 		                          break;
 		                        case 7:
-		                          $mestexto = "julio";
+		                          $mestexto = "Julio";
 		                          break;
 		                        case 8:
-		                          $mestexto = "agosto";
+		                          $mestexto = "Agosto";
 		                          break;
 		                        case 9:
-		                          $mestexto = "septiembre";
+		                          $mestexto = "Septiembre";
 		                          break;
 		                        case 10:
-		                          $mestexto = "octubre";
+		                          $mestexto = "Octubre";
 		                          break;
 		                        case 11:
-		                          $mestexto = "noviembre";
+		                          $mestexto = "Noviembre";
 		                          break;
 		                        case 12:
-		                          $mestexto = "diciembre";
+		                          $mestexto = "Diciembre";
 		                          break;
 		                    }
 		                     echo "<option value=$i>$mestexto</option>";
@@ -90,7 +91,7 @@
 		            <select class="form-control" name="anio">
 
 		              <?php
-		                  for($i=date("Y"); $i>=1905; $i--) {
+		                  for($i=date("Y"); $i>=1950; $i--) {
 		                     echo "<option value=$i>$i</option>";
 		                  }
 		              ?>

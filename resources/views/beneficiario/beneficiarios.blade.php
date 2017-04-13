@@ -1,6 +1,6 @@
-@extends('templates.panel')
+@extends('layouts.app')
 
-@section('panel-contenedor')
+@section('content')
 
 <div class="row">
     <div class="col-lg-12">

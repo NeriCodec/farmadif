@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 
 use App\Beneficiario;
 use App\Medicamento;
+use Session;
 use Illuminate\Http\Request;
 
 class SalidaMedicamentoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
     	$beneficiarios = Beneficiario::paginate(10);
@@ -23,5 +29,5 @@ class SalidaMedicamentoController extends Controller
                             ->with('beneficiario', $beneficiario)
                             ->with('medicamentos', $medicamentos);
     }
-
+    
 }
