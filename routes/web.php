@@ -28,3 +28,5 @@ Route::name('ruta_beneficiario')->post('/beneficiario/{id}', 'BeneficiarioContro
 # Rutas para la salida de medicamento
 Route::name('ruta_salida_medicamentos')->get('/salida-medicamentos', 'SalidaMedicamentoController@index');
 Route::name('ruta_salida_medicamento')->get('/salida-medicamento/{id}', 'SalidaMedicamentoController@salida');
+# Ruta de donador
+Route::name('ruta_login')->get('/login','LoginController@autenticacion');

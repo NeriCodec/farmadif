@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Beneficiario;
+use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegistrarBeneficiarioRequest;
 
