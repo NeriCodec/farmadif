@@ -21,7 +21,7 @@ class BeneficiarioController extends Controller
     	return view('beneficiario.beneficiarios')->with('beneficiarios', $beneficiarios);
     }
 
-    public function registro()
+    public function mostrarRegistro()
     {
     	return view('beneficiario.registro');
     }

@@ -20,13 +20,14 @@ class SalidaMedicamentoController extends Controller
     	return view('salidaMedicamento.panel')->with('beneficiarios', $beneficiarios);
     }
 
-    public function salida($id)
+    public function salida($id, Request $request)
     {
+        //dd($request->get('busqueda'));
+        $medicamentos = Medicamento::medicamento($request->get('medicamento'))->paginate(5);
     	$beneficiario = Beneficiario::find($id);
-        $medicamentos = Medicamento::paginate(5);
     	return view('salidaMedicamento.panelSalidaMedicamento')
-                            ->with('beneficiario', $beneficiario)
-                            ->with('medicamentos', $medicamentos);
+                    ->with('beneficiario', $beneficiario)
+                    ->with('medicamentos', $medicamentos);
     }
     
 }

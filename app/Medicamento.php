@@ -11,4 +11,11 @@ class Medicamento extends Model
     protected $primaryKey = 'id_medicamento';
     
     public	$timestamps	=	false;
+
+    public function scopeMedicamento($query, $medicamento)
+    {
+    	if (trim($medicamento) != "") {
+    		$query->where('nombre_comercial', 'LIKE', "%$medicamento%");
+    	}
+    }
 }
