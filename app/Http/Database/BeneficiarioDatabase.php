@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Data;
+namespace App\Http\Database;
 
 use App\Beneficiario;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegistrarBeneficiarioRequest;
 
-class BeneficiarioData
+class BeneficiarioDatabase
 {
 	public static function guardarBeneficiario(RegistrarBeneficiarioRequest $request)
 	{

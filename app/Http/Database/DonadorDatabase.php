@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Data;
+namespace App\Http\Database;
 
 use App\Donador;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegistrarDonadorRequest;
 
-class DonadorData
+class DonadorDatabase
 {
 	public static function guardarDonador(RegistrarDonadorRequest $request)
 	{

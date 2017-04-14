@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Donador;
 use Illuminate\Http\Request;
-use App\Http\Data\DonadorData;
+use App\Http\Database\DonadorDatabase;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegistrarDonadorRequest;
 
@@ -28,7 +28,7 @@ class DonadorController extends Controller
 
     public function registrar(RegistrarDonadorRequest $request)
     {
-        DonadorData::guardarDonador($request);
+        DonadorDatabase::guardarDonador($request);
     	return redirect()->route('ruta_donadores');
     }
 }

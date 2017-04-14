@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Beneficiario;
 use Illuminate\Http\Request;
-use App\Http\Data\BeneficiarioData;
+use App\Http\Database\BeneficiarioDatabase;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegistrarBeneficiarioRequest;
 
@@ -28,7 +28,7 @@ class BeneficiarioController extends Controller
 
     public function registrar(RegistrarBeneficiarioRequest $request)
     {
-        BeneficiarioData::guardarBeneficiario($request);
+        BeneficiarioDatabase::guardarBeneficiario($request);
     	return redirect()->route('ruta_beneficiarios');
     }
 }

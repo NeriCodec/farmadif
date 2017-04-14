@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Beneficiario;
 use App\Medicamento;
+use App\Beneficiario;
 use Illuminate\Http\Request;
 
 class SalidaMedicamentoController extends Controller
@@ -22,12 +22,10 @@ class SalidaMedicamentoController extends Controller
 
     public function salida($id, Request $request)
     {
-        //dd($request->get('busqueda'));
-        $medicamentos = Medicamento::medicamento($request->get('medicamento'))->paginate(5);
     	$beneficiario = Beneficiario::find($id);
-    	return view('salidaMedicamento.panelSalidaMedicamento')
-                    ->with('beneficiario', $beneficiario)
-                    ->with('medicamentos', $medicamentos);
+        $medicamentos = Medicamento::medicamento($request->get('medicamento'))->paginate(5);
+    	return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
+                                                               ->with('medicamentos', $medicamentos);
     }
     
 }
