@@ -68,7 +68,7 @@
                                         <a href="#">Medicamentos prox. vencer</a>
                                     </li>
                                     <li>
-                                        <a href="#">Entrada de medicamentos</a>
+                                        <a href="{{ route('ruta_entrada_medicamentos') }}">Entrada de medicamentos</a>
                                     </li>
                                     <li>
                                         <a href="#">Salida de medicamentos</a>
