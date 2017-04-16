@@ -15,7 +15,7 @@
 			</div>
 			</br>
 			<div class="row">
-				<form action="#" class="">
+				<form action="#">
 					<div class="col-md-6">
 						<div class="form-horizontal">
 							<label>Nombre del copuesto</label>
@@ -50,12 +50,44 @@
 									 <input type="radio" name="medida" value="gr"> gr
 								</label>
 							</div>
+							</br>
+							</br>
+							</br>
+							</br>	
+							<div class="col-md-5">
+								<input type="submit" class="btn btn-default" value="Guardar">
+							</div>
 							
 						</div>
 					</div>
 					
 				</form>
 			</div>
+			<!--modulo de busqueda de medicamento-->
+			</br>
+			<div class="row">
+				<div class="col-md-12">
+					<form action="" class="form-vertical">
+						<label>Buscar medicamento por</label>
+						<label class="radio-inline">
+							<input type="radio" name="buscarPorMedicamento" value="gr"> Compuesto
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="buscarPorMedicamento" value="gr"> Nombre comercial
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="buscarPorMedicamento" value="gr"> No. de folio
+						</label>
+						<div class="col-md-4 col-md-offset-8">
+							
+						</div>
+						<button type="submit" class="btn btn-default">Buscar</button>
+					</form>
+					
+				</div>
+			</div>
+
+			<!--termina modulo de busqueda de medicamento-->
 
 			<!--termina le cuerpo-->
        </div>
