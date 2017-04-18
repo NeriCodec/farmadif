@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     var es = {
         "sProcessing":     "Procesando...",
         "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -24,9 +25,8 @@ $(document).ready(function(){
         }
     };
 
-    $('#tgeneral').DataTable({
+    var tmedicamento = $('#tmedicamento').DataTable({
         "processing": true,
-        "serverSide": true,
         "ajax": "http://localhost:8000/api/medicamentos",
         "columns": [
             {data: 'nombre_comercial'},
@@ -36,12 +36,68 @@ $(document).ready(function(){
             {data: 'fecha_caducidad'},
             {data: 'cantidad'},
             {data: 'solucion_tableta'},
-            {data: 'tipo_contenido'},
+            {data: 'tipo_contenido'}
         ],
         "language": es,
     });
 
-    $('#tbeneficiarios').DataTable({
+    var tagregarmedicamento = $('#tagregarmedicamento').DataTable({
+        "processing": true,     
+        "lengthMenu": [[5], ['Todos']],
+        "ajax": "http://localhost:8000/api/medicamentos",
+        "columns": [
+            {data: 'id_medicamento'},
+            {data: 'nombre_comercial'},
+            {data: 'nombre_compuesto'},
+            {data: 'num_etiqueta'},
+            {data: 'num_folio'},
+            {data: 'fecha_caducidad'},
+            {data: 'cantidad'},
+            {data: 'solucion_tableta'},
+            {data: 'tipo_contenido'},
+            {
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": '<center><button class="btn btn-success btn-small"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></center>'
+            }
+        ],
+        "language": es,
+    });
+
+
+    $('#tagregarmedicamento tbody').on('click', 'button', function () {
+        var datos = tagregarmedicamento.row( $(this).parents('tr') ).data();
+        console.log("ID: " + datos.id_medicamento + ", nombre: " + datos.nombre_comercial);  
+        agregarMedicamento(datos);
+    } );
+
+    function agregarMedicamento(datos) {
+        var table = document.getElementById("tbTodosLosMedicamentos");
+        var row = table.insertRow(0);
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        var cell3 = row.insertCell(3);
+        var cell4 = row.insertCell(4);
+        var cell5 = row.insertCell(5);
+        var cell6 = row.insertCell(6);
+        var cell7 = row.insertCell(7);
+        var cell8 = row.insertCell(8);
+        cell0.innerHTML = datos.id_medicamento;
+        cell1.innerHTML = datos.nombre_comercial;
+        cell2.innerHTML = datos.nombre_compuesto;
+        cell3.innerHTML = datos.num_etiqueta;
+        cell4.innerHTML = datos.num_folio;
+        cell5.innerHTML = datos.fecha_caducidad;
+        cell6.innerHTML = datos.cantidad;
+        cell7.innerHTML = datos.solucion_tableta;
+        cell8.innerHTML = datos.tipo_contenido;
+        // Recargar la tabla con los nuevos valores
+        // tagregarmedicamento.ajax.reload();
+        // Falta metodo para descontar el medicamento
+    }
+
+    var tbeneficiarios = $('#tbeneficiarios').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": "http://localhost:8000/api/beneficiarios",

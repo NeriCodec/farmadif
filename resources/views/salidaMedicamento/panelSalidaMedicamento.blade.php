@@ -93,9 +93,10 @@
                 Buscar medicamentos
             </div>
             <div class="panel-body">
-            <table width="100%" class="table table-striped table-bordered table-hover" id="tgeneral">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="tagregarmedicamento">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Nombre comercial</th>
                         <th>Nombre compuesto</th>
                         <th>No. etiqueta</th>
@@ -104,6 +105,7 @@
                         <th>Cantidad</th>
                         <th>Solucion/Tableta</th>
                         <th>Contenido</th>
+                        <th>Agregar</th>
                     </tr>
                 </thead>
             </table>
@@ -119,6 +121,23 @@
                 Medicamentos salida
             </div>
             <div class="panel-body">
+                <table width="100%" class="table table-striped table-bordered table-hover" id="tbTodosLosMedicamentos">
+                    {{-- <thead>
+                        <tr>
+                            <th>Nombre comercial</th>
+                            <th>Nombre compuesto</th>
+                            <th>No. etiqueta</th>
+                            <th>No. folio</th>
+                            <th>Fecha caducidad</th>
+                            <th>Cantidad</th>
+                            <th>Solucion/Tableta</th>
+                            <th>Contenido</th>
+                        </tr>
+                    </thead> --}}
+                    <tbody>
+                        
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
