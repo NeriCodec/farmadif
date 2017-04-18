@@ -22,6 +22,10 @@ class ComposerStaticInitea6ee4a735ea2ee9d5fe726d84a49312
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'Y' => 
+        array (
+            'Yajra\\Datatables\\' => 17,
+        ),
         'X' => 
         array (
             'XdgBaseDir\\' => 11,
@@ -101,6 +105,10 @@ class ComposerStaticInitea6ee4a735ea2ee9d5fe726d84a49312
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+        ),
+        'Yajra\\Datatables\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -274,20 +282,25 @@ class ComposerStaticInitea6ee4a735ea2ee9d5fe726d84a49312
     public static $classMap = array (
         'App\\Beneficiario' => __DIR__ . '/../..' . '/app/Beneficiario.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Donador' => __DIR__ . '/../..' . '/app/Donador.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
-        'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
-        'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\BeneficiarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/BeneficiarioController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DonadorController' => __DIR__ . '/../..' . '/app/Http/Controllers/DonadorController.php',
+        'App\\Http\\Controllers\\EntradaMedicamentoController' => __DIR__ . '/../..' . '/app/Http/Controllers/EntradaMedicamentoController.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\MedicamentoController' => __DIR__ . '/../..' . '/app/Http/Controllers/MedicamentoController.php',
         'App\\Http\\Controllers\\SalidaMedicamentoController' => __DIR__ . '/../..' . '/app/Http/Controllers/SalidaMedicamentoController.php',
+        'App\\Http\\Database\\BeneficiarioDatabase' => __DIR__ . '/../..' . '/app/Http/Database/BeneficiarioDatabase.php',
+        'App\\Http\\Database\\DonadorDatabase' => __DIR__ . '/../..' . '/app/Http/Database/DonadorDatabase.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\RegistrarBeneficiarioRequest' => __DIR__ . '/../..' . '/app/Http/Requests/RegistrarBeneficiarioRequest.php',
+        'App\\Http\\Requests\\RegistrarDonadorRequest' => __DIR__ . '/../..' . '/app/Http/Requests/RegistrarDonadorRequest.php',
         'App\\Medicamento' => __DIR__ . '/../..' . '/app/Medicamento.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -3173,6 +3186,19 @@ class ComposerStaticInitea6ee4a735ea2ee9d5fe726d84a49312
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'Yajra\\Datatables\\Contracts\\DataTableEngineContract' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/DataTableEngineContract.php',
+        'Yajra\\Datatables\\Datatables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Datatables.php',
+        'Yajra\\Datatables\\DatatablesServiceProvider' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DatatablesServiceProvider.php',
+        'Yajra\\Datatables\\Engines\\BaseEngine' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Engines/BaseEngine.php',
+        'Yajra\\Datatables\\Engines\\CollectionEngine' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Engines/CollectionEngine.php',
+        'Yajra\\Datatables\\Engines\\EloquentEngine' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Engines/EloquentEngine.php',
+        'Yajra\\Datatables\\Engines\\QueryBuilderEngine' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Engines/QueryBuilderEngine.php',
+        'Yajra\\Datatables\\Facades\\Datatables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Facades/Datatables.php',
+        'Yajra\\Datatables\\Helper' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Helper.php',
+        'Yajra\\Datatables\\Processors\\DataProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/DataProcessor.php',
+        'Yajra\\Datatables\\Processors\\RowProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/RowProcessor.php',
+        'Yajra\\Datatables\\Request' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Request.php',
+        'Yajra\\Datatables\\Transformers\\DataTransformer' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Transformers/DataTransformer.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',

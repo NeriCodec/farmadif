@@ -26,23 +26,23 @@
 						<div class="col-md-12">
 							<div class="form-group">
 						        <label>Ingrese el nombre</label>
-						        <input class="form-control" name='nombre' id='nombre' placeholder="Ingrese el nombre" value="{{ old('nombre') }}">
+						        <input class="form-control" name='nombre' id='nombre' placeholder="Ingrese el nombre" value="{{ old('nombre') }}" required>
 						    </div>
 						    <div class="form-group">
 						        <label>Ingrese el domicilio</label>
-						        <input class="form-control" name='domicilio' id='domicilio' placeholder="Ingrese el domicilio" value="{{ old('domicilio') }}">
+						        <input class="form-control" name='domicilio' id='domicilio' placeholder="Ingrese el domicilio" value="{{ old('domicilio') }}" required>
 						    </div>
 						     <div class="form-group">
 						        <label>Numero telefonico</label>
-						        <input class="form-control" name='telefono' id='telefono' placeholder="Ingrese el numero telefono" value="{{ old('telefono') }}">
+						        <input class="form-control" name='telefono' id='telefono' placeholder="Ingrese el numero telefono" value="{{ old('telefono') }}" required>
 						    </div>
 						    <div class="form-group">
 						        <label>Ingrese el codigo postal</label>
-						        <input class="form-control" name='codigo' id='codigo' placeholder="Ingrese la codigo" value="{{ old('codigo') }}">
+						        <input class="form-control" name='codigo' id='codigo' placeholder="Ingrese la codigo" value="{{ old('codigo') }}" required>
 						    </div>
 						    <div class="form-group">
 				                <label>Observaciones</label>
-				                <textarea class="form-control" name="observaciones" id="observaciones" rows="3">
+				                <textarea class="form-control" name="observaciones" id="observaciones" rows="3" required>
 				                	{{ old('observaciones') }}
 				                </textarea>
 				            </div>

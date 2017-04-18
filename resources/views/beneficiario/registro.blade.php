@@ -26,21 +26,22 @@
 						<div class="col-md-12">
 							<div class="form-group">
 						        <label>Ingrese el nombre</label>
-						        <input class="form-control" name='nombre' id='nombre' placeholder="Ingrese el nombre" value="{{ old('nombre') }}">
+						        <input class="form-control" name='nombre' required id='nombre' placeholder="Ingrese el nombre" value="{{ old('nombre') }}">
 						    </div>
 						    <div class="form-group">
 						        <label>Ingrese el apellido paterno</label>
-						        <input class="form-control" name='ap_paterno' id='ap_paterno' placeholder="Ingrese el apellido paterno" value="{{ old('ap_paterno') }}">
+						        <input class="form-control" name='ap_paterno' required id='ap_paterno' placeholder="Ingrese el apellido paterno" value="{{ old('ap_paterno') }}">
 						    </div>
 						    <div class="form-group">
 						        <label>Ingrese el apellido materno</label>
-						        <input class="form-control" name='ap_materno' id='ap_materno' placeholder="Ingrese el apellido materno" value="{{ old('ap_materno') }}">
+						        <input class="form-control" name='ap_materno' required id='ap_materno' placeholder="Ingrese el apellido materno" value="{{ old('ap_materno') }}">
 						    </div>
 						    <div class="form-group">
 						        <label>Ingrese la fecha de nacimiento</label>
 						        <div class="row">
 						          <div class="col-xs-4">
-						            <select class="form-control" name="dia">
+						            <select class="form-control" name="dia" required>
+						            	<option value="">Dia</option>
 						              <?php
 						                  for($i=1; $i<=31; $i++) {
 						                     echo "<option value=$i>$i</option>";
@@ -49,7 +50,8 @@
 						            </select>
 						          </div>
 						          <div class="col-xs-4">
-						            <select class="form-control" name="mes">
+						            <select class="form-control" name="mes" required>
+						            	<option value="">Mes</option>
 						              <?php
 						                  for($i=1; $i<=12; $i++) {
 						                      switch($i) {
@@ -96,8 +98,8 @@
 						            </select>
 						          </div>
 						          <div class="col-xs-4">
-						            <select class="form-control" name="anio">
-
+						            <select class="form-control" name="anio" required>
+									 <option value="">Año</option>
 						              <?php
 						                  for($i=date("Y"); $i>=1950; $i--) {
 						                     echo "<option value=$i>$i</option>";
@@ -109,11 +111,11 @@
 						    </div>
 						    <div class="form-group">
 						        <label>Ingrese el domicilio</label>
-						        <input class="form-control" name='domicilio' id='domicilio' placeholder="Ingrese el domicilio" value="{{ old('domicilio') }}">
+						        <input class="form-control" name='domicilio' required id='domicilio' placeholder="Ingrese el domicilio" value="{{ old('domicilio') }}">
 						    </div>
 						    <div class="form-group">
 						        <label>Ingrese la comunidad</label>
-						        <input class="form-control" name='comunidad' id='comunidad' placeholder="Ingrese la comunidad" value="{{ old('comunidad') }}">
+						        <input class="form-control" name='comunidad' required id='comunidad' placeholder="Ingrese la comunidad" value="{{ old('comunidad') }}">
 						    </div>
 						</div>
 						<div class="col-md-12">

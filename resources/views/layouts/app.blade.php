@@ -10,8 +10,14 @@
 
     <title>Farmadif</title>
 
-    <!-- Styles -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/pvendor/bootstrap/css/bootstrap.min.css">
+
+     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="/css/estilos.css">
 
     <!-- Scripts -->
     <script>
@@ -141,5 +147,15 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    
+    <!-- JQuery -->
+    <script src="/pvendor/jquery/jquery.min.js"></script>
+
+    <!-- DataTables -->
+    <script src="/pvendor/datatables/js/jquery.dataTables.min.js"></script>     
+    <script src="/pvendor/datatables-plugins/dataTables.bootstrap.min.js"></script>       
+    <script src="/pvendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="/js/datatables.js"></script>
+
 </body>
 </html>

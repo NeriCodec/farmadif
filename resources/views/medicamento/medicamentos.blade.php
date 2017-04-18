@@ -9,7 +9,7 @@
                 Donadores registrados
             </div>
             <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover">
+                <table width="100%" class="table table-striped table-bordered table-hover" id="tgeneral">
                     <thead>
                         <tr>
                             <th>Nombre comercial</th>
@@ -22,25 +22,10 @@
                             <th>Contenido</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    	@foreach($medicamentos as $medicamento)
-                        <tr>
-                            <td>{{ $medicamento->nombre_comercial}}</td>
-                            <td>{{ $medicamento->nombre_compuesto}}</td>
-                            <td>{{ $medicamento->num_etiqueta}}</td>
-                            <td>{{ $medicamento->num_folio}}</td>
-                            <td>{{ $medicamento->fecha_caducidad}}</td>
-                            <td>{{ $medicamento->cantidad}}</td>
-                            <td>{{ $medicamento->solucion_tableta}}</td>
-                            <td>{{ $medicamento->tipo_contenido}}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <center>{{ $medicamentos->links() }}</center>
 </div>
 
    

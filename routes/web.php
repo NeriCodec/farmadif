@@ -31,7 +31,9 @@ Route::name('ruta_salida_medicamento')->get('/salida-medicamento/{id}', 'SalidaM
 #Rutas para la entrada de medicaento -esta es la parte pendiente
 Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMedicamentoController@index');
 # Rutas del medicamento
-Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@index');
+Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamento');
+
+Route::get('api/medicamentos', 'MedicamentoController@obtenerTodosLosMedicamentos');
 
 Auth::routes();
 
