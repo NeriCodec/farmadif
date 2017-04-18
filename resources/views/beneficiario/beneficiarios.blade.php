@@ -9,7 +9,7 @@
                 Beneficiarios registrados
             </div>
             <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover">
+                <table width="100%" class="table table-striped table-bordered table-hover" id="tbeneficiarios">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -17,30 +17,12 @@
                             <th>Comunidad</th>
                             <th>Fecha de nacimiento</th>
                             <th>Fecha de registro</th>
-                            <th>Actualizar</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    	@foreach($beneficiarios as $beneficiario)
-                        <tr>
-                            <td>{{ $beneficiario->nombre . ' ' . $beneficiario->ap_paterno . ' ' . $beneficiario->ap_materno }}</td>
-                            <td>{{ $beneficiario->domicilio }}</td>
-                            <td>{{ $beneficiario->comunidad }}</td>
-                            <td>{{ $beneficiario->fecha_nacimiento }}</td>
-                            <td>{{ $beneficiario->fecha_registro }}</td>
-                            <td>
-                                <center><button class="btn btn-primary btn-small">
-                                    Ir
-                                </button></center>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <center>{{ $beneficiarios->links() }}</center>
 </div>
 
    

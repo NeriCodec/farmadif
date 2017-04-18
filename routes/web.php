@@ -33,7 +33,9 @@ Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMe
 # Rutas del medicamento
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamento');
 
+# Ruta para la API de DataTables
 Route::get('api/medicamentos', 'MedicamentoController@obtenerTodosLosMedicamentos');
+Route::get('api/beneficiarios', 'BeneficiarioController@obtenerTodosLosBeneficiarios');
 
 Auth::routes();
 

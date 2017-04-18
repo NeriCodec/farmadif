@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Beneficiario;
 use Illuminate\Http\Request;
-use App\Http\Database\BeneficiarioDatabase;
 use Illuminate\Support\Facades\Auth;
+use Yajra\Datatables\Facades\Datatables;
+use App\Http\Database\BeneficiarioDatabase;
 use App\Http\Requests\RegistrarBeneficiarioRequest;
 
 class BeneficiarioController extends Controller
@@ -17,8 +18,7 @@ class BeneficiarioController extends Controller
     
     public function index()
     {
-    	$beneficiarios = Beneficiario::paginate(10);
-    	return view('beneficiario.beneficiarios')->with('beneficiarios', $beneficiarios);
+    	return view('beneficiario.beneficiarios');
     }
 
     public function mostrarRegistro()
@@ -30,5 +30,10 @@ class BeneficiarioController extends Controller
     {
         BeneficiarioDatabase::guardarBeneficiario($request);
     	return redirect()->route('ruta_beneficiarios');
+    }
+
+    public function obtenerTodosLosBeneficiarios()
+    {
+        return Datatables::eloquent(Beneficiario::query())->make(true);
     }
 }
