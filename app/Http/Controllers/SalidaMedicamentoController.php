@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Medicamento;
 use App\Beneficiario;
+use App\SalidaMedicamento;
 use Illuminate\Http\Request;
+use App\Http\Database\SalidaMedicamentoDatabase;
 
 class SalidaMedicamentoController extends Controller
 {
@@ -26,12 +28,13 @@ class SalidaMedicamentoController extends Controller
     	return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario);
     }
 
-    public function agregar($id, Request $request)
+    public function agregar($id, $idb, Request $request)
     {
         $medicamento = Medicamento::find($id);
         if($medicamento->cantidad == 0) {
             return 'agotado';
         } else {
+            SalidaMedicamentoDatabase::guardarSalidaMedicamento($id, $idb);
             $medicamento->cantidad = $medicamento->cantidad - 1;
             $medicamento->save(); 
         }

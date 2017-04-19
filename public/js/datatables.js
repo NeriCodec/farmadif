@@ -70,8 +70,7 @@ $(document).ready(function(){
         var form = $('#form-agregar');
         var url = form.attr('action').replace(':MEDICAMENTO_ID', datos.id_medicamento);
         var data = form.serialize();
-
-       
+        
         $.post(url, data, function (respuesta) {
             if(respuesta!='agotado') {
                 agregarMedicamento(datos);
@@ -79,7 +78,7 @@ $(document).ready(function(){
                 alert(datos.nombre_comercial + " " + respuesta);
             }
         });
-        
+
         tagregarmedicamento.ajax.reload();
     } );
 

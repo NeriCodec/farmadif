@@ -114,7 +114,7 @@
     </div>
 </div>
 
-<form action="{{ route('ruta_agregar_medicamento', ':MEDICAMENTO_ID') }}" method="post" id="form-agregar">
+<form action="{{ route('ruta_agregar_medicamento', array(':MEDICAMENTO_ID', $beneficiario->id_beneficiario)) }}" method="post" id="form-agregar">
     {{ csrf_field() }}
 </form>
 
