@@ -25,5 +25,20 @@ class SalidaMedicamentoController extends Controller
     	$beneficiario = Beneficiario::find($id);
     	return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario);
     }
+
+    public function agregar($id, Request $request)
+    {
+        $medicamento = Medicamento::find($id);
+        if($medicamento->cantidad == 0) {
+            return 'agotado';
+        } else {
+            $medicamento->cantidad = $medicamento->cantidad - 1;
+            $medicamento->save(); 
+        }
+        
+        if($request->ajax()) {
+            return 'exito';
+        }
+    }
     
 }

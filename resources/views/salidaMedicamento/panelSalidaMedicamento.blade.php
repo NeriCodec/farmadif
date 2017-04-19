@@ -114,6 +114,10 @@
     </div>
 </div>
 
+<form action="{{ route('ruta_agregar_medicamento', ':MEDICAMENTO_ID') }}" method="post" id="form-agregar">
+    {{ csrf_field() }}
+</form>
+
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -122,28 +126,13 @@
             </div>
             <div class="panel-body">
                 <table width="100%" class="table table-striped table-bordered table-hover" id="tbTodosLosMedicamentos">
-                    {{-- <thead>
-                        <tr>
-                            <th>Nombre comercial</th>
-                            <th>Nombre compuesto</th>
-                            <th>No. etiqueta</th>
-                            <th>No. folio</th>
-                            <th>Fecha caducidad</th>
-                            <th>Cantidad</th>
-                            <th>Solucion/Tableta</th>
-                            <th>Contenido</th>
-                        </tr>
-                    </thead> --}}
-                    <tbody>
-                        
-                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
 
-<div class="col-lg-12">
+<div class="col-lg-12" style="margin-bottom: 5%;">
     <button class="btn btn-default btn-small" style="float: right;">Aceptar</button>
     <a href="{{ route('ruta_salida_medicamentos') }}">
         <button class="btn btn-default btn-small" style="float: right; margin-right: 1%;">Cancelar</button>

@@ -1,5 +1,6 @@
 $(document).ready(function(){
-
+    var aMedicamento = [];
+    
     var es = {
         "sProcessing":     "Procesando...",
         "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -64,11 +65,22 @@ $(document).ready(function(){
         "language": es,
     });
 
-
     $('#tagregarmedicamento tbody').on('click', 'button', function () {
         var datos = tagregarmedicamento.row( $(this).parents('tr') ).data();
-        console.log("ID: " + datos.id_medicamento + ", nombre: " + datos.nombre_comercial);  
-        agregarMedicamento(datos);
+        var form = $('#form-agregar');
+        var url = form.attr('action').replace(':MEDICAMENTO_ID', datos.id_medicamento);
+        var data = form.serialize();
+
+       
+        $.post(url, data, function (respuesta) {
+            if(respuesta!='agotado') {
+                agregarMedicamento(datos);
+            } else {
+                alert(datos.nombre_comercial + " " + respuesta);
+            }
+        });
+        
+        tagregarmedicamento.ajax.reload();
     } );
 
     function agregarMedicamento(datos) {
@@ -89,12 +101,9 @@ $(document).ready(function(){
         cell3.innerHTML = datos.num_etiqueta;
         cell4.innerHTML = datos.num_folio;
         cell5.innerHTML = datos.fecha_caducidad;
-        cell6.innerHTML = datos.cantidad;
+        cell6.innerHTML = 1;
         cell7.innerHTML = datos.solucion_tableta;
         cell8.innerHTML = datos.tipo_contenido;
-        // Recargar la tabla con los nuevos valores
-        // tagregarmedicamento.ajax.reload();
-        // Falta metodo para descontar el medicamento
     }
 
     var tbeneficiarios = $('#tbeneficiarios').DataTable({

@@ -17,4 +17,6 @@ class MedicamentoController extends Controller
     {
     	return Datatables::eloquent(Medicamento::query())->make(true);
     }
+
+    
 }

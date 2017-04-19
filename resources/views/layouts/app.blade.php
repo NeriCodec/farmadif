@@ -11,7 +11,7 @@
     <title>Farmadif</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/pvendor/bootstrap/css/bootstrap.min.css">
+    {{-- <link rel="stylesheet" href="/pvendor/bootstrap/css/bootstrap.min.css"> --}}
 
      <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
