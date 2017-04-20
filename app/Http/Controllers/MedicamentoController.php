@@ -8,6 +8,11 @@ use Yajra\Datatables\Facades\Datatables;
 
 class MedicamentoController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function mostrarMedicamento()
     {
     	return view('medicamento.medicamentos');

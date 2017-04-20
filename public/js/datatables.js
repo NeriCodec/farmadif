@@ -28,6 +28,7 @@ $(document).ready(function(){
 
     var tmedicamento = $('#tmedicamento').DataTable({
         "processing": true,
+        "serverSide": true,
         "ajax": "http://localhost:8000/api/medicamentos",
         "columns": [
             {data: 'nombre_comercial'},
@@ -43,7 +44,7 @@ $(document).ready(function(){
     });
 
     var tagregarmedicamento = $('#tagregarmedicamento').DataTable({
-        "processing": true,     
+        "processing": true,
         "lengthMenu": [[5], ['Todos']],
         "ajax": "http://localhost:8000/api/medicamentos",
         "columns": [

@@ -1,5 +1,7 @@
 <?php
 
+header("Access-Control-Allow-Origin: ".$_SERVER["HTTP_ORIGIN"]);
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
