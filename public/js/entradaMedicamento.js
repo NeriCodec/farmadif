@@ -31,11 +31,7 @@ $(document).ready(function(){
     var tseleccionarDonador = $('#tseleccionarDonador').DataTable({
         "processing": true,     
         "lengthMenu": [[5], ['Todos']],
-        "ajax": {
-            "url": "http://localhost:8000/api/donadores",
-            "type": "POST",
-            "data": {'_token': $('meta[name="csrf-token"]').attr('content')}
-        },
+        "ajax": "http://localhost:8000/api/donadores",
         "columns": [
             {data: 'id_donador'},
             {data: 'nombre'},
