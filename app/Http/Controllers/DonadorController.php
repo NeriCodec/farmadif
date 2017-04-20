@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Donador;
 use Illuminate\Http\Request;
 use App\Http\Database\DonadorDatabase;
+use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegistrarDonadorRequest;
 
@@ -30,5 +31,10 @@ class DonadorController extends Controller
     {
         DonadorDatabase::guardarDonador($request);
     	return redirect()->route('ruta_donadores');
+    }
+
+    public function obtenerTodosLosDonadores()
+    {
+        return Datatables::eloquent(Donador::query())->make(true);
     }
 }

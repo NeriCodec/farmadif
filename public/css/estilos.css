@@ -3,3 +3,6 @@ div#tmedicamento_filter.dataTables_filter,
 div#tbeneficiarios_filter.dataTables_filter {
 	float: right;
 }
+.ocultar{
+	display: none;
+}

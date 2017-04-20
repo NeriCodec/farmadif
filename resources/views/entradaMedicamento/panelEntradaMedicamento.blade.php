@@ -1,6 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Seleccionar donador
+            </div>
+            <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="tseleccionarDonador">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Domicilio</th>
+                        <th>Telefono</th>
+                        <th>Codigo postal</th>
+                        <th>Seleccionar</th>
+                    </tr>
+                </thead>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="panel panel-default">
             <div class="panel-heading">
                 Entrada de medicamento
