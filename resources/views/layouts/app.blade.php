@@ -156,6 +156,8 @@
     <script src="/pvendor/datatables-plugins/dataTables.bootstrap.min.js"></script>       
     <script src="/pvendor/datatables-responsive/dataTables.responsive.js"></script>
     <script src="/js/datatables.js"></script>
+    <script src="/js/entradaMedicamento.js"></script>
+    
 
 </body>
 </html>
