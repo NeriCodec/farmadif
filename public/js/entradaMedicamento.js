@@ -34,7 +34,7 @@ $(document).ready(function(){
         "ajax": {
             "url": "http://localhost:8000/api/donadores",
             "type": "POST",
-            "data": {'_token': $('meta[name="csrf-token"]').attr('content')}
+            "headers": {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
         },
         "columns": [
             {data: 'id_donador'},
