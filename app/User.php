@@ -9,14 +9,23 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public  $timestamps =   false;
-
+    /**
+    * @param $table, nombre de la tabla de la base de datos
+    */
     protected $table = 'tb_usuarios';
 
+    /**
+    * @param $primaryKey, nombre del id de la tabla de la base de datos
+    */
     protected $primaryKey = 'id_usuario';
 
     /**
-     * The attributes that are mass assignable.
+    * @param $timestamps, especifica si se requiere fechas en la tabla.
+    */
+    public  $timestamps =   false;
+    
+    /**
+     * Los atributos que son asignados para el inicio de sesion.
      *
      * @var array
      */
@@ -25,7 +34,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * Atributos que deberian ser ocultos en la base de datos.
      *
      * @var array
      */
