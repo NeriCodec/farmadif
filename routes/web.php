@@ -29,6 +29,7 @@ Route::name('ruta_donador_registrar')->post('/donador/registrar', 'DonadorContro
 Route::name('ruta_salida_medicamentos')->get('/salida-medicamentos', 'SalidaMedicamentoController@index');
 Route::name('ruta_salida_medicamento')->get('/salida-medicamento/{id}', 'SalidaMedicamentoController@salida');
 Route::name('ruta_agregar_medicamento')->post('/salida-medicamento/agregar/{id}/beneficiario/{idb}', 'SalidaMedicamentoController@agregar');
+Route::name('ruta_eliminar_medicamento')->post('/salida-medicamento/eliminar/{id}/beneficiario/{idb}', 'SalidaMedicamentoController@eliminar');
 #Rutas para la entrada de medicaento -esta es la parte pendiente
 Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMedicamentoController@index');
 # Rutas del medicamento

@@ -14,6 +14,7 @@ class EntradaMedicamentoController extends Controller
     {
         $this->middleware('auth');
     }
+    
     public function index()
     {
     	return view('entradaMedicamento.panelEntradaMedicamento');

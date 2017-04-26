@@ -43,5 +43,17 @@ class SalidaMedicamentoController extends Controller
             return 'exito';
         }
     }
+
+    public function eliminar($id, $idb, Request $request)
+    {
+        $medicamento = Medicamento::find($id);
+        SalidaMedicamentoDatabase::guardarSalidaMedicamento($id, $idb);
+        $medicamento->cantidad = $medicamento->cantidad + 1;
+        $medicamento->save(); 
+        
+        if($request->ajax()) {
+            return 'exito';
+        }
+    }
     
 }

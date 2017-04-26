@@ -118,6 +118,10 @@
     {{ csrf_field() }}
 </form>
 
+<form action="{{ route('ruta_eliminar_medicamento', array(':MEDICAMENTO_ID', $beneficiario->id_beneficiario)) }}" method="post" id="form-eliminar">
+    {{ csrf_field() }}
+</form>
+
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -125,8 +129,28 @@
                 Medicamentos salida
             </div>
             <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover" id="tbTodosLosMedicamentos">
+                <table class="table table-striped table-bordered table-hover" >
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Nombre comercial</td>
+                            <td>Nombre compuesto</td>
+                            <td>No. etiqueta</td>
+                            <td>No. folio</td>
+                            <td>Fecha caducidad</td>
+                            <td>Cantidad</td>
+                            <td>Solucion/Tableta</td>
+                            <td>Contenido</td>
+                            <td>Eliminar</td>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaMedicamentos">
+                        
+                    </tbody>
+                    
                 </table>
+              {{--   <table width="100%" class="table table-striped table-bordered table-hover" id="tbTodosLosMedicamentos">
+                </table> --}}
             </div>
         </div>
     </div>

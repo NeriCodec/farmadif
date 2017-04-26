@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    var aMedicamento = [];
     
     var es = {
         "sProcessing":     "Procesando...",
@@ -74,7 +73,8 @@ $(document).ready(function(){
         
         $.post(url, data, function (respuesta) {
             if(respuesta!='agotado') {
-                agregarMedicamento(datos);
+                //agregarMedicamento(datos);
+                agregarMedicamento('tablaMedicamentos', datos);
             } else {
                 alert(datos.nombre_comercial + " " + respuesta);
             }
@@ -83,9 +83,16 @@ $(document).ready(function(){
         tagregarmedicamento.ajax.reload();
     } );
 
-    function agregarMedicamento(datos) {
-        var table = document.getElementById("tbTodosLosMedicamentos");
-        var row = table.insertRow(0);
+    $('button').click(function () {
+        alert('Click');
+    } );
+
+    function agregarMedicamento(tableID, datos) {
+
+        var tabla = document.getElementById(tableID);
+
+        var row   = tabla.insertRow(0);
+
         var cell0 = row.insertCell(0);
         var cell1 = row.insertCell(1);
         var cell2 = row.insertCell(2);
@@ -95,6 +102,8 @@ $(document).ready(function(){
         var cell6 = row.insertCell(6);
         var cell7 = row.insertCell(7);
         var cell8 = row.insertCell(8);
+        var cell9 = row.insertCell(9);
+
         cell0.innerHTML = datos.id_medicamento;
         cell1.innerHTML = datos.nombre_comercial;
         cell2.innerHTML = datos.nombre_compuesto;
@@ -104,7 +113,14 @@ $(document).ready(function(){
         cell6.innerHTML = 1;
         cell7.innerHTML = datos.solucion_tableta;
         cell8.innerHTML = datos.tipo_contenido;
+        cell9.innerHTML = '<button id="btn-eliminar" class="btn btn-danger btn-small">X</button>';
+
+      // Añade un nodo de texto a la celda
+        // var newText  = document.createTextNode('Nueva fila superior');
+        // newCell.appendChild(newText);
     }
+
+    
 
     var tbeneficiarios = $('#tbeneficiarios').DataTable({
         "processing": true,
