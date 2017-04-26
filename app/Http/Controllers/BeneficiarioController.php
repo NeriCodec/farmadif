@@ -14,7 +14,7 @@ class BeneficiarioController extends Controller
     /**
     * Determina si el usuario esta autenticado en la aplicacion.
     *
-    * @return ...
+    * @return void
     */
     public function __construct()
     {
