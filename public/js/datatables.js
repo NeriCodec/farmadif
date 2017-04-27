@@ -83,10 +83,6 @@ $(document).ready(function(){
         tagregarmedicamento.ajax.reload();
     } );
 
-    $('button').click(function () {
-        alert('Click');
-    } );
-
     function agregarMedicamento(tableID, datos) {
 
         var tabla = document.getElementById(tableID);

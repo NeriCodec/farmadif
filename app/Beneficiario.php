@@ -20,4 +20,19 @@ class Beneficiario extends Model
     * @param $timestamps, especifica si se requiere fechas en la tabla.
     */
     public	$timestamps	=	false;
+
+    /**
+    * Metodo que realiza una busqueda del beneficiario
+    * @param $query 
+    * @param String nombre, nombre del beneficiario
+    * @return $void
+    */
+    public function scopeBuscarBeneficiario($query, $nombre)
+    {
+        if(trim($nombre) != "")
+        {
+            $query->where(\DB::raw("CONCAT(nombre, ' ', ap_paterno, ' ', ap_materno)"), 'LIKE', "%$nombre%");
+        }
+    }
+
 }

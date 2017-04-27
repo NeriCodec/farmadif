@@ -22,13 +22,14 @@ class SalidaMedicamentoController extends Controller
     }
     
      /**
-    * Muestra una lista de beneficiarios en forma paginada.
+    * Muestra una lista de beneficiarios en forma paginada, a menos que se este
+    * buscando un beneficiario entonces, solamente se mostrara ese o esos beneficiarios.
     *
     * @return View
     */
-    public function index()
+    public function mostrarBeneficiarios(Request $request)
     {
-    	$beneficiarios = Beneficiario::paginate(10);
+    	$beneficiarios = Beneficiario::buscarBeneficiario($request->get('beneficiario'))->paginate(10);
     	return view('salidaMedicamento.panel')->with('beneficiarios', $beneficiarios);
     }
 

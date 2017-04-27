@@ -23,7 +23,7 @@ class MedicamentoController extends Controller
     *
     * @return View
     */
-    public function mostrarMedicamento()
+    public function mostrarMedicamentos()
     {
     	return view('medicamento.medicamentos');
     }
