@@ -1,13 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-
+@if(count($donadores) <= 0) 
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Donadores registrados
+                </div>
+                @include('donador.buscadorDonador')
+                <br><br><br>
+                <center><h4>No se encontro el beneficiario</h4></center>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+@else
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Donadores registrados
             </div>
+            @include('donador.buscadorDonador')
             <div class="panel-body">
                 <table width="100%" class="table table-striped table-bordered table-hover">
                     <thead>
@@ -42,6 +57,6 @@
     </div>
     <center>{{ $donadores->links() }}</center>
 </div>
-
+@endif
    
 @endsection

@@ -16,12 +16,12 @@ Route::get('/', function () {
 })->middleware('auth');
 
 # Rutas para el beneficiario
-Route::name('ruta_beneficiarios')->get('/beneficiarios', 'BeneficiarioController@index');
+Route::name('ruta_beneficiarios')->get('/beneficiarios', 'BeneficiarioController@mostrarBeneficiarios');
 Route::name('ruta_beneficiario_registro')->get('/beneficiario/registro', 'BeneficiarioController@mostrarRegistro');
 Route::name('ruta_beneficiario_registrar')->post('/beneficiario/registrar', 'BeneficiarioController@registrar');
 
 # Rutas para el Donadores
-Route::name('ruta_donadores')->get('/donadores', 'DonadorController@index');
+Route::name('ruta_donadores')->get('/donadores', 'DonadorController@mostrarDonadores');
 Route::name('ruta_donador_registro')->get('/donador/registro', 'DonadorController@mostrarRegistro');
 Route::name('ruta_donador_registrar')->post('/donador/registrar', 'DonadorController@registrar');
 
@@ -34,10 +34,6 @@ Route::name('ruta_eliminar_medicamento')->post('/salida-medicamento/eliminar/{id
 Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMedicamentoController@index');
 # Rutas del medicamento
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamentos');
-# Ruta para la API de DataTables
-Route::get('api/medicamentos', 'MedicamentoController@obtenerTodosLosMedicamentos');
-Route::get('api/beneficiarios', 'BeneficiarioController@obtenerTodosLosBeneficiarios');
-Route::get('api/donadores', 'DonadorController@obtenerTodosLosDonadores');
 
 Auth::routes();
 

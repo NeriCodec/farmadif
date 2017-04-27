@@ -26,9 +26,9 @@ class DonadorController extends Controller
     *
     * @return View
     */
-    public function index()
+    public function mostrarDonadores(Request $request)
     {
-    	$donadores = Donador::paginate(10);
+    	$donadores = Donador::buscarDonador($request->get('donador'))->paginate(10);
     	return view('donador.donadores')->with('donadores', $donadores);
     }
 

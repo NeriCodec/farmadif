@@ -22,13 +22,14 @@ class BeneficiarioController extends Controller
     }
     
     /**
-    * Muestra la tabla de beneficiarios
+    * Muestra la tabla de los beneficiarios
     *
     * @return View
     */
-    public function index()
+    public function mostrarBeneficiarios(Request $request)
     {
-    	return view('beneficiario.beneficiarios');
+        $beneficiarios = Beneficiario::buscarBeneficiario($request->get('beneficiario'))->paginate(10);
+    	return view('beneficiario.beneficiarios')->with('beneficiarios', $beneficiarios);
     }
 
     /**

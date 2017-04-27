@@ -151,13 +151,5 @@
     <!-- JQuery -->
     <script src="/pvendor/jquery/jquery.min.js"></script>
 
-    <!-- DataTables -->
-    <script src="/pvendor/datatables/js/jquery.dataTables.min.js"></script>     
-    <script src="/pvendor/datatables-plugins/dataTables.bootstrap.min.js"></script>       
-    <script src="/pvendor/datatables-responsive/dataTables.responsive.js"></script>
-    <script src="/js/datatables.js"></script>
-    <script src="/js/entradaMedicamento.js"></script>
-    
-
 </body>
 </html>

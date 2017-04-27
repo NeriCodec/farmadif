@@ -20,4 +20,18 @@ class Donador extends Model
     * @param $timestamps, especifica si se requiere fechas en la tabla.
     */
     public	$timestamps	=	false;
+
+    /**
+    * Metodo que realiza una busqueda del donador
+    * @param $query 
+    * @param String nombre, nombre del donador
+    * @return $void
+    */
+    public function scopeBuscarDonador($query, $nombre)
+    {
+        if(trim($nombre) != "")
+        {
+            $query->where("nombre", 'LIKE', "%$nombre%");
+        }
+    }
 }
