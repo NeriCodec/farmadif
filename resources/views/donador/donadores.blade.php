@@ -38,11 +38,11 @@
                     <tbody>
                     	@foreach($donadores as $donador)
                         <tr>
-                            <td>{{ $donador->nombre}}</td>
-                            <td>{{ $donador->domicilio}}</td>
-                            <td>{{ $donador->num_telefonico}}</td>
-                            <td>{{ $donador->codigo_postal}}</td>
-                            <td>{{ $donador->fecha_registro}}</td>
+                            <td>{{ $donador->nombre }}</td>
+                            <td>{{ $donador->domicilio }}</td>
+                            <td>{{ $donador->num_telefonico }}</td>
+                            <td>{{ $donador->codigo_postal }}</td>
+                            <td>{{ $donador->fecha_registro }}</td>
                             <td>
                                 <center><button class="btn btn-primary btn-small">
                                     Ir

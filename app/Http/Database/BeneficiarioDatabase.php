@@ -8,6 +8,11 @@ use App\Http\Requests\RegistrarBeneficiarioRequest;
 
 class BeneficiarioDatabase
 {
+    /**
+    * Permite guardar en la base de datos el beneficiario
+    * @param RegistrarBeneficiarioRequest  $request
+    * @return void
+    */
 	public static function guardarBeneficiario(RegistrarBeneficiarioRequest $request)
 	{
         $beneficiario = new Beneficiario();

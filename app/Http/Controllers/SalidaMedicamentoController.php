@@ -42,7 +42,8 @@ class SalidaMedicamentoController extends Controller
     public function salida($id, Request $request)
     {
     	$beneficiario = Beneficiario::find($id);
-    	return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario);
+        $medicamentos = Medicamento::all();
+    	return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)->with('medicamentos', $medicamentos);
     }
 
     /**

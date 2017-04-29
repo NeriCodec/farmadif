@@ -35,6 +35,7 @@ Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMe
 # Rutas del medicamento
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamentos');
 
+# Rutas para la autenticacion
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

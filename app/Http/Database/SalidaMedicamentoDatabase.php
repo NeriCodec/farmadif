@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class SalidaMedicamentoDatabase
 {
+	/**
+    * Permite guardar en la base de datos la salida de medicamento
+    * @param Int  $idMedicamento
+    * @param Int  $idBeneficiario
+    * @return void
+    */
 	public static function guardarSalidaMedicamento($idMedicamento, $idBeneficiario)
 	{
         $salidaMedicamento = new SalidaMedicamento();

@@ -92,6 +92,12 @@
             <div class="panel-heading">
                 Buscar medicamentos
             </div>
+            <form class="navbar-form navbar-left pull-right" action="" method="get">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="medicamento" placeholder="Buscar">
+                </div>
+                <button type="submit" class="btn btn-default">Buscar</button>
+            </form>
             <div class="panel-body">
             <table width="100%" class="table table-striped table-bordered table-hover" id="tagregarmedicamento">
                 <thead>
@@ -108,6 +114,26 @@
                         <th>Agregar</th>
                     </tr>
                 </thead>
+                <tbody>
+                    @foreach($medicamentos as $medicamento)
+                    <tr>
+                        <th>{{ $medicamento->id_medicamento }}</th>
+                        <th>{{ $medicamento->nombre_comercial }}</th>
+                        <th>{{ $medicamento->nombre_compuesto }}</th>
+                        <th>{{ $medicamento->num_etiqueta }}</th>
+                        <th>{{ $medicamento->num_folio }}</th>
+                        <th>{{ $medicamento->fecha_caducidad }}</th>
+                        <th>{{ $medicamento->cantidad }}</th>
+                        <th>{{ $medicamento->solucion_tableta }}</th>
+                        <th>{{ $medicamento->tipo_contenido }}</th>
+                        <td>
+                            <center><button class="btn btn-primary btn-small">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </button></center>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
             </table>
             </div>
         </div>
@@ -157,9 +183,13 @@
 </div>
 
 <div class="col-lg-12" style="margin-bottom: 5%;">
-    <button class="btn btn-default btn-small" style="float: right;">Aceptar</button>
+    {{-- <form action="" method="post"> --}}
+        {{-- {{ csrf_field() }} --}}
+        <button class="btn btn-default btn-small" style="float: right;">Aceptar</button>
+    {{-- </form> --}}
+    
     <a href="{{ route('ruta_salida_medicamentos') }}">
-        <button class="btn btn-default btn-small" style="float: right; margin-right: 1%;">Cancelar</button>
+        <button class="btn btn-default btn-small" style="float: right; margin-right: 1%;">Volver</button>
     </a>
 </div>
 

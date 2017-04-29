@@ -25,7 +25,8 @@ class MedicamentoController extends Controller
     */
     public function mostrarMedicamentos()
     {
-    	return view('medicamento.medicamentos');
+        $medicamentos = Medicamento::paginate(10);
+    	return view('medicamento.medicamentos')->with('medicamentos', $medicamentos);
     }
 
     /**

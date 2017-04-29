@@ -22,9 +22,24 @@
                                 <th>Contenido</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @foreach($medicamentos as $medicamento)
+                            <tr>
+                                <th>{{ $medicamento->nombre_comercial }}</th>
+                                <th>{{ $medicamento->nombre_compuesto }}</th>
+                                <th>{{ $medicamento->num_etiqueta }}</th>
+                                <th>{{ $medicamento->num_folio }}</th>
+                                <th>{{ $medicamento->fecha_caducidad }}</th>
+                                <th>{{ $medicamento->cantidad }}</th>
+                                <th>{{ $medicamento->solucion_tableta }}</th>
+                                <th>{{ $medicamento->tipo_contenido }}</th>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
+        <center>{{ $medicamentos->links() }}</center>
     </div>
 @endsection

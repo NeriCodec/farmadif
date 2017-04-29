@@ -8,6 +8,11 @@ use App\Http\Requests\RegistrarDonadorRequest;
 
 class DonadorDatabase
 {
+    /**
+    * Permite guardar en la base de datos el donador
+    * @param RegistrarDonadorRequest  $request
+    * @return void
+    */
 	public static function guardarDonador(RegistrarDonadorRequest $request)
 	{
         $donador = new Donador();

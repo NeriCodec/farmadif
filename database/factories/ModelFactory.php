@@ -42,11 +42,11 @@ $factory->define(App\Medicamento::class, function (Faker\Generator $faker) {
     return [
         'nombre_comercial' => $faker->name,
         'nombre_compuesto' => $faker->firstName,
-        'num_etiqueta' => 'D-12',
-        'num_folio' => 'GR-9934',
+        'num_etiqueta' => 'D-' . rand(0, 100),
+        'num_folio' => 'GR-' . rand(0, 100),
         'fecha_caducidad' =>  date("Y-m-d"),
-        'cantidad' => 20,
-        'solucion_tableta' => 'tableta',
-        'tipo_contenido' => 'gr',
+        'cantidad' => rand(1,30),
+        'solucion_tableta' => 'tableta'|'solucion',
+        'tipo_contenido' => 'gr'|'ml',
     ];
 });
