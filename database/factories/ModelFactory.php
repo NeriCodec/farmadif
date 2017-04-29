@@ -46,7 +46,7 @@ $factory->define(App\Medicamento::class, function (Faker\Generator $faker) {
         'num_folio' => 'GR-' . rand(0, 100),
         'fecha_caducidad' =>  date("Y-m-d"),
         'cantidad' => rand(1,30),
-        'solucion_tableta' => 'tableta'|'solucion',
-        'tipo_contenido' => 'gr'|'ml',
+        'solucion_tableta' => 'tableta',
+        'tipo_contenido' => 'mg',
     ];
 });

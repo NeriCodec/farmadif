@@ -151,5 +151,7 @@
     <!-- JQuery -->
     <script src="/pvendor/jquery/jquery.min.js"></script>
 
+    <!-- Scripts -->
+    <script src="/js/salidaMedicamento.js"></script>
 </body>
 </html>

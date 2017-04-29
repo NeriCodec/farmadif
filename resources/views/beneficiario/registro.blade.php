@@ -25,7 +25,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group">
-						        <label>Ingrese el nombre</label>
+						        <label>Ingrese el nombre (s)</label>
 						        <input class="form-control" name='nombre' required id='nombre' placeholder="Ingrese el nombre" value="{{ old('nombre') }}">
 						    </div>
 						    <div class="form-group">

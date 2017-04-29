@@ -16,7 +16,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Registrar beneficiario
+                Registrar donador
             </div>
             <div class="panel-body">
 

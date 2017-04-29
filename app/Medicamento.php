@@ -21,7 +21,13 @@ class Medicamento extends Model
     */
     public	$timestamps	=	false;
 
-    public function scopeMedicamento($query, $medicamento)
+    /**
+    * Metodo que realiza una busqueda del medicamento
+    * @param $query 
+    * @param String nombre, nombre comercial del medicamento
+    * @return $void
+    */
+    public function scopeBuscarMedicamento($query, $medicamento)
     {
     	if (trim($medicamento) != "") {
     		$query->where('nombre_comercial', 'LIKE', "%$medicamento%");
