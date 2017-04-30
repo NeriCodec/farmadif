@@ -30,7 +30,7 @@ class SalidaMedicamento extends Model
     public static function medicamentosAgregados($id_salida_verificacion)
     {
 
-       $medicamentosAgregados  = \DB::select('SELECT id_medicamento, nombre_comercial, nombre_compuesto, num_etiqueta, 
+       $medicamentosAgregados  = \DB::select('SELECT id_medicamento, id_salida_medicamento, nombre_comercial, nombre_compuesto, num_etiqueta, 
                     num_folio, fecha_caducidad, solucion_tableta, tipo_contenido, cantidad
                     FROM tb_salida_medicamento
                     INNER JOIN tb_medicamentos
