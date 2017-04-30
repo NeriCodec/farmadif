@@ -88,7 +88,7 @@ class SalidaMedicamentoController extends Controller
     public function agregarMedicamento($idMedicamento, $idBeneficiario, Request $request)
     {
         // Se obtiene la verificacion y el medicamento para agregar
-        $cantidad_medicamento = $request->get('cantidad');        
+        $cantidadADonar = $request->get('cantidad');        
         $verificacionMedicamento = VerificacionMedicamento::all()->last();
         $medicamento = Medicamento::find($idMedicamento);
 
@@ -99,11 +99,11 @@ class SalidaMedicamentoController extends Controller
             $idMedicamento,
             $idBeneficiario,
             $verificacionMedicamento->id_salida_verificacion,
-            $cantidad_medicamento
+            $cantidadADonar
             );
 
-            // Se agrega el medicamento eliminado
-            $medicamento->cantidad = $medicamento->cantidad - $cantidad_medicamento;
+            // Del medicuamento actual se desminuye la cantidad a donar y se actualiza el medicamento
+            $medicamento->cantidad = $medicamento->cantidad - $cantidadADonar;
             $medicamento->save();
 
         } 
