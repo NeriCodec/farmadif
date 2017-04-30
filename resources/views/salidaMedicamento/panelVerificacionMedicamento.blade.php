@@ -19,11 +19,9 @@
                     </ul>
                 </div>
             @endif
-            <div class="row">
-                <div class="col-lg-12" id="datos-verificados"></div>
-            </div>
-            <div class="panel-body" id="datos-a-verificar">
-                <form action="{{ route('ruta_verificar_medicamento', ['id' => $beneficiario->id_beneficiario]) }}" method="post" id="form-verificar">
+            
+            <div class="panel-body">
+                <form action="{{ route('ruta_verificar_medicamento', ['idBeneficiario' => $beneficiario->id_beneficiario]) }}" method="post">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-lg-2">

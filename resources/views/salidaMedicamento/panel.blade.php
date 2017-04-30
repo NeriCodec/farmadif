@@ -48,7 +48,7 @@
                                 <td>{{ $beneficiario->fecha_registro }}</td>
                                 <td>
                                     <center>
-                                        <a href="{{ route('ruta_verificar_medicamento', ['id' => $beneficiario->id_beneficiario]) }}">
+                                        <a href="{{ route('ruta_salida_medicamento', ['id' => $beneficiario->id_beneficiario]) }}">
                                             <button class="btn btn-success btn-small ">
                                                 Ir
                                             </button> 

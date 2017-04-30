@@ -49,22 +49,28 @@ class SalidaMedicamentoController extends Controller
     }
 
     /**
-    * Permite agregar la verificacion.
+    * Permite realizar la verificacion de salida de medicamentos.
     * @param Int $id 
     * @param Request $request
     * @return View
     */
-    public function verificarSalidaDeMedicamento($id, VerificarRequest $request)
+    public function verificarSalidaDeMedicamento($idBeneficiario, VerificarRequest $request)
     {
-        $beneficiario = Beneficiario::find($id);
-        $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(5);
+        $beneficiario = Beneficiario::find($idBeneficiario);
         VerificacionSalidaDatabase::guardarVerificacionMedicamento($request);
+
+        return redirect()->route('ruta_salida_verificada_medicamentos', ['idBeneficiario' => $idBeneficiario]);
+    }
+
+    public function mostrarSalidaDeMedicamento($idBeneficiario, Request $request)
+    {
+        $beneficiario = Beneficiario::find($idBeneficiario);
+        $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(5);
         $verificacionMedicamento = VerificacionMedicamento::all()->last();
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion);
 
         return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
         ->with('medicamentos', $medicamentos)
-        ->with('verificado', 'si')
         ->with('medicamentosAgregados', $medicamentosAgregados);
     }
 
@@ -79,17 +85,12 @@ class SalidaMedicamentoController extends Controller
     {
         $medicamento = Medicamento::find($idMedicamento);
         
-        // if($medicamento->cantidad == 0) {
-        //     return 'agotado';
-        // }
-
         $verificacionMedicamento = VerificacionMedicamento::all()->last();
 
         SalidaMedicamentoDatabase::guardarSalidaMedicamento($idMedicamento, $idBeneficiario, $verificacionMedicamento->id_salida_verificacion);
-        // Se descuenta el medicamento agregado
+        // Se agrega el medicamento eliminado
         $medicamento->cantidad = $medicamento->cantidad - 1;
         $medicamento->save(); 
-
         
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion);
 
@@ -98,7 +99,6 @@ class SalidaMedicamentoController extends Controller
 
         return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
         ->with('medicamentos', $medicamentos)
-        ->with('verificado', 'si')
         ->with('medicamentosAgregados', $medicamentosAgregados);
     }
 
@@ -130,7 +130,6 @@ class SalidaMedicamentoController extends Controller
 
         return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
         ->with('medicamentos', $medicamentos)
-        ->with('verificado', 'si')
         ->with('medicamentosAgregados', $medicamentosAgregados);
 
     }

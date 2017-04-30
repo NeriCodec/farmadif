@@ -178,7 +178,9 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // Provedor para DataTables
-        Yajra\Datatables\DatatablesServiceProvider::class
+        Yajra\Datatables\DatatablesServiceProvider::class,
+        // Collective
+        Collective\Html\HtmlServiceProvider::class,
 
 
 
@@ -231,6 +233,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 
