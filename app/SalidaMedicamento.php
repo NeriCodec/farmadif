@@ -20,4 +20,23 @@ class SalidaMedicamento extends Model
     * @param $timestamps, especifica si se requiere fechas en la tabla.
     */
     public	$timestamps	=	false;
+
+    /**
+    * Metodo que obtiene la salida de medicamentos
+    * @param $query 
+    * @param Int id_salida_verificacion, id
+    * @return Array (JSON)
+    */
+    public static function medicamentosAgregados($id_salida_verificacion)
+    {
+
+       $medicamentosAgregados  = \DB::select('SELECT id_medicamento, nombre_comercial, nombre_compuesto, num_etiqueta, 
+                    num_folio, fecha_caducidad, solucion_tableta, tipo_contenido, cantidad
+                    FROM tb_salida_medicamento
+                    INNER JOIN tb_medicamentos
+                    ON tb_salida_medicamento.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
+                    WHERE tb_salida_verificacion_id_salida_verificacion = ' . $id_salida_verificacion);
+
+       return $medicamentosAgregados;
+    }
 }

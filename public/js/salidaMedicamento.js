@@ -17,7 +17,7 @@ $(document).ready(function(){
 	});
 
 	// Verificacion de los valores select
-	$('select#ine_ife').on('change',function(){
+	$('select#ife_ine').on('change',function(){
 	    ine_ife = $(this).val();
 	});
 
@@ -28,12 +28,12 @@ $(document).ready(function(){
 
 	$('#btn-verificar').click(function (evento) {
 		evento.preventDefault();
-
 		if(verificar_salida()) {
 			visualizacionDatos();
 			datos_verificados();
 			salida_medicamento();
 		}
+
 	});
 
 	function visualizacionDatos() {
@@ -55,27 +55,50 @@ $(document).ready(function(){
 		});
 	}
 
-	$('.btn-agregar').click(function(evento) {
-		evento.preventDefault();
-		var row  = $(this).parents('tr');
-		var id   = row.data('id');
-		var form = $('#form-agregar');
-		var url  = form.attr('action').replace(':BENEFICIARIO_ID', id);
-		var data = form.serialize();
+	// $('.btn-agregar').click(function(evento) {
+	// 	evento.preventDefault();
+	// 	var row  = $(this).parents('tr');
+	// 	var id   = row.data('id');
+	// 	var form = $('#form-agregar');
+	// 	var url  = form.attr('action').replace(':BENEFICIARIO_ID', id);
+	// 	var data = form.serialize();
 
-		$.post(url, data, function(resultado){
-			alert(resultado.mensaje);
-		});
+	// 	$.post(url, data, function(resultado){
+	// 		if(resultado=='agotado') {
+	// 			alert('agotado')
+	// 		} else {
+	// 			//for (var i = 0, len = resultado.medicamentos.length; i < len; i++) {
+	// 			  console.log(resultado.medicamentos[0].cantidad);
+	// 			  //var row  = $(this).parents('tr .tb-cantidad');
+	// 			  row.append(resultado.medicamentos[0].cantidad);
+	// 			//}
+	// 			// forEach(var medicamento in resultado.medicamentos) {
+	// 			// 	console.log(medicamento.cantidad);
+	// 			// }
+	// 		}
+	// 	});
 
-	})
+	// })
+
+	$('.btn-eliminar').click(function(){ 
+		console.log('eliminar');
+	});
 
 	function datos_verificados() {
-		$('#datos-verificados').append("<center><h4><p><strong> Receta medica:</strong> "+ receta_medica +
-										 " <strong> + Solicitud:</strong> " + solicitud +
-										 " <strong> + Ine/Ife:</strong> " + ine_ife +
-										 " <strong> + Fotografia:</strong> " + fotografia +
-										 " <strong> + Descripcion apoyo:</strong> " + $('#descripcion_apoyo').val() + 
-										 " <strong> + Diagnostico:</strong> " + $('#diagnostico').val() + "</p></h4></center>");
+		$('#datos-verificados').append("<table class='table table-striped table-bordered table-hover'><thead><tr>" +
+										 " <th>Receta medica</th>" +
+										 " <th>Solicitud</th>" +
+										 " <th>IFE</th>" +
+										 " <th>Fotografia</th>" +
+										 " <th>Descripcion</th>" +
+										 " <th>Diagnostico</th>" +
+										 "</tr></thead>" +
+										 " <tbody><tr><th>"+ receta_medica + "</th>" +
+										 " <th>" + solicitud + "</th>" +
+										 " <th>" + ine_ife + "</th>" +
+										 " <th>" + fotografia + "</th>" +
+										 " <th>" + $('#descripcion_apoyo').val() + "</th>" +
+										 " <th>" + $('#diagnostico').val() + "</th></tr></tbody></table>");
 	}
 
 	function verificar_salida() {
