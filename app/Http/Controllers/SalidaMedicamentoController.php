@@ -83,23 +83,33 @@ class SalidaMedicamentoController extends Controller
     */
     public function agregarMedicamento($idMedicamento, $idBeneficiario, Request $request)
     {
-        $medicamento = Medicamento::find($idMedicamento);
-        
+        $cantidad_medicamento = $request->get('cantidad');        
         $verificacionMedicamento = VerificacionMedicamento::all()->last();
+        $medicamento = Medicamento::find($idMedicamento);
 
-        SalidaMedicamentoDatabase::guardarSalidaMedicamento($idMedicamento, $idBeneficiario, $verificacionMedicamento->id_salida_verificacion);
-        // Se agrega el medicamento eliminado
-        $medicamento->cantidad = $medicamento->cantidad - 1;
-        $medicamento->save(); 
-        
-        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion);
+        if($medicamento->cantidad > 0) 
+        {
+            SalidaMedicamentoDatabase::guardarSalidaMedicamento (
+            $idMedicamento,
+            $idBeneficiario,
+            $verificacionMedicamento->id_salida_verificacion,
+            $cantidad_medicamento
+            );
 
-        $beneficiario = Beneficiario::find($idBeneficiario);
+            // Se agrega el medicamento eliminado
+            $medicamento->cantidad = $medicamento->cantidad - $cantidad_medicamento;
+            $medicamento->save();
+
+        } 
+
+        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion); 
         $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(5);
+        $beneficiario = Beneficiario::find($idBeneficiario);
 
         return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
         ->with('medicamentos', $medicamentos)
         ->with('medicamentosAgregados', $medicamentosAgregados);
+
     }
 
     /**
@@ -110,11 +120,10 @@ class SalidaMedicamentoController extends Controller
     * @param Request $request
     * @return String
     */
-    public function eliminarMedicamento($idmedicamento, $idbeneficiario, $idSalidaMedicamento, Request $request)
+    public function eliminarMedicamento($idmedicamento, $idbeneficiario, $idSalidaMedicamento, $cantidad, Request $request)
     {
-
         $medicamento = Medicamento::find($idmedicamento);
-        $medicamento->cantidad = $medicamento->cantidad + 1;
+        $medicamento->cantidad = $medicamento->cantidad + $cantidad;
         $medicamento->save(); 
         
         $medicamentosAgregados = SalidaMedicamento::find($idSalidaMedicamento);

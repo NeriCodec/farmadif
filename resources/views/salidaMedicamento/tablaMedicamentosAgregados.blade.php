@@ -10,7 +10,6 @@
 <table class="table table-striped table-bordered table-hover" >
     <thead>
         <tr>
-            <td>ID</td>
             <td>Nombre comercial</td>
             <td>Nombre compuesto</td>
             <td>No. etiqueta</td>
@@ -25,18 +24,17 @@
     <tbody>
         @foreach($medicamentosAgregados as $medicamento)
         <tr>
-            <th>{{ $medicamento->id_medicamento }}</th>
             <th>{{ $medicamento->nombre_comercial }}</th>
             <th>{{ $medicamento->nombre_compuesto }}</th>
             <th>{{ $medicamento->num_etiqueta }}</th>
             <th>{{ $medicamento->num_folio }}</th>
             <th>{{ $medicamento->fecha_caducidad }}</th>
-            <th>1</th>
+            <th>{{ $medicamento->cantidad_medicamento }}</th>
             <th>{{ $medicamento->solucion_tableta }}</th>
             <th>{{ $medicamento->tipo_contenido }}</th>
             <th>
                 <center>
-                    <form action="{{ route('ruta_eliminar_medicamento', ['idMedicamento' => $medicamento->id_medicamento, 'idBeneficiario' => $beneficiario->id_beneficiario, 'idSalidaMedicamento' => $medicamento->id_salida_medicamento]) }}" method="post" id="form-agregar">
+                    <form action="{{ route('ruta_eliminar_medicamento', ['idMedicamento' => $medicamento->id_medicamento, 'idBeneficiario' => $beneficiario->id_beneficiario, 'idSalidaMedicamento' => $medicamento->id_salida_medicamento, 'cantidad' => $medicamento->cantidad_medicamento]) }}" method="post" id="form-agregar">
                         {{ csrf_field() }}
                         <button class="btn btn-danger btn-small btn-agregar">
                             Eliminar

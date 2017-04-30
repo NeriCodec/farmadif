@@ -13,12 +13,13 @@ class SalidaMedicamentoDatabase
     * @param Int  $idBeneficiario
     * @return void
     */
-	public static function guardarSalidaMedicamento($idMedicamento, $idBeneficiario, $idVerificacion)
+	public static function guardarSalidaMedicamento($idMedicamento, $idBeneficiario, $idVerificacion, $cantidad)
 	{
         $salidaMedicamento = new SalidaMedicamento();
         $salidaMedicamento->tb_medicamentos_id_medicamento = $idMedicamento;
         $salidaMedicamento->fecha_salida_medicamento = date("Y-m-d");
     	$salidaMedicamento->tb_beneficiarios_id_beneficiario= $idBeneficiario;
+        $salidaMedicamento->cantidad_medicamento = $cantidad;
         $salidaMedicamento->tb_salida_verificacion_id_salida_verificacion = $idVerificacion;
     	$salidaMedicamento->save();
 	}
