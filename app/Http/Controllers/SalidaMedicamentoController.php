@@ -62,7 +62,7 @@ class SalidaMedicamentoController extends Controller
         VerificacionSalidaDatabase::guardarVerificacionMedicamento($request);
 
         // Se genera el registro en el LOG
-        LogSalidaMedicamento::guardarLog('Se realizo la verificacion con Id beneficiario ' . $idBeneficiario);
+        LogSalidaMedicamento::guardarLogVerificarSalida($idBeneficiario);
 
         return redirect()->route('ruta_salida_verificada_medicamentos', ['idBeneficiario' => $idBeneficiario]);
     }
@@ -110,13 +110,22 @@ class SalidaMedicamentoController extends Controller
             $medicamento->cantidad = $medicamento->cantidad - $cantidadADonar;
             $medicamento->save();
 
+            // Se genera el registro en el LOG
+            LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario,'Exitosa', $cantidadADonar);
+
         } 
+        else
+        {
+            // Se genera el registro en el LOG
+            LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario, 'Sin medicamentos', $cantidadADonar);
+        }
 
         // Se obtienen todos los medicamentos agregados
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion); 
         // Se busca el beneficiario actual, y/o todos los medicamentos para poder donar
         $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(5);
         $beneficiario = Beneficiario::find($idBeneficiario);
+
 
         return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
         ->with('medicamentos', $medicamentos)
