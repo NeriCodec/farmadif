@@ -32,10 +32,18 @@ Route::name('ruta_verificar_medicamento')->post('/salida/{idBeneficiario}', 'Sal
 Route::name('ruta_salida_verificada_medicamentos')->get('/salida/{idBeneficiario}', 'SalidaMedicamentoController@mostrarSalidaDeMedicamento');
 Route::name('ruta_agregar_medicamento')->post('/salida/agregar/{idMedicamento}/beneficiario/{idBeneficiario}','SalidaMedicamentoController@agregarMedicamento');
 Route::name('ruta_eliminar_medicamento')->delete('/salida/eliminar/{idMedicamento}/beneficiario/{idBeneficiario}/salida/{idSalidaMedicamento}/cantidad/{cantidad}', 'SalidaMedicamentoController@eliminarMedicamento');
+
 #Rutas para la entrada de medicaento -esta es la parte pendiente
 Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMedicamentoController@index');
+
 # Rutas del medicamento
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamentos');
+// TODO: Revisar esto, porque no es la mejor forma de crear la API
+Route::get('/api/medicamentos', function () {
+   $medicamentos = App\Medicamento::all();
+   return $medicamentos;
+});
+// Route::get('/api/medicamentos', 'MedicamentoController@obtenerTodosLosMedicamentos');
 
 # Rutas para la autenticacion
 Auth::routes();

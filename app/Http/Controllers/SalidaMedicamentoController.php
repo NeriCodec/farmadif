@@ -8,6 +8,7 @@ use App\Beneficiario;
 use App\SalidaMedicamento;
 use Illuminate\Http\Request;
 use App\VerificacionMedicamento;
+use App\Http\Log\LogSalidaMedicamento;
 use App\Http\Requests\VerificarRequest;
 use App\Http\Database\SalidaMedicamentoDatabase;
 use App\Http\Database\VerificacionSalidaDatabase;
@@ -59,6 +60,9 @@ class SalidaMedicamentoController extends Controller
         // Se obtiene el beneficiario y se guarda la verificacion del medicamento
         $beneficiario = Beneficiario::find($idBeneficiario);
         VerificacionSalidaDatabase::guardarVerificacionMedicamento($request);
+
+        // Se genera el registro en el LOG
+        LogSalidaMedicamento::guardarLog('Se realizo la verificacion con Id beneficiario ' . $idBeneficiario);
 
         return redirect()->route('ruta_salida_verificada_medicamentos', ['idBeneficiario' => $idBeneficiario]);
     }

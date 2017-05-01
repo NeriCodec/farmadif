@@ -1,0 +1,7 @@
+##### Logs de todo lo que sucede en el apartado de Salida de Medicamento #####
+============2017-05-01 04:05:32============
+Verificacion exitosa
+===========================================
+============2017-05-01 04:05:40============
+Se realizo la verificacion con Id beneficiario 1
+===========================================

@@ -30,14 +30,15 @@ class MedicamentoController extends Controller
     }
 
     /**
-    * Permite obtner todos los medicamentos registrados dentro de la aplicacion
+    * Permite obtener todos los medicamentos registrados dentro de la aplicacion
     *
     * @return Array (JSON)
     */
-    public function obtenerTodosLosMedicamentos()
-    {
-    	return Datatables::eloquent(Medicamento::query())->make(true);
-    }
+    // public function obtenerTodosLosMedicamentos()
+    // {
+    //     $medicamentos = Medicamento::all();
+    //     return $medicamentos;
+    // }
 
     
 }
