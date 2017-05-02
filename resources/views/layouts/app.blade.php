@@ -74,7 +74,7 @@
                                         <a href="#">Medicamentos prox. vencer</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('ruta_entrada_medicamentos') }}">Entrada de medicamentos</a>
+                                        <a href="#">Entrada de medicamentos</a>
                                     </li>
                                     <li>
                                         <a href="#">Salida de medicamentos</a>
@@ -112,6 +112,11 @@
                             <li>
                                 <a href="{{ route('ruta_salida_medicamentos') }}">
                                     Salida medicamento</span>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="{{ route('ruta_entrada_medicamentos') }}">
+                                    Entrada medicamento</span>
                                 </a>
                             </li>
                             <li class="dropdown">

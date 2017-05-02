@@ -2,31 +2,26 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Seleccionar donador
-            </div>
-            <div class="panel-body">
-            <table width="100%" class="table table-striped table-bordered table-hover" id="tseleccionarDonador">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Domicilio</th>
-                        <th>Telefono</th>
-                        <th>Codigo postal</th>
-                        <th>Seleccionar</th>
-                    </tr>
-                </thead>
-            </table>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+<table width="100%" class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Domicilio</th>
+            <th>No. telefonico</th>
+            <th>Codigo postal</th>
+            <th>Fecha de registro</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ $donador->nombre }}</td>
+            <td>{{ $donador->domicilio }}</td>
+            <td>{{ $donador->num_telefonico }}</td>
+            <td>{{ $donador->codigo_postal }}</td>
+            <td>{{ $donador->fecha_registro }}</td>
+        </tr>
+    </tbody>
+</table>
 
 <div class="panel panel-default">
             <div class="panel-heading">
@@ -34,7 +29,6 @@
             </div>
        <div class="panel-body">
 			<!--inicia el cuerpo-->
-				
 			<div class="row">
 				<div class="col-md-12">
 					<label>Nombre:</label><label> nombre</label>
