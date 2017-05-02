@@ -8,6 +8,7 @@ use App\Beneficiario;
 use App\SalidaMedicamento;
 use Illuminate\Http\Request;
 use App\VerificacionMedicamento;
+use App\Http\Log\LogSalidaMedicamento;
 use App\Http\Requests\VerificarRequest;
 use App\Http\Database\SalidaMedicamentoDatabase;
 use App\Http\Database\VerificacionSalidaDatabase;
@@ -56,16 +57,23 @@ class SalidaMedicamentoController extends Controller
     */
     public function verificarSalidaDeMedicamento($idBeneficiario, VerificarRequest $request)
     {
+        // Se obtiene el beneficiario y se guarda la verificacion del medicamento
         $beneficiario = Beneficiario::find($idBeneficiario);
         VerificacionSalidaDatabase::guardarVerificacionMedicamento($request);
+
+        // Se genera el registro en el LOG
+        LogSalidaMedicamento::guardarLogVerificarSalida($idBeneficiario);
 
         return redirect()->route('ruta_salida_verificada_medicamentos', ['idBeneficiario' => $idBeneficiario]);
     }
 
     public function mostrarSalidaDeMedicamento($idBeneficiario, Request $request)
     {
+        // Se busca el beneficiario actual, y/o todos los medicamentos para poder donar
         $beneficiario = Beneficiario::find($idBeneficiario);
         $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(5);
+
+        // Se obtiene la verificacion y los todos los medicamentos agregados
         $verificacionMedicamento = VerificacionMedicamento::all()->last();
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion);
 
@@ -75,7 +83,7 @@ class SalidaMedicamentoController extends Controller
     }
 
     /**
-    * Permite agregar un medicamento a un beneficiario
+    * Permite agregar un medicamento a la salida de medicamento
     * @param Int $id  Id del medicamento
     * @param Int $idb Id del beneficiario
     * @param Request $request
@@ -83,28 +91,41 @@ class SalidaMedicamentoController extends Controller
     */
     public function agregarMedicamento($idMedicamento, $idBeneficiario, Request $request)
     {
-        $cantidad_medicamento = $request->get('cantidad');        
+        // Se obtiene la verificacion y el medicamento para agregar
+        $cantidadADonar = $request->get('cantidad');        
         $verificacionMedicamento = VerificacionMedicamento::all()->last();
         $medicamento = Medicamento::find($idMedicamento);
 
         if($medicamento->cantidad > 0) 
         {
+            // Se alamacena la salida del medicamento
             SalidaMedicamentoDatabase::guardarSalidaMedicamento (
             $idMedicamento,
             $idBeneficiario,
             $verificacionMedicamento->id_salida_verificacion,
-            $cantidad_medicamento
+            $cantidadADonar
             );
 
-            // Se agrega el medicamento eliminado
-            $medicamento->cantidad = $medicamento->cantidad - $cantidad_medicamento;
+            // Del medicuamento actual se desminuye la cantidad a donar y se actualiza el medicamento
+            $medicamento->cantidad = $medicamento->cantidad - $cantidadADonar;
             $medicamento->save();
 
-        } 
+            // Se genera el registro en el LOG
+            LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario,'Exitosa', $cantidadADonar);
 
+        } 
+        else
+        {
+            // Se genera el registro en el LOG
+            LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario, 'Sin medicamentos', $cantidadADonar);
+        }
+
+        // Se obtienen todos los medicamentos agregados
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion); 
+        // Se busca el beneficiario actual, y/o todos los medicamentos para poder donar
         $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(5);
         $beneficiario = Beneficiario::find($idBeneficiario);
+
 
         return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
         ->with('medicamentos', $medicamentos)
@@ -122,16 +143,22 @@ class SalidaMedicamentoController extends Controller
     */
     public function eliminarMedicamento($idmedicamento, $idbeneficiario, $idSalidaMedicamento, $cantidad, Request $request)
     {
+        // Se obtiene el medicamento agregado y se le suma la cantidad que se le disminuyo para restablecer
+        // la cantidad quitada al momento de agregarlo a la tabla (medicamentos agregados)
         $medicamento = Medicamento::find($idmedicamento);
         $medicamento->cantidad = $medicamento->cantidad + $cantidad;
         $medicamento->save(); 
         
+        // Se elimina la salida de medicamento anteriormente registrada, para no tener salidas de medicamentos confusasa
+        // en la base de datos.
         $medicamentosAgregados = SalidaMedicamento::find($idSalidaMedicamento);
         $medicamentosAgregados->delete();
 
+        // Se obtiene la verificacion y se obtiene todos los medicamentos agregados
         $verificacionMedicamento = VerificacionMedicamento::all()->last();
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion);
 
+        // Se busca el beneficiario actual, y/o todos los medicamentos para poder donar
         $beneficiario = Beneficiario::find($idbeneficiario);
         $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(5);
 

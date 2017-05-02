@@ -36,8 +36,9 @@
                 <center>
                     <form action="{{ route('ruta_eliminar_medicamento', ['idMedicamento' => $medicamento->id_medicamento, 'idBeneficiario' => $beneficiario->id_beneficiario, 'idSalidaMedicamento' => $medicamento->id_salida_medicamento, 'cantidad' => $medicamento->cantidad_medicamento]) }}" method="post" id="form-agregar">
                         {{ csrf_field() }}
+                        {{ method_field('delete') }}
                         <button class="btn btn-danger btn-small btn-agregar">
-                            Eliminar
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                         </button>
                     </form>
                 </center>
