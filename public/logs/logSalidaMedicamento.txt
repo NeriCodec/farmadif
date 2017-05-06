@@ -108,3 +108,42 @@ Verificacion de salida con ID beneficiario { 2 }
 Cantidad de medicamento: 60
 Tipo Verificacion: Sin medicamentos
 ===========================================
+============2017-05-02 02:05:04============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-02 02:05:07============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 1 } 
+Cantidad de medicamento: 2
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-02 02:05:09============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 1 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-02 02:05:17============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 1 } 
+Cantidad de medicamento: 9
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-02 02:05:55============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 1 } 
+Cantidad de medicamento: 9
+Tipo Verificacion: Exitosa
+===========================================
