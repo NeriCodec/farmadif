@@ -21,7 +21,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Entrada de medicamento
+                    Selecionar donador
                 </div>
                 
                 @include('entradaMedicamento.buscarDonador')
@@ -47,12 +47,13 @@
                             <td>{{ $donador->codigo_postal }}</td>
                             <td>{{ $donador->fecha_registro }}</td>
                             <td>
-                           
+                                <center>
                                 <a href="{{ route('ruta_seleccionar_donador', ['id' => $donador->id_donador]) }}">
                                      <button class="btn btn-success btn-small ">
-                                            Ir
+                                           <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                                      </button> 
                                 </a>
+                                </center>
                             </td>
                         </tr>
                         @endforeach

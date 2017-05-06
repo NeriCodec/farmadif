@@ -37,7 +37,7 @@ Route::name('ruta_eliminar_medicamento')->post('/salida/eliminar/{idMedicamento}
 #Rutas para la entrada de medicaento ->esta es la parte pendiente
 Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMedicamentoController@MostrarDonadores');
 Route::name('ruta_seleccionar_donador')->get('/seleccionar/{idDonador}','EntradaMedicamentoController@SelecionarDonador');
-
+Route::name('ruta_guardar_medicamento_entrada_nuevo')->get('/guardar/','EntradaMedicamentoController@GurdarNuevoMedicamento');
 
 # Rutas del medicamento
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamentos');

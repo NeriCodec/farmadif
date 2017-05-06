@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Donador;
 use Illuminate\Http\Request;
 use App\Http\Database\DonadorDatabase;
-use Yajra\Datatables\Facades\Datatables;
+use App\Http\Database\MedicamentoDatabase;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\RegistrarMedicamentoRequest;
 
 class EntradaMedicamentoController extends Controller
 {
@@ -25,6 +26,12 @@ class EntradaMedicamentoController extends Controller
     	
     	$donador = Donador::find($idDonador);
     	return view('entradaMedicamento.panelEntradaMedicamento')->with('donador', $donador);
+    }
+
+    public function GurdarNuevoMedicamento(RegistrarMedicamentoRequest $request){
+
+        MedicamentoDatabase::guardarMedicamento($request);
+        return redirect()->route('ruta_medicamentos');
     }
 
 

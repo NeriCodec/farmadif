@@ -2,6 +2,11 @@
 
 @section('content')
 
+<div class="panel panel-default">
+            <div class="panel-heading">
+                Datos del donador
+            </div>
+       <div class="panel-body">
 <table width="100%" class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
@@ -22,6 +27,8 @@
         </tr>
     </tbody>
 </table>
+	</div>
+</div>
 
 <div class="panel panel-default">
             <div class="panel-heading">
@@ -29,36 +36,88 @@
             </div>
        <div class="panel-body">
 			<!--inicia el cuerpo-->
-			<div class="row">
-				<div class="col-md-12">
-					<label>Nombre:</label><label> nombre</label>
-				</div>
-			</div>
 			</br>
 			<div class="row">
-				<form action="#">
+				<form action="{{ route('ruta_guardar_medicamento_entrada_nuevo') }}">
 					<div class="col-md-6">
+						<input type="hidden" name="idDonador" value="{{ $donador->id_donador }}">
 						<div class="form-horizontal">
 							<label>Nombre del copuesto</label>
-							<input type="text" class="form-control" placeholder="Nombre del compuesto">
+							<input type="text" class="form-control" name="nombre_compuesto" placeholder="Nombre del compuesto">
 							<label>Nombre comercial</label>
-							<input type="text" class="form-control" placeholder="Nombre comercial">
+							<input type="text" class="form-control" name="nombre_comercial" placeholder="Nombre comercial">
 							<label>Nro de etiqueta</label>
-							<input type="text" class="form-control" placeholder="Nro de etiqueta" >
+							<input type="text" class="form-control" name="nro_etiqueta" placeholder="Nro de etiqueta" >
 							<label>Nro de folio</label>
-							<input type="text" class="form-control" placeholder="Nro de folio">
+							<input type="text" class="form-control" name="nro_folio" placeholder="Nro de folio">
 							<label>Cantidad</label>
-							<input type="text" class="form-control" placeholder="Ingrese la cantidad">
+							<input type="text" class="form-control" name="cantidad_re" placeholder="Ingrese la cantidad">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-horizontal">
+
 							<label>Fecha de caducidad</label>
-							<input type="date" class="form-control">
+							<select class="form-control" name="mes_caducidad" required>
+						            	<option value="">Mes</option>
+						              <?php
+						                  for($i=1; $i<=12; $i++) {
+						                      switch($i) {
+						                       case 1:
+						                          $mestexto = "Enero";
+						                          break;
+						                        case 2:
+						                          $mestexto = "Febrero";
+						                          break;
+						                        case 3:
+						                          $mestexto = "Marzo";
+						                          break;
+						                        case 4:
+						                          $mestexto = "Abril";
+						                          break;
+						                        case 5:
+						                          $mestexto = "Mayo";
+						                          break;
+						                        case 6:
+						                          $mestexto = "Junio";
+						                          break;
+						                        case 7:
+						                          $mestexto = "Julio";
+						                          break;
+						                        case 8:
+						                          $mestexto = "Agosto";
+						                          break;
+						                        case 9:
+						                          $mestexto = "Septiembre";
+						                          break;
+						                        case 10:
+						                          $mestexto = "Octubre";
+						                          break;
+						                        case 11:
+						                          $mestexto = "Noviembre";
+						                          break;
+						                        case 12:
+						                          $mestexto = "Diciembre";
+						                          break;
+						                    }
+						                     echo "<option value=$i>$mestexto</option>";
+						                  }
+						              ?>
+						            </select>
+									</br>
+						            <select class="form-control" name="anio_caducidad" required>
+									 <option value="">Año</option>
+						              <?php
+						                  for($i=date("Y"); $i<(date("Y")+10); $i++) {
+						                     echo "<option value=$i>$i</option>";
+						                  }
+						              ?>
+						            </select>
+								
 							<label>Tipo de precentacion</label>
 							<select class="form-control" name="precentacion">
-								<option value="solucion">Solucion</option>
-								<option value="tabletas">Tabletas</option>
+								<option value="Solucion">Solucion</option>
+								<option value="Tabletas">Tabletas</option>
 							</select>
 							
 							<div class="col-md-5">
@@ -85,35 +144,11 @@
 				</form>
 			</div>
 			<!--modulo de busqueda de medicamento-->
-			</br>
-			<div class="row">
-				<div class="col-md-12">
-					<form action="" class="form-vertical">
-						<label>Buscar medicamento por</label>
-						<label class="radio-inline">
-							<input type="radio" name="buscarPorMedicamento" value="gr"> Compuesto
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="buscarPorMedicamento" value="gr"> Nombre comercial
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="buscarPorMedicamento" value="gr"> No. de folio
-						</label>
-						<div class="col-md-4 col-md-offset-8">
-							
-						</div>
-						<button type="submit" class="btn btn-default">Buscar</button>
-					</form>
-					
-				</div>
-			</div>
-
-			<!--termina modulo de busqueda de medicamento-->
 
 			<!--termina le cuerpo-->
        </div>
 </div>
 
-
+@include('entradaMedicamento.buscarMedicamentoEntrada')
 
 @endsection
