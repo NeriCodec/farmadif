@@ -6,6 +6,7 @@ use App\EntradaMedicamento;
 use App\Medicamento;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EntradaMedicamentoRequest;
+use App\Http\Requests\RegistrarMedicamentoRequest;
 
 class EntradaMedicamentoDatabase
 {
@@ -14,19 +15,14 @@ class EntradaMedicamentoDatabase
     * @param RegistrarDonadorRequest  $request
     * @return void
     */
-	public static function guardarEntradaMedicamento(EntradaMedicamentoRequest $request)
+	public static function guardarEntradaMedicamento(RegistrarMedicamentoRequest $request,$idMedicamento)
 	{
-        $Medicamento = new Medicamento();
-    	$Medicamento->nombre_comercial = $request->get('nombre_compuesto');
-        $Medicamento->nombre_compuesto = $request->get('nombre_comercial');
-        $Medicamento->num_etiqueta = $request->get('nro_etiqueta');
-        $Medicamento->num_folio = $request->get('nro_folio');
-        $Medicamento->fecha_caducidad = $request->get('fecha_caducidad');
-        $Medicamento->cantidad = $request->get('cantidad_re');
-        $Medicamento->solucion_tableta = $request->get('precentacion');
-        $Medicamento->tipo_contenido = $request->get('medida');
-        $Medicamento->fecha_registro = date("Y-m-d");
-        $Medicamento->save();
+        $EntradaMedicamento = new EntradaMedicamento();
+    	$EntradaMedicamento->tb_donadores_id_donador = $request->get('idDonador');
+        $EntradaMedicamento->tb_medicamentos_id_medicamento = $idMedicamento;
+        $EntradaMedicamento->cantidad_medicamento = $request->get('cantidad_re');;
+        $EntradaMedicamento->fecha_entrada = date("Y-m-d");
+        $EntradaMedicamento->save();
 
 	}
 }

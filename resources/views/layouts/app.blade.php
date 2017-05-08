@@ -157,6 +157,6 @@
     <script src="/pvendor/jquery/jquery.min.js"></script>
 
     <!-- Scripts -->
-    {{-- <script src="/js/salidaMedicamento.js"></script> --}}
+    <script src="/js/entradaMedicamento.js"></script>
 </body>
 </html>

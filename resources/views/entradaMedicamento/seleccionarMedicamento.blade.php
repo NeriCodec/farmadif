@@ -1,9 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
-
-@include('entradaMedicamento.datosDonador')
-<!--inicia buscar-->
 <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -11,16 +5,14 @@
                     Selecionar medicamento
                 </div>
                 
-                <form class="navbar-form navbar-left pull-left" action="{{ route('ruta_nuevo_registrar_medicamento', ['id' => $donador->id_donador]) }}" method="get">
-					<button type="submit" class="btn btn-default">Registrar nuevo medicamento</button>
-				</form>
-				 <form class="navbar-form navbar-left pull-right" action="{{ route('ruta_buscar_medicamento_seleccionar', ['id' => $donador->id_donador]) }}" method="get">
-					<div class="form-group">
-						<input type="text" class="form-control" name="medicamento" placeholder="Buscar">
-					</div>
-					<button type="submit" class="btn btn-default">Buscar</button>
-				</form>
+                <div class="navbar-form navbar-left pull-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="medicamento" id="medicamento" placeholder="Buscar">
+                    </div>
+                    <button type="button" class="btn btn-default" id="buscarEntradaMedicamento">Buscar</button>
+                </div>
                 
+
                 <div class="panel-body">
                      <table width="100%" class="table table-striped table-bordered table-hover">
                     <thead>
@@ -33,7 +25,6 @@
                                 <th>Cantidad</th>
                                 <th>Solucion/Tableta</th>
                                 <th>Contenido</th>
-                                <th>Seleccionar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,19 +34,10 @@
                                 <th>{{ $medicamento->nombre_compuesto }}</th>
                                 <th>{{ $medicamento->num_etiqueta }}</th>
                                 <th>{{ $medicamento->num_folio }}</th>
-                                <th>{{ $medicamento->mes_caducidad }}</th>
+                                <th>{{ $medicamento->fecha_caducidad }}</th>
                                 <th>{{ $medicamento->cantidad }}</th>
                                 <th>{{ $medicamento->solucion_tableta }}</th>
                                 <th>{{ $medicamento->tipo_contenido }}</th>
-                                <th>
-                                	<center>
-		                                <a href="{{ route('ruta_nuevo_existente_registrar_medicamento', ['idDonador' => $donador->id_donador,'idMedicamento' => $medicamento->id_medicamento]) }}">
-		                                     <button class="btn btn-success btn-small ">
-		                                           <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-		                                     </button> 
-		                                </a>
-	                                </center>
-                                </th>
                             </tr>
                             @endforeach
                         </tbody>
@@ -63,6 +45,5 @@
                 </div>
             </div>
         </div>
+        <center>{{ $medicamento->links() }}</center>
     </div>
-<!--termina buscar-->
-@endsection

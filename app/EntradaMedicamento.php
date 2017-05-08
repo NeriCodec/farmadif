@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SalidaMedicamento extends Model
+class EntradaMedicamento extends Model
 {
 	/**
     * @param $table, nombre de la tabla de la base de datos
