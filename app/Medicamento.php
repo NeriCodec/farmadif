@@ -33,4 +33,19 @@ class Medicamento extends Model
     		$query->where('nombre_comercial', 'LIKE', "%$medicamento%");
     	}
     }
+
+    /**
+    * Metodo que obtiene los medicamentos para la API
+    * @param $query 
+    * @param Int id_salida_verificacion, id
+    * @return Array (JSON)
+    */
+    public static function medicamentosApi()
+    {
+
+       $medicamentos  = \DB::select('SELECT id_medicamento, nombre_comercial, nombre_compuesto, solucion_tableta, tipo_contenido, cantidad   
+        FROM tb_medicamentos');
+
+       return $medicamentos;
+    }
 }

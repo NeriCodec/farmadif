@@ -41,7 +41,7 @@ Route::name('ruta_seleccionar_donador')->get('/seleccionar/{idDonador}','Entrada
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamentos');
 // TODO: Revisar esto, porque no es la mejor forma de crear la API
 Route::get('/api/medicamentos', function () {
-   $medicamentos = App\Medicamento::all();
+   $medicamentos = App\Medicamento::medicamentosApi();
    return $medicamentos;
 });
 // Route::get('/api/medicamentos', 'MedicamentoController@obtenerTodosLosMedicamentos');
