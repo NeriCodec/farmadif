@@ -26,9 +26,11 @@ class EntradaMedicamentoController extends Controller
     }
 
     public function SelecionarDonador($idDonador,Request $request){
-    	$medicamentos = Medicamento::paginate(10);
+    	$medicamentos = Medicamento::paginate(5);
+        $medicamentoDonado = Medicamento::medicamentosDelDonador($idDonador);
     	$donador = Donador::find($idDonador);
-    	return view('entradaMedicamento.panelEntradaMedicamento')->with('donador', $donador)->with('medicamentos', $medicamentos);
+    	return view('entradaMedicamento.panelEntradaMedicamento')->with('donador', $donador)->with('medicamentos', $medicamentos)->with('medicamentosDonador', $medicamentoDonado);
+
     }
 
     public function GurdarNuevoMedicamento(RegistrarMedicamentoRequest $request){
@@ -42,7 +44,7 @@ class EntradaMedicamentoController extends Controller
     }
 
     public function BuscarMedicamentoSeleccionar($idDonador,Request $request){
-        $medicamentos = Medicamento::BuscarMedicamento($request->get('medicamento'))->paginate(10);
+        $medicamentos = Medicamento::BuscarMedicamento($request->get('medicamento'))->paginate(5);
         $donador = Donador::find($idDonador);
         return view('entradaMedicamento.panelEntradaMedicamento')->with('donador', $donador)->with('medicamentos', $medicamentos);
     }
@@ -54,8 +56,7 @@ class EntradaMedicamentoController extends Controller
     }
 
     public function NuevoExistenteMedicamentoRegistrar($idDonador,$idMedicamento,Request $request){
-        //dd($idDonador." -".$idMedicamento);
-
+        
         $medicamento = Medicamento::find($idMedicamento);;
         $donador = Donador::find($idDonador);
         return view('entradaMedicamento.registrarMedicamentoEntrada')->with('donador', $donador)->with('medicamentos', $medicamento);

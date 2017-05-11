@@ -16,8 +16,8 @@ class MedicamentoDatabase
 	public static function guardarMedicamento(RegistrarMedicamentoRequest $request)
 	{
         $Medicamento = new Medicamento();
-    	$Medicamento->nombre_comercial = $request->get('nombre_compuesto');
-        $Medicamento->nombre_compuesto = $request->get('nombre_comercial');
+        $Medicamento->nombre_compuesto = $request->get('nombre_compuesto');
+    	$Medicamento->nombre_comercial = $request->get('nombre_comercial');
         $Medicamento->num_etiqueta = $request->get('nro_etiqueta');
         $Medicamento->num_folio = $request->get('nro_folio');
         $Medicamento->mes_caducidad = $request->get('mes_caducidad');
