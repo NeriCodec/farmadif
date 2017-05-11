@@ -45,8 +45,9 @@ class EntradaMedicamentoController extends Controller
 
     public function BuscarMedicamentoSeleccionar($idDonador,Request $request){
         $medicamentos = Medicamento::BuscarMedicamento($request->get('medicamento'))->paginate(5);
+        $medicamentoDonado = Medicamento::medicamentosDelDonador($idDonador);
         $donador = Donador::find($idDonador);
-        return view('entradaMedicamento.panelEntradaMedicamento')->with('donador', $donador)->with('medicamentos', $medicamentos);
+        return view('entradaMedicamento.panelEntradaMedicamento')->with('donador', $donador)->with('medicamentos', $medicamentos)->with('medicamentosDonador', $medicamentoDonado);
     }
 
     public function NuevoMedicamentoRegistrar($idDonador,Request $request)
