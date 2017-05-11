@@ -37,9 +37,10 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <center>{{ $medicamentos->links() }}</center>
                 </div>
             </div>
+            
         </div>
-        <center>{{ $medicamentos->links() }}</center>
     </div>
 @endsection

@@ -32,6 +32,7 @@ Route::name('ruta_verificar_medicamento')->post('/salida/{idBeneficiario}', 'Sal
 Route::name('ruta_salida_verificada_medicamentos')->get('/salida/{idBeneficiario}', 'SalidaMedicamentoController@mostrarSalidaDeMedicamento');
 Route::name('ruta_agregar_medicamento')->post('/salida/agregar/{idMedicamento}/beneficiario/{idBeneficiario}','SalidaMedicamentoController@agregarMedicamento');
 Route::name('ruta_eliminar_medicamento')->delete('/salida/eliminar/{idMedicamento}/beneficiario/{idBeneficiario}/salida/{idSalidaMedicamento}/cantidad/{cantidad}', 'SalidaMedicamentoController@eliminarMedicamento');
+
 #Rutas para la entrada de medicaento ->esta es la parte pendiente
 Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMedicamentoController@MostrarDonadores');
 Route::name('ruta_seleccionar_donador')->get('/seleccionar/{idDonador}','EntradaMedicamentoController@SelecionarDonador');
@@ -40,8 +41,6 @@ Route::name('ruta_buscar_medicamento_seleccionar')->get('/buscar/{idDonador}','E
 Route::name('ruta_nuevo_registrar_medicamento')->get('/nuevo/{idDonador}','EntradaMedicamentoController@NuevoMedicamentoRegistrar');
 Route::name('ruta_nuevo_existente_registrar_medicamento')->get('/nuevo/donador/{idDonador}/medicamento/{idMedicamento}','EntradaMedicamentoController@NuevoExistenteMedicamentoRegistrar');
 //pruebas para al utilizacion de ajax
-
-
 
 //Route::name('ruta_opcion_entrada_medicamento')->get('/opciones/','EntradaMedicamentoController@')
 
