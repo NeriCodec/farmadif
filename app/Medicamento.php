@@ -33,7 +33,7 @@ class Medicamento extends Model
     		$query->where('nombre_comercial', 'LIKE', "%$medicamento%");
     	}
     }
-    
+
     /**
     * Metodo que obtiene los medicamentos para la API
     * @return Array (JSON)
@@ -45,4 +45,14 @@ class Medicamento extends Model
 
        return $medicamentos;
     }
+
+
+    public static function medicamentosDelDonador($idDonador)
+    {
+        $medicamentosDonador  = \DB::select('select tb_medicamentos.* from tb_entrada_medicamento,tb_medicamentos where tb_medicamentos.id_medicamento=tb_entrada_medicamento.tb_medicamentos_id_medicamento and tb_donadores_id_donador ='.$idDonador);
+        return $medicamentosDonador;
+
+    }
+
+
 }

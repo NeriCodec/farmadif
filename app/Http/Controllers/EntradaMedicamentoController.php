@@ -21,7 +21,7 @@ class EntradaMedicamentoController extends Controller
     public function MostrarDonadores(Request $request)
     {
 
-    	$donadores = Donador::buscarDonador($request->get('donador'))->paginate(1);
+    	$donadores = Donador::buscarDonador($request->get('donador'))->paginate(10);
     	return view('entradaMedicamento.panel')->with('donadores', $donadores);
     }
 
