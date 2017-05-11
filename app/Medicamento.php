@@ -33,7 +33,7 @@ class Medicamento extends Model
     		$query->where('nombre_comercial', 'LIKE', "%$medicamento%");
     	}
     }
-
+    
     /**
     * Metodo que obtiene los medicamentos para la API
     * @return Array (JSON)
