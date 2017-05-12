@@ -1,12 +1,8 @@
 @if(count($medicamentos) <= 0)
 <div class="row">
     <div class="col-lg-12">
-        <br><br><br>
-        <center>
-        <h4>No se encontro el medicamento</h4>
-        {{-- <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button> --}}
-        </center>
-        <br><br><br>
+        <center><h4>Buscar medicamento </h4><span class="glyphicon glyphicon-search" aria-hidden="true"></span></center>
+
     </div>
 </div>
 @else
@@ -18,7 +14,6 @@
             <th>No. etiqueta</th>
             <th>No. folio</th>
             <th>Fecha caducidad</th>
-            <th>Cantidad</th>
             <th>Solucion/Tableta</th>
             <th>Contenido</th>
             <th>Agregar Cantidad</th>
@@ -38,13 +33,17 @@
                 <th>{{ $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</th>
             @endif
 
-            <th>{{ $medicamento->cantidad }}</th>
             <th>{{ $medicamento->solucion_tableta }}</th>
-            <th>{{ $medicamento->tipo_contenido }}</th>
+            <th>{{ $medicamento->dosis . ' ' .$medicamento->tipo_contenido }}</th>
             <th>
                 <form action="{{ route('ruta_agregar_medicamento', ['idMedicamento' => $medicamento->id_medicamento, 'idBeneficiario' => $beneficiario->id_beneficiario]) }}" method="post">
                     {{ csrf_field() }}
-                    <div class="row">
+                    <center>
+                        <button class="btn btn-info" type="submit">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </center>
+                   {{--  <div class="row">
                         <div class="col-lg-12">
                             <div class="input-group">
                               <input type="number" class="form-control" required name="cantidad" min="1" max="{{ $medicamento->cantidad }}" placeholder="Cant.">
@@ -57,7 +56,7 @@
                               </span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </form>
             </th>
         </tr>

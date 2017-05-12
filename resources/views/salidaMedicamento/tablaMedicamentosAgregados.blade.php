@@ -15,7 +15,6 @@
             <td>No. etiqueta</td>
             <td>No. folio</td>
             <td>Fecha caducidad</td>
-            <td>Cantidad</td>
             <td>Solucion/Tableta</td>
             <td>Contenido</td>
             <td>Eliminar</td>
@@ -35,9 +34,8 @@
                 <th>{{ $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</th>
             @endif
             
-            <th>{{ $medicamento->cantidad_medicamento }}</th>
             <th>{{ $medicamento->solucion_tableta }}</th>
-            <th>{{ $medicamento->tipo_contenido }}</th>
+            <th>{{ $medicamento->dosis . ' ' . $medicamento->tipo_contenido }}</th>
             <th>
                 <center>
                     <form action="{{ route('ruta_eliminar_medicamento', ['idMedicamento' => $medicamento->id_medicamento, 'idBeneficiario' => $beneficiario->id_beneficiario, 'idSalidaMedicamento' => $medicamento->id_salida_medicamento, 'cantidad' => $medicamento->cantidad_medicamento]) }}" method="post" id="form-agregar">

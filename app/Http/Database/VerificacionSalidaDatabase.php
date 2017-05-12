@@ -20,8 +20,16 @@ class VerificacionSalidaDatabase
 
         $verificacionMedicamento = new VerificacionMedicamento();
     	$verificacionMedicamento->receta_medica = "'" . 'public/recetas/' . $request->receta->hashName() . "'";
+        $verificacionMedicamento->tipo_solicitud = "En proceso";
         $verificacionMedicamento->descripcion = $request->get('descripcion');
         $verificacionMedicamento->diagnostico = $request->get('diagnostico');
     	$verificacionMedicamento->save();
 	}
+
+    public static function actualizarTipoSolicitud($verificacionMedicamento)
+    {
+        $verificacionMedicamento = VerificacionMedicamento::find($verificacionMedicamento);
+        $verificacionMedicamento->tipo_solicitud = "Realizada";
+        $verificacionMedicamento->save();
+    }
 }

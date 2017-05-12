@@ -112,33 +112,34 @@ class SalidaMedicamentoController extends Controller
     public function agregarMedicamento($idMedicamento, $idBeneficiario, Request $request)
     {
         // Se obtiene la verificacion y el medicamento para agregar
-        $cantidadADonar = $request->get('cantidad');        
+        //$cantidadADonar = $request->get('cantidad');        
         $verificacionMedicamento = VerificacionMedicamento::all()->last();
         $medicamento = Medicamento::find($idMedicamento);
 
-        if($medicamento->cantidad > 0) 
-        {
+        //if($medicamento->cantidad > 0) 
+        //{
             // Se alamacena la salida del medicamento
-            SalidaMedicamentoDatabase::guardarSalidaMedicamento (
-            $idMedicamento,
-            $idBeneficiario,
-            $verificacionMedicamento->id_salida_verificacion,
-            $cantidadADonar
-            );
+        SalidaMedicamentoDatabase::guardarSalidaMedicamento (
+        $idMedicamento,
+        $idBeneficiario,
+        $verificacionMedicamento->id_salida_verificacion,
+        1
+        );
 
-            // Del medicuamento actual se desminuye la cantidad a donar y se actualiza el medicamento
-            $medicamento->cantidad = $medicamento->cantidad - $cantidadADonar;
-            $medicamento->save();
+        // Del medicuamento actual se desminuye la cantidad a donar y se actualiza el medicamento
+        $medicamento->estatus = 'donado';
+        $medicamento->save();
 
+        // Se genera el registro en el LOG
+        VerificacionSalidaDatabase::actualizarTipoSolicitud($verificacionMedicamento);
+        LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario,'Exitosa', 1);
+
+        //} 
+        //else
+        //{
             // Se genera el registro en el LOG
-            LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario,'Exitosa', $cantidadADonar);
-
-        } 
-        else
-        {
-            // Se genera el registro en el LOG
-            LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario, 'Sin medicamentos', $cantidadADonar);
-        }
+        //    LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario, 'Sin medicamentos', 0);
+        //}
 
         // Se obtienen todos los medicamentos agregados
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion); 
@@ -166,12 +167,12 @@ class SalidaMedicamentoController extends Controller
     * @param Request $request
     * @return String
     */
-    public function eliminarMedicamento($idmedicamento, $idbeneficiario, $idSalidaMedicamento, $cantidad, Request $request)
+    public function eliminarMedicamento($idmedicamento, $idbeneficiario, $idSalidaMedicamento, Request $request)
     {
         // Se obtiene el medicamento agregado y se le suma la cantidad que se le disminuyo para restablecer
         // la cantidad quitada al momento de agregarlo a la tabla (medicamentos agregados)
         $medicamento = Medicamento::find($idmedicamento);
-        $medicamento->cantidad = $medicamento->cantidad + $cantidad;
+        $medicamento->estatus = 'existencia';
         $medicamento->save(); 
         
         // Se elimina la salida de medicamento anteriormente registrada, para no tener salidas de medicamentos confusasa
@@ -198,5 +199,12 @@ class SalidaMedicamentoController extends Controller
         ->with('medicamentos', $medicamentos)
         ->with('medicamentosAgregados', $medicamentosAgregados);
 
+    }
+
+    public function eliminarVerificacion()
+    {
+        $verificacionMedicamento = VerificacionMedicamento::all()->last();
+        $verificacionMedicamento->delete();
+        return redirect()->route('ruta_beneficiarios');
     }
 }

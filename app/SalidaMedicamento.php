@@ -31,7 +31,7 @@ class SalidaMedicamento extends Model
     {
 
        $medicamentosAgregados  = \DB::select('SELECT id_medicamento, id_salida_medicamento, nombre_comercial, nombre_compuesto, num_etiqueta, 
-                    num_folio, mes_caducidad, anio_caducidad, solucion_tableta, tipo_contenido, cantidad, cantidad_medicamento
+                    num_folio, mes_caducidad, anio_caducidad, solucion_tableta, tipo_contenido, dosis, cantidad_medicamento
                     FROM tb_salida_medicamento
                     INNER JOIN tb_medicamentos
                     ON tb_salida_medicamento.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento

@@ -23,17 +23,7 @@
                     </div>  
                     @include('salidaMedicamento.buscadorMedicamento')
                     <div class="panel-body" id="tablaMedicamentos">
-                        @if(count($medicamentos) > 0) 
-                            @include('salidaMedicamento.tablaMedicamentos')
-                        @else 
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <center><h4>Buscar medicamento </h4><span class="glyphicon glyphicon-search" aria-hidden="true"></span></center>
-
-                                </div>
-                            </div>
-                        @endif
-                        
+                        @include('salidaMedicamento.tablaMedicamentos')
                     </div>
                 </div>
             </div>
@@ -52,11 +42,20 @@
         
         <div class="row">
             <div class="col-lg-6" style="margin-bottom: 5%;">
+                @if(count($medicamentosAgregados) == 0) 
+                <a href="{{ route('ruta_salida_sin_medicamentos') }}">
+                        <button class="btn btn-success btn-small" style="float: right;">
+                        Cancelar y volver
+                        </button>
+                </a>
+                @else
                 <a href="{{ route('ruta_salida_medicamentos') }}">
                     <button class="btn btn-success btn-small" style="float: right;">
-                    Volver a pagina principal
+                        Volver a pagina principal
                     </button>
                 </a>
+                @endif
+
             </div>
             <div class="col-lg-6" style="margin-bottom: 5%;">
                 <a href="#">
