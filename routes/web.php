@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::name('ruta_beneficiarios')->get('/beneficiarios', 'BeneficiarioController@mostrarBeneficiarios');
 Route::name('ruta_beneficiario_registro')->get('/beneficiario/registro', 'BeneficiarioController@mostrarRegistro');
 Route::name('ruta_beneficiario_registrar')->post('/beneficiario/registrar', 'BeneficiarioController@registrar');
+Route::name('ruta_detalle_beneficiario')->get('/beneficiarios/detalles/{idBeneficiario}', 'BeneficiarioController@mostrarDetalleBeneficiario');
 
 # Rutas para el Donadores
 Route::name('ruta_donadores')->get('/donadores', 'DonadorController@mostrarDonadores');

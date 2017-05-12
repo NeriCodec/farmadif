@@ -35,4 +35,14 @@ class Beneficiario extends Model
         }
     }
 
+    public static function medicamentosDelBeneficiario($idDonador)
+    {
+        $medicamentosDonador  = \DB::select('SELECT * FROM tb_salida_medicamento
+                                INNER JOIN tb_medicamentos
+                                ON tb_salida_medicamento.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
+                                WHERE tb_beneficiarios_id_beneficiario = '.$idDonador);
+        return $medicamentosDonador;
+
+    }
+
 }

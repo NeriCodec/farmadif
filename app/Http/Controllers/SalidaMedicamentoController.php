@@ -199,5 +199,4 @@ class SalidaMedicamentoController extends Controller
         ->with('medicamentosAgregados', $medicamentosAgregados);
 
     }
-    
 }

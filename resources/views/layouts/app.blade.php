@@ -88,7 +88,7 @@
                                 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('ruta_beneficiarios') }}">Listar</a>
+                                        <a href="{{ route('ruta_beneficiarios') }}">Mostrar</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('ruta_beneficiario_registro') }}">Registrar</a>
@@ -102,7 +102,7 @@
                                 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('ruta_donadores') }}">Listar</a>
+                                        <a href="{{ route('ruta_donadores') }}">Mostrar</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('ruta_donador_registro') }}">Registrar</a>

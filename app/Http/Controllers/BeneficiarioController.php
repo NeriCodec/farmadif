@@ -63,4 +63,13 @@ class BeneficiarioController extends Controller
     {
         return Datatables::eloquent(Beneficiario::query())->make(true);
     }
+
+    public function mostrarDetalleBeneficiario($idBeneficiario)
+    {
+        //dd($idBeneficiario);
+
+        $detallesBeneficiario = Beneficiario::medicamentosDelBeneficiario($idBeneficiario);
+
+        return view('beneficiario.detalles')->with('detalles', $detallesBeneficiario);
+    }
 }

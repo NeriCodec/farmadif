@@ -8,7 +8,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Verificacion de datos
+                Solicitud de medicamento
             </div>
             @if(count($errors) > 0)
                 <div class="alert alert-danger">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success btn-small" type="submit" style="float: right;" id="btn-verificar">Verificar solicitud</button>
+                <button class="btn btn-success btn-small" type="submit" style="float: right;" id="btn-verificar">Validar solicitud</button>
                 </form>
             </div>
         </div>

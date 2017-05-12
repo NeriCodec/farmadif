@@ -32,7 +32,7 @@
                             <th>Comunidad</th>
                             <th>Fecha de nacimiento</th>
                             <th>Fecha de registro</th>
-                            <th>Actualizar</th>
+                            <th>Detalles</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,9 +44,13 @@
                             <td>{{ $beneficiario->fecha_nacimiento}}</td>
                             <td>{{ $beneficiario->fecha_registro}}</td>
                             <td>
-                                <center><button class="btn btn-primary btn-small">
-                                    Ir
-                                </button></center>
+                                <center>
+                                    <a href="{{ route('ruta_detalle_beneficiario',$beneficiario->id_beneficiario) }}">
+                                        <button class="btn btn-success btn-small ">
+                                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                                        </button> 
+                                    </a>
+                                </center>
                             </td>
                         </tr>
                         @endforeach

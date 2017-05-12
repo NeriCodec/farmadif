@@ -6,6 +6,8 @@
             <th>Comunidad</th>
             <th>Fecha de nacimiento</th>
             <th>Fecha de registro</th>
+            <th>Fotografia</th>
+            <th>INE/IFE</th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +17,16 @@
             <td>{{ $beneficiario->comunidad}}</td>
             <td>{{ $beneficiario->fecha_nacimiento}}</td>
             <td>{{ $beneficiario->fecha_registro}}</td>
+            @if(strlen($beneficiario->fotografia) > 0)
+            <td>SI</td>
+            @else
+            <td>NO</td>
+            @endif
+            @if(strlen($beneficiario->identificacion) > 0)
+            <td>SI</td>
+            @else
+            <td>NO</td>
+            @endif
         </tr>
     </tbody>
 </table>
