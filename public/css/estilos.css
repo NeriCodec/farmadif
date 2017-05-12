@@ -1,8 +1,10 @@
-div#tagregarmedicamento_filter.dataTables_filter,
-div#tmedicamento_filter.dataTables_filter,
-div#tbeneficiarios_filter.dataTables_filter {
-	float: right;
-}
-.ocultar{
+.ocultar {
 	display: none;
+}
+
+.form-control,
+.btn,
+.panel,
+.alert {
+	border-radius: 0px;
 }

@@ -16,7 +16,7 @@
             <th>Fecha caducidad</th>
             <th>Solucion/Tableta</th>
             <th>Contenido</th>
-            <th>Agregar Cantidad</th>
+            <th>Agregar</th>
         </tr>
     </thead>
     <tbody>
@@ -43,20 +43,6 @@
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
                     </center>
-                   {{--  <div class="row">
-                        <div class="col-lg-12">
-                            <div class="input-group">
-                              <input type="number" class="form-control" required name="cantidad" min="1" max="{{ $medicamento->cantidad }}" placeholder="Cant.">
-                              <span class="input-group-btn">
-                              @if($medicamento->cantidad == 0)
-                                <button class="btn btn-info" type="submit"  disabled="disabled"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-                                @else
-                                <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-                                @endif
-                              </span>
-                            </div>
-                        </div>
-                    </div> --}}
                 </form>
             </th>
         </tr>

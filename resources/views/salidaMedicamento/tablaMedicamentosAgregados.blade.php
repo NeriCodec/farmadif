@@ -42,7 +42,7 @@
                         {{ csrf_field() }}
                         {{ method_field('delete') }}
                         <button class="btn btn-danger btn-small btn-agregar">
-                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                         </button>
                     </form>
                 </center>
