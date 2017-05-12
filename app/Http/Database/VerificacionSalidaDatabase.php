@@ -15,11 +15,11 @@ class VerificacionSalidaDatabase
     */
 	public static function guardarVerificacionMedicamento(Request $request)
 	{
+        $receta = $request->file('receta');
+        $request->receta->store('public/recetas');
+
         $verificacionMedicamento = new VerificacionMedicamento();
-    	$verificacionMedicamento->receta_medica = $request->get('receta_medica');
-    	$verificacionMedicamento->copia_ine = $request->get('ife_ine');
-        $verificacionMedicamento->fotografia = $request->get('fotografia');
-        $verificacionMedicamento->solicitud = $request->get('solicitud');
+    	$verificacionMedicamento->receta_medica = "'" . 'public/recetas/' . $request->receta->hashName() . "'";
         $verificacionMedicamento->descripcion = $request->get('descripcion');
         $verificacionMedicamento->diagnostico = $request->get('diagnostico');
     	$verificacionMedicamento->save();

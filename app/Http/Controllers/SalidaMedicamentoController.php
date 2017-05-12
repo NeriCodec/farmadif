@@ -71,7 +71,27 @@ class SalidaMedicamentoController extends Controller
     {
         // Se busca el beneficiario actual, y/o todos los medicamentos para poder donar
         $beneficiario = Beneficiario::find($idBeneficiario);
-        $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(5);
+
+        if ($request->get('medicamento') == "") {
+           $medicamentos = Medicamento::buscarMedicamento("sin_medicamento")->paginate(1);
+        } else {
+            $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(100);
+        }
+
+        // Se obtiene la verificacion y los todos los medicamentos agregados
+        $verificacionMedicamento = VerificacionMedicamento::all()->last();
+        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion);
+
+        return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
+        ->with('medicamentos', $medicamentos)
+        ->with('medicamentosAgregados', $medicamentosAgregados);
+    }
+
+    public function mostrarBusquedaSalidaDeMedicamento($idBeneficiario, Request $request)
+    {
+        // Se busca el beneficiario actual, y/o todos los medicamentos para poder donar
+        $beneficiario = Beneficiario::find($idBeneficiario);
+        $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(2);
 
         // Se obtiene la verificacion y los todos los medicamentos agregados
         $verificacionMedicamento = VerificacionMedicamento::all()->last();
@@ -123,7 +143,12 @@ class SalidaMedicamentoController extends Controller
         // Se obtienen todos los medicamentos agregados
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion); 
         // Se busca el beneficiario actual, y/o todos los medicamentos para poder donar
-        $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(5);
+        if ($request->get('medicamento') == "") {
+           $medicamentos = Medicamento::buscarMedicamento("sin_medicamento")->paginate(1);
+        } else {
+            $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(100);
+        }
+
         $beneficiario = Beneficiario::find($idBeneficiario);
 
 
@@ -160,7 +185,12 @@ class SalidaMedicamentoController extends Controller
 
         // Se busca el beneficiario actual, y/o todos los medicamentos para poder donar
         $beneficiario = Beneficiario::find($idbeneficiario);
-        $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(5);
+        
+        if ($request->get('medicamento') == "") {
+           $medicamentos = Medicamento::buscarMedicamento("sin_medicamento")->paginate(1);
+        } else {
+            $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(100);
+        }
 
  
 

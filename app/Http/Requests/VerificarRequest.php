@@ -26,6 +26,7 @@ class VerificarRequest extends FormRequest
         return [
             'diagnostico' => 'required',
             'descripcion' => 'required',
+            'receta' => 'required|image'
         ];
     }
 }

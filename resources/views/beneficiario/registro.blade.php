@@ -20,7 +20,7 @@
             </div>
             <div class="panel-body">
 
-				<form action="{{ route('ruta_beneficiario_registrar') }}" method="post">
+				<form action="{{ route('ruta_beneficiario_registrar') }}" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					<div class="row">
 						<div class="col-md-12">
@@ -109,14 +109,27 @@
 						          </div>
 						        </div>
 						    </div>
+
 						    <div class="form-group">
 						        <label>Ingrese el domicilio</label>
 						        <input class="form-control" name='domicilio' required id='domicilio' placeholder="Ingrese el domicilio" value="{{ old('domicilio') }}">
 						    </div>
+
 						    <div class="form-group">
 						        <label>Ingrese la comunidad</label>
 						        <input class="form-control" name='comunidad' required id='comunidad' placeholder="Ingrese la comunidad" value="{{ old('comunidad') }}">
 						    </div>
+
+						     <div class="form-group">
+						        <label>Fotografia</label>
+						        <input type="file"  name="fotografia" >
+						    </div>
+
+						    <div class="form-group">
+						        <label>Identificacion</label>
+						        <input type="file"  name="identificacion">
+						    </div>
+
 						</div>
 						<div class="col-md-12">
 					    	<button type="submit" style="float: right;" class="btn btn-success btn-md">Guardar <i class="fa fa-check"></i>

@@ -2,8 +2,8 @@
     <div class="form-group">
         <input type="text" class="form-control" name="medicamento" placeholder="Buscar">
     </div>
-    <button type="submit" class="btn btn-default">
+    <button type="submit" class="btn btn-info">
     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-    Buscar
+    	Buscar
     </button>
 </form>

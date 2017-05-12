@@ -21,43 +21,13 @@
             @endif
             
             <div class="panel-body">
-                <form action="{{ route('ruta_verificar_medicamento', ['idBeneficiario' => $beneficiario->id_beneficiario]) }}" method="post">
+                <form action="{{ route('ruta_verificar_medicamento', ['idBeneficiario' => $beneficiario->id_beneficiario]) }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="form-group">
-                            <label>Receta Medica:</label>
-                            <select class="form-control" name="receta_medica" id="receta_medica">
-                                <option>NO</option>
-                                <option>SI</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label>Copia de IFE o INE:</label>
-                            <select class="form-control" name="ife_ine" id="ife_ine">
-                                <option>NO</option>
-                                <option>SI</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="form-group">
-                            <label>Fotografia:</label>
-                            <select class="form-control" name="fotografia" id="fotografia">
-                                <option>NO</option>
-                                <option>SI</option>
-                            </select>
-                        </div>
-                    </div>
-                     <div class="col-lg-2">
-                        <div class="form-group">
-                            <label>Solicitud:</label>
-                            <select class="form-control" name="solicitud" id="solicitud">
-                                <option>NO</option>
-                                <option>SI</option>
-                            </select>
+                            <label>Receta medica</label>
+                            <input type="file" name="receta">
                         </div>
                     </div>
                 </div>
@@ -75,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success btn-small" type="submit" style="float: right;" id="btn-verificar">Verificar</button>
+                <button class="btn btn-success btn-small" type="submit" style="float: right;" id="btn-verificar">Verificar solicitud</button>
                 </form>
             </div>
         </div>

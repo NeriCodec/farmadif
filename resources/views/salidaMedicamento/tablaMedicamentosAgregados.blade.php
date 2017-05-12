@@ -28,7 +28,13 @@
             <th>{{ $medicamento->nombre_compuesto }}</th>
             <th>{{ $medicamento->num_etiqueta }}</th>
             <th>{{ $medicamento->num_folio }}</th>
-            <th>{{ $medicamento->mes_caducidad . "  " . $medicamento->anio_caducidad}}</th>
+            
+            @if($medicamento->mes_caducidad <= 9)
+                <th>{{ "0" . $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</th>
+            @else
+                <th>{{ $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</th>
+            @endif
+            
             <th>{{ $medicamento->cantidad_medicamento }}</th>
             <th>{{ $medicamento->solucion_tableta }}</th>
             <th>{{ $medicamento->tipo_contenido }}</th>
