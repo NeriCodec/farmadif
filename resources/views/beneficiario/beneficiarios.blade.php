@@ -8,7 +8,7 @@
                 <div class="panel-heading">
                     Salida de medicamento
                 </div>
-                @include('beneficiario.buscarBeneficiario')
+                @include('beneficiario.buscar')
                 <br><br><br>
                 <center><h4>No se encontro el beneficiario</h4></center>
                 <br><br><br>
@@ -22,7 +22,7 @@
             <div class="panel-heading">
                 Beneficiarios registrados
             </div>
-            @include('beneficiario.buscarBeneficiario')
+            @include('beneficiario.buscar')
             <div class="panel-body">
                 <table width="100%" class="table table-striped table-bordered table-hover">
                     <thead>

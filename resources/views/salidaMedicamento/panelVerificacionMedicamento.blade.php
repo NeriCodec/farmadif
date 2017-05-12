@@ -2,14 +2,20 @@
 
 @section('content')
 
-@include('salidaMedicamento.panelDatosBeneficiario')
+
 
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
+
+            
+
             <div class="panel-heading">
                 Solicitud de medicamento
             </div>
+
+            @include('salidaMedicamento.panelDatosBeneficiario')
+            
             @if(count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>

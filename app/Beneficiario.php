@@ -37,10 +37,15 @@ class Beneficiario extends Model
 
     public static function medicamentosDelBeneficiario($idDonador)
     {
-        $medicamentosDonador  = \DB::select('SELECT * FROM tb_salida_medicamento
-                                INNER JOIN tb_medicamentos
-                                ON tb_salida_medicamento.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
-                                WHERE tb_beneficiarios_id_beneficiario = '.$idDonador);
+        $medicamentosDonador  = \DB::select('SELECT cantidad_medicamento AS cantidad, nombre_comercial, nombre_compuesto, num_etiqueta,
+        num_folio, mes_caducidad, anio_caducidad, solucion_tableta, tipo_contenido, diagnostico, descripcion
+        FROM tb_salida_medicamento
+        INNER JOIN tb_medicamentos
+        ON tb_salida_medicamento.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
+        INNER JOIN tb_salida_verificacion
+        ON tb_salida_medicamento.tb_salida_verificacion_id_salida_verificacion =  tb_salida_verificacion.id_salida_verificacion
+        WHERE tb_beneficiarios_id_beneficiario = '.$idDonador);
+
         return $medicamentosDonador;
 
     }

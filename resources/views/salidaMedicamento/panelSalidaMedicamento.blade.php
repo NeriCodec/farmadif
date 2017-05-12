@@ -1,8 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-
-    @include('salidaMedicamento.panelDatosBeneficiario')
+    
+     <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Datos de la salida de medicamento
+                    </div>
+                    @include('salidaMedicamento.panelDatosBeneficiario')
+                </div>
+            </div>
+        </div>
+    
 
     <div id="salida-medicamentos">
         <div class="row">

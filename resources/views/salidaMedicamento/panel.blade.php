@@ -50,7 +50,7 @@
                                     <center>
                                         <a href="{{ route('ruta_salida_medicamento',$beneficiario->id_beneficiario) }}">
                                             <button class="btn btn-success btn-small ">
-                                                Ir
+                                                <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
                                             </button> 
                                         </a>
                                     </center>
