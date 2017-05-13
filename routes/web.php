@@ -32,9 +32,11 @@ Route::name('ruta_salida_sin_medicamentos')->get('/salida-sin-medicamentos', 'Sa
 Route::name('ruta_salida_medicamento')->get('/salida/verificar/{idBeneficiario}', 'SalidaMedicamentoController@mostrarVerificarSalidaDeMedicamento');
 Route::name('ruta_verificar_medicamento')->post('/salida/{idBeneficiario}', 'SalidaMedicamentoController@verificarSalidaDeMedicamento');
 Route::name('ruta_salida_verificada_medicamentos')->get('/salida/{idBeneficiario}', 'SalidaMedicamentoController@mostrarSalidaDeMedicamento');
-
 Route::name('ruta_agregar_medicamento')->post('/salida/agregar/{idMedicamento}/beneficiario/{idBeneficiario}','SalidaMedicamentoController@agregarMedicamento');
 Route::name('ruta_eliminar_medicamento')->delete('/salida/eliminar/{idMedicamento}/beneficiario/{idBeneficiario}/salida/{idSalidaMedicamento}', 'SalidaMedicamentoController@eliminarMedicamento');
+
+# Ruta para la salida de medicamento pendiente
+Route::name('ruta_solicitud_pendiente')->post('/solicitud-pendiente', 'SolicitudPendienteController@mostrarSolicitud');
 
 #Rutas para la entrada de medicaento ->esta es la parte pendiente
 Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMedicamentoController@MostrarDonadores');

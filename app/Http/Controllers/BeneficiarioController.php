@@ -66,7 +66,6 @@ class BeneficiarioController extends Controller
 
     public function mostrarDetalleBeneficiario($idBeneficiario)
     {
-        //dd($idBeneficiario);
         $beneficiario = Beneficiario::find($idBeneficiario);
         $detallesBeneficiario = Beneficiario::medicamentosDelBeneficiario($idBeneficiario);
 

@@ -49,5 +49,6 @@ $factory->define(App\Medicamento::class, function (Faker\Generator $faker) {
         'cantidad' => rand(1,30),
         'solucion_tableta' => 'tableta',
         'tipo_contenido' => 'mg',
+        'estatus' => 'existencia'
     ];
 });

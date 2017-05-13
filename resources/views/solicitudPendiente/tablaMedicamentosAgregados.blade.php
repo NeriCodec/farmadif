@@ -17,7 +17,7 @@
             <th>Fecha caducidad</th>
             <th>Solucion/Tableta</th>
             <th>Contenido</th>
-            <th>Eliminar</th>
+            {{-- <th>Eliminar</th> --}}
         </tr>
     </thead>
     <tbody>
@@ -37,7 +37,7 @@
             <td>{{ $medicamento->solucion_tableta }}</td>
             <td>{{ $medicamento->dosis . ' ' . $medicamento->tipo_contenido }}</td>
             <td>
-                <center>
+                {{-- <center>
                     <form action="{{ route('ruta_eliminar_medicamento', ['idMedicamento' => $medicamento->id_medicamento, 'idBeneficiario' => $beneficiario->id_beneficiario, 'idSalidaMedicamento' => $medicamento->id_salida_medicamento, 'cantidad' => $medicamento->cantidad_medicamento]) }}" method="post" id="form-agregar">
                         {{ csrf_field() }}
                         {{ method_field('delete') }}
@@ -45,7 +45,7 @@
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                         </button>
                     </form>
-                </center>
+                </center> --}}
             </td>
         </tr>
         @endforeach

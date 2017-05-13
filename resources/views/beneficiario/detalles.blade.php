@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -11,37 +9,47 @@
                 <h4>Detalles de beneficiario</h4>
             </div>
              @include('beneficiario.datos')
+             <div class="panel-heading">
+                <h4>Medicamentos donados</h4>
+             </div>
 
-             <br>
-             <center><h3>Mis medicamentos donados</h3></center>
-            {{-- <div class="panel-body"> --}}
-                <table width="100%" class="table table-striped table-bordered table-hover">
+             <div style="height:500px; overflow-y: scroll;">
+                <table width="100%" class="table table-bordered">
                     <thead>
                         <tr class="info">
                             <th>Nombre comercial</th>
                             <th>Nombre compuesto</th>
                             <th>No. etiqueta</th>
                             <th>No. folio</th>
-                            <th>Cantidad</th>
                             <th>Diagnostico</th>
                             <th>Descripcion</th>
+                            {{-- <th>Eliminar</th> --}}
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($detalles as $medicamento)
                         <tr>
-                            <th>{{ $medicamento->nombre_comercial }}</th>
-                            <th>{{ $medicamento->nombre_compuesto }}</th>
-                            <th>{{ $medicamento->num_etiqueta }}</th>
-                            <th>{{ $medicamento->num_folio }}</th>
-                            <th>{{ $medicamento->cantidad }}</th>
-                            <th>{{ $medicamento->diagnostico }}</th>
-                            <th>{{ $medicamento->descripcion }}</th>
+                            <td>{{ $medicamento->nombre_comercial }}</td>
+                            <td>{{ $medicamento->nombre_compuesto }}</td>
+                            <td>{{ $medicamento->num_etiqueta }}</td>
+                            <td>{{ $medicamento->num_folio }}</td>
+                            <td>{{ $medicamento->diagnostico }}</td>
+                            <td>{{ $medicamento->descripcion }}</td>
+                            {{--<td>
+                             <center>
+                                <form action="" method="post">
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-danger btn-small btn-agregar">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </button>
+                                </form>
+                            </center>
+                            </td>  --}}
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-            {{-- </div> --}}
+            </div>
         </div>
     </div>
 </div>

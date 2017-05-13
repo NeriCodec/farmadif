@@ -112,34 +112,32 @@ class SalidaMedicamentoController extends Controller
     public function agregarMedicamento($idMedicamento, $idBeneficiario, Request $request)
     {
         // Se obtiene la verificacion y el medicamento para agregar
-        //$cantidadADonar = $request->get('cantidad');        
+        $cantidadADonar = 1;
         $verificacionMedicamento = VerificacionMedicamento::all()->last();
         $medicamento = Medicamento::find($idMedicamento);
 
-        //if($medicamento->cantidad > 0) 
-        //{
+        if($medicamento->estatus == 'existencia') 
+        {
             // Se alamacena la salida del medicamento
-        SalidaMedicamentoDatabase::guardarSalidaMedicamento (
-        $idMedicamento,
-        $idBeneficiario,
-        $verificacionMedicamento->id_salida_verificacion,
-        1
-        );
+            SalidaMedicamentoDatabase::guardarSalidaMedicamento (
+            $idMedicamento,
+            $idBeneficiario,
+            $verificacionMedicamento->id_salida_verificacion,
+            $cantidadADonar
+            );
 
-        // Del medicuamento actual se desminuye la cantidad a donar y se actualiza el medicamento
-        $medicamento->estatus = 'donado';
-        $medicamento->save();
+            $medicamento->estatus = 'donado';
+            $medicamento->save();
 
-        // Se genera el registro en el LOG
-        VerificacionSalidaDatabase::actualizarTipoSolicitud($verificacionMedicamento);
-        LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario,'Exitosa', 1);
-
-        //} 
-        //else
-        //{
             // Se genera el registro en el LOG
-        //    LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario, 'Sin medicamentos', 0);
-        //}
+            VerificacionSalidaDatabase::actualizarTipoSolicitud($verificacionMedicamento);
+            LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario,'Exitosa', $cantidadADonar);
+        }
+        else
+        {
+           // Se genera el registro en el LOG
+           LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario, 'Sin medicamentos', 0);
+        }
 
         // Se obtienen todos los medicamentos agregados
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion); 
@@ -169,27 +167,28 @@ class SalidaMedicamentoController extends Controller
     */
     public function eliminarMedicamento($idmedicamento, $idbeneficiario, $idSalidaMedicamento, Request $request)
     {
-        // Se obtiene el medicamento agregado y se le suma la cantidad que se le disminuyo para restablecer
-        // la cantidad quitada al momento de agregarlo a la tabla (medicamentos agregados)
-        $medicamento = Medicamento::find($idmedicamento);
-        $medicamento->estatus = 'existencia';
-        $medicamento->save(); 
-        
-        // Se elimina la salida de medicamento anteriormente registrada, para no tener salidas de medicamentos confusasa
-        // en la base de datos.
-        $medicamentosAgregados = SalidaMedicamento::find($idSalidaMedicamento);
-        $medicamentosAgregados->delete();
 
-        // Se obtiene la verificacion y se obtiene todos los medicamentos agregados
+        $medicamentosAgregados = SalidaMedicamento::find($idSalidaMedicamento);
+        
+        if($medicamentosAgregados != null )
+        {
+            $medicamento = Medicamento::find($idmedicamento);
+            $medicamento->estatus = 'existencia';
+            $medicamento->save(); 
+            //$medicamentosAgregados = SalidaMedicamento::find($idSalidaMedicamento);
+            $medicamentosAgregados->delete();
+        }
+
         $verificacionMedicamento = VerificacionMedicamento::all()->last();
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion);
-
-        // Se busca el beneficiario actual, y/o todos los medicamentos para poder donar
         $beneficiario = Beneficiario::find($idbeneficiario);
         
-        if ($request->get('medicamento') == "") {
+        if ($request->get('medicamento') == "") 
+        {
            $medicamentos = Medicamento::buscarMedicamento("sin_medicamento")->paginate(1);
-        } else {
+        } 
+        else
+        {
             $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(100);
         }
 

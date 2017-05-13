@@ -8,13 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Farmadif</title>
+    <title>FARMADIF</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/pvendor/bootstrap/css/bootstrap.min.css">
-
-     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Estilos propios -->
     <link rel="stylesheet" href="/css/estilos.css">
@@ -42,7 +39,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Farmadif
+                        FARMADIF
                     </a>
                 </div>
 

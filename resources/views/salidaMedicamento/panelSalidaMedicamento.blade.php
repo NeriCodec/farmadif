@@ -41,10 +41,11 @@
         </div>
         
         <div class="row">
+        
             <div class="col-lg-6" style="margin-bottom: 5%;">
                 @if(count($medicamentosAgregados) == 0) 
                 <a href="{{ route('ruta_salida_sin_medicamentos') }}">
-                        <button class="btn btn-success btn-small" style="float: right;">
+                        <button class="btn btn-danger btn-small" style="float: right;">
                         Cancelar y volver
                         </button>
                 </a>
@@ -57,13 +58,18 @@
                 @endif
 
             </div>
+
             <div class="col-lg-6" style="margin-bottom: 5%;">
-                <a href="#">
-                    <button class="btn btn-danger btn-small" style="float: left;">
+                <form action="{{ route('ruta_solicitud_pendiente') }}" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="idDonador" value="{{ $beneficiario->id_beneficiario }}">
+                    <button class="btn btn-warning btn-small" type="submit" style="float: left;">
                     Dejar pendiente solicitud.
+                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
                     </button>
-                </a>
+                </form>
             </div>
+
         </div>
         
         
