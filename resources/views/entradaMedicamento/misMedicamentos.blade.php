@@ -24,7 +24,7 @@
                                 <th>No. etiqueta</th>
                                 <th>No. folio</th>
                                 <th>Fecha caducidad</th>
-                                <th>Cantidad</th>
+                                <th>Dosis</th>
                                 <th>Solucion/Tableta</th>
                                 <th>Contenido</th>
                                 <th>Seleccionar</th>
@@ -38,7 +38,7 @@
                                 <th>{{ $medicamentodonado->num_etiqueta }}</th>
                                 <th>{{ $medicamentodonado->num_folio }}</th>
                                 <th>{{ $medicamentodonado->mes_caducidad }}</th>
-                                <th>{{ $medicamentodonado->cantidad }}</th>
+                                <th>{{ $medicamentodonado->dosis }}</th>
                                 <th>{{ $medicamentodonado->solucion_tableta }}</th>
                                 <th>{{ $medicamentodonado->tipo_contenido }}</th>
                                 <th>
