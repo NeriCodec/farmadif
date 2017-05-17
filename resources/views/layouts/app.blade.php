@@ -73,6 +73,9 @@
                                         <a href="#">Medicamentos prox. vencer</a>
                                     </li>
                                     <li>
+                                        <a href="#">Medicamentos requeridos</a>
+                                    </li>
+                                    <li>
                                         <a href="#">Entrada de medicamentos</a>
                                     </li>
                                     <li>
@@ -118,19 +121,14 @@
                                     Donadores</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('ruta_salida_medicamentos') }}">
-                                    Salida medicamento</span>
-                                </a>
-                            </li>
                              <li>
                                 <a href="{{ route('ruta_entrada_medicamentos') }}">
                                     Entrada medicamento</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    Medicamento Requerido</span>
+                                <a href="{{ route('ruta_salida_medicamentos') }}">
+                                    Salida medicamento</span>
                                 </a>
                             </li>
                             <li class="dropdown">

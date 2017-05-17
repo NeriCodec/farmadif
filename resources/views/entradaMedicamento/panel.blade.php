@@ -50,7 +50,7 @@
                                 <center>
                                 <a href="{{ route('ruta_seleccionar_donador', ['id' => $donador->id_donador]) }}">
                                      <button class="btn btn-success btn-small ">
-                                           <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                           <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
                                      </button> 
                                 </a>
                                 </center>
