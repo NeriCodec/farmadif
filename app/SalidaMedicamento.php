@@ -25,7 +25,6 @@ class SalidaMedicamento extends Model
     * Metodo que obtiene la salida de medicamentos
     * @param $query 
     * @param Int id_salida_verificacion, id
-    * @return Array (JSON)
     */
     public static function medicamentosAgregados($id_salida_verificacion)
     {

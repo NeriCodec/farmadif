@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Mpociot\Firebase\SyncsWithFirebase;
 use Illuminate\Database\Eloquent\Model;
 
 class Medicamento extends Model
 {
+    use SyncsWithFirebase;
+
 	/**
     * @param $table, nombre de la tabla de la base de datos
     */
@@ -40,7 +43,7 @@ class Medicamento extends Model
     */
     public static function medicamentosApi()
     {
-       $medicamentos  = \DB::select('SELECT id_medicamento, nombre_comercial, nombre_compuesto, solucion_tableta, tipo_contenido, cantidad   
+       $medicamentos  = \DB::select('SELECT id_medicamento, nombre_comercial, nombre_compuesto, solucion_tableta, tipo_contenido, dosis   
         FROM tb_medicamentos');
 
        return $medicamentos;

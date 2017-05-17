@@ -54,15 +54,6 @@ class BeneficiarioController extends Controller
     	return redirect()->route('ruta_beneficiarios');
     }
 
-    /**
-    * Permite obtner todos los beneficiarios registrados dentro de la aplicacion
-    *
-    * @return Array (JSON)
-    */
-    public function obtenerTodosLosBeneficiarios()
-    {
-        return Datatables::eloquent(Beneficiario::query())->make(true);
-    }
 
     public function mostrarDetalleBeneficiario($idBeneficiario)
     {

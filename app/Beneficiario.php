@@ -42,12 +42,27 @@ class Beneficiario extends Model
         FROM tb_salida_medicamento
         INNER JOIN tb_medicamentos
         ON tb_salida_medicamento.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
-        INNER JOIN tb_salida_verificacion
-        ON tb_salida_medicamento.tb_salida_verificacion_id_salida_verificacion =  tb_salida_verificacion.id_salida_verificacion
+        INNER JOIN tb_solicitudes
+        ON tb_salida_medicamento.tb_salida_verificacion_id_salida_verificacion =  tb_solicitudes.id_solicitud
         WHERE tb_beneficiarios_id_beneficiario = '.$idDonador . ' ORDER BY tb_salida_medicamento.fecha_salida_medicamento DESC');
 
         return $medicamentosDonador;
 
+    }
+
+    public static function medicamentosRequeridosPorUnDonador($idBeneficiario, $idSolicitud)
+    {
+        $medicamentosRequeridos = \DB::select('SELECT nombre_comercial, nombre_compuesto, num_etiqueta,
+        num_folio, mes_caducidad, anio_caducidad, solucion_tableta, tipo_contenido, dosis, id_medicamentos_requeridos, id_medicamento
+        FROM tb_medicamentos_requeridos
+        INNER JOIN tb_medicamentos
+        ON tb_medicamentos_requeridos.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
+        INNER JOIN tb_solicitudes
+        ON tb_medicamentos_requeridos.tb_solicitudes_id_solicitud = tb_solicitudes.id_solicitud
+        WHERE tb_beneficiarios_id_beneficiario = ' . $idBeneficiario . '
+        AND tb_solicitudes.id_solicitud =' . $idSolicitud );
+
+        return $medicamentosRequeridos;
     }
 
 }

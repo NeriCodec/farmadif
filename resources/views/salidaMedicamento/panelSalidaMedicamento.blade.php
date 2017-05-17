@@ -60,14 +60,13 @@
             </div>
 
             <div class="col-lg-6" style="margin-bottom: 5%;">
-                <form action="{{ route('ruta_solicitud_pendiente') }}" method="post">
+                <a href="{{ route('ruta_solicitud_pendiente' , ['idBeneficiario' => $beneficiario->id_beneficiario]) }}">
                     {{ csrf_field() }}
-                    <input type="hidden" name="idDonador" value="{{ $beneficiario->id_beneficiario }}">
                     <button class="btn btn-warning btn-small" type="submit" style="float: left;">
-                    Dejar pendiente solicitud.
+                    Dejar solicitud pendiente.
                     <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
                     </button>
-                </form>
+                </a>
             </div>
 
         </div>

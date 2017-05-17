@@ -20,14 +20,14 @@
                 <form action="{{ route('ruta_verificar_medicamento', ['idBeneficiario' => $beneficiario->id_beneficiario]) }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="row">
-                    <div class="col-lg-2">
+                    <div class="col-lg-12">
                         <div class="form-group{{ $errors->has('receta') ? ' has-error' : '' }}">
                             <label>Receta medica</label>
                             <input type="file" name="receta">
                             @if ($errors->has('receta'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('receta') }}</strong>
-                                </span>
+                            <span class="help-block">
+                                <strong>{{ $errors->first('receta') }}</strong>
+                            </span>
                             @endif
                         </div>
                     </div>

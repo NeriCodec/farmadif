@@ -4,6 +4,7 @@ namespace App\Http\Database;
 
 use App\Medicamento;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\SolicitudRequest;
 use App\Http\Requests\RegistrarMedicamentoRequest;
 
 class MedicamentoDatabase
@@ -27,6 +28,18 @@ class MedicamentoDatabase
         $Medicamento->tipo_contenido = $request->get('medida');
         $Medicamento->fecha_registro = date("Y-m-d");
         $Medicamento->save();
-
 	}
+
+    public static function guardarMedicamentoRequerido(SolicitudRequest $request)
+    {
+        $medicamento = new Medicamento();
+        $medicamento->nombre_compuesto = $request->get('nombre_compuesto');
+        $medicamento->nombre_comercial = $request->get('nombre_comercial');
+        $medicamento->dosis = $request->get('dosis');
+        $medicamento->solucion_tableta = $request->get('precentacion');
+        $medicamento->tipo_contenido = $request->get('medida');
+        $medicamento->estatus = 'requerido';
+        $medicamento->fecha_registro = date("Y-m-d");
+        $medicamento->save();
+    }
 }

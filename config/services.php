@@ -35,4 +35,12 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'firebase' => [
+        'api_key' => 'API_KEY', // Only used for JS integration
+        'auth_domain' => 'AUTH_DOMAIN', // Only used for JS integration
+        'database_url' => 'https://farmadif-18a9c.firebaseio.com/',
+        'secret' => '',
+        'storage_bucket' => 'STORAGE_BUCKET', // Only used for JS integration
+    ],
+
 ];

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="shortcut icon" href="img/logodif.png">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -78,7 +80,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            {{-- <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Beneficiarios <span class="caret"></span>
                                 </a>
@@ -105,6 +107,16 @@
                                         <a href="{{ route('ruta_donador_registro') }}">Registrar</a>
                                     </li>
                                 </ul>
+                            </li> --}}
+                            <li>
+                                <a href="{{ route('ruta_beneficiarios') }}">
+                                    Beneficiario</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('ruta_donadores') }}">
+                                    Donadores</span>
+                                </a>
                             </li>
                             <li>
                                 <a href="{{ route('ruta_salida_medicamentos') }}">

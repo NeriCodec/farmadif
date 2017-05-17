@@ -7,7 +7,7 @@ use App\Medicamento;
 use App\Beneficiario;
 use App\SalidaMedicamento;
 use Illuminate\Http\Request;
-use App\VerificacionMedicamento;
+use App\SolicitudMedicamento;
 use App\Http\Log\LogSalidaMedicamento;
 use App\Http\Requests\VerificarRequest;
 use App\Http\Database\SalidaMedicamentoDatabase;
@@ -79,23 +79,8 @@ class SalidaMedicamentoController extends Controller
         }
 
         // Se obtiene la verificacion y los todos los medicamentos agregados
-        $verificacionMedicamento = VerificacionMedicamento::all()->last();
-        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion);
-
-        return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
-        ->with('medicamentos', $medicamentos)
-        ->with('medicamentosAgregados', $medicamentosAgregados);
-    }
-
-    public function mostrarBusquedaSalidaDeMedicamento($idBeneficiario, Request $request)
-    {
-        // Se busca el beneficiario actual, y/o todos los medicamentos para poder donar
-        $beneficiario = Beneficiario::find($idBeneficiario);
-        $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(2);
-
-        // Se obtiene la verificacion y los todos los medicamentos agregados
-        $verificacionMedicamento = VerificacionMedicamento::all()->last();
-        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion);
+        $solicitudMedicamento = SolicitudMedicamento::all()->last();
+        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
         return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
         ->with('medicamentos', $medicamentos)
@@ -113,7 +98,7 @@ class SalidaMedicamentoController extends Controller
     {
         // Se obtiene la verificacion y el medicamento para agregar
         $cantidadADonar = 1;
-        $verificacionMedicamento = VerificacionMedicamento::all()->last();
+        $solicitudMedicamento = SolicitudMedicamento::all()->last();
         $medicamento = Medicamento::find($idMedicamento);
 
         if($medicamento->estatus == 'existencia') 
@@ -122,7 +107,7 @@ class SalidaMedicamentoController extends Controller
             SalidaMedicamentoDatabase::guardarSalidaMedicamento (
             $idMedicamento,
             $idBeneficiario,
-            $verificacionMedicamento->id_salida_verificacion,
+            $solicitudMedicamento->id_solicitud,
             $cantidadADonar
             );
 
@@ -130,7 +115,7 @@ class SalidaMedicamentoController extends Controller
             $medicamento->save();
 
             // Se genera el registro en el LOG
-            VerificacionSalidaDatabase::actualizarTipoSolicitud($verificacionMedicamento);
+            VerificacionSalidaDatabase::actualizarTipoSolicitud($solicitudMedicamento->id_solicitud);
             LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario,'Exitosa', $cantidadADonar);
         }
         else
@@ -140,7 +125,7 @@ class SalidaMedicamentoController extends Controller
         }
 
         // Se obtienen todos los medicamentos agregados
-        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion); 
+        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud); 
         // Se busca el beneficiario actual, y/o todos los medicamentos para poder donar
         if ($request->get('medicamento') == "") {
            $medicamentos = Medicamento::buscarMedicamento("sin_medicamento")->paginate(1);
@@ -179,8 +164,8 @@ class SalidaMedicamentoController extends Controller
             $medicamentosAgregados->delete();
         }
 
-        $verificacionMedicamento = VerificacionMedicamento::all()->last();
-        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($verificacionMedicamento->id_salida_verificacion);
+        $solicitudMedicamento = SolicitudMedicamento::all()->last();
+        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
         $beneficiario = Beneficiario::find($idbeneficiario);
         
         if ($request->get('medicamento') == "") 
@@ -202,8 +187,8 @@ class SalidaMedicamentoController extends Controller
 
     public function eliminarVerificacion()
     {
-        $verificacionMedicamento = VerificacionMedicamento::all()->last();
-        $verificacionMedicamento->delete();
+        $solicitudMedicamento = SolicitudMedicamento::all()->last();
+        $solicitudMedicamento->delete();
         return redirect()->route('ruta_beneficiarios');
     }
 }

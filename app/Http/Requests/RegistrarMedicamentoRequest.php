@@ -31,9 +31,11 @@ class RegistrarMedicamentoRequest extends FormRequest
             'cantidad_re' => 'required',
             'mes_caducidad' => 'required',
             'anio_caducidad' => 'required',
-            'precentacion' => 'required',
             'idDonador' => 'required',
+            'precentacion' => 'required',
             'medida' => 'required',
         ];
     }
+
+    // 
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Database;
 
-use App\EntradaMedicamento;
 use App\Medicamento;
+use App\EntradaMedicamento;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EntradaMedicamentoRequest;
 use App\Http\Requests\RegistrarMedicamentoRequest;
@@ -23,6 +23,6 @@ class EntradaMedicamentoDatabase
         $EntradaMedicamento->cantidad_medicamento = $request->get('cantidad_re');;
         $EntradaMedicamento->fecha_entrada = date("Y-m-d");
         $EntradaMedicamento->save();
-
 	}
+
 }

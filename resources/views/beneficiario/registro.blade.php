@@ -2,16 +2,6 @@
 
 @section('content')
 
-@if(count($errors) > 0)
-	<div class="alert alert-danger">
-		<ul>
-			@foreach($errors->all() as $error)
-				<li>{{ $error }}</li>
-			@endforeach
-		</ul>
-	</div>
-@endif
-
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -24,23 +14,38 @@
 					{{ csrf_field() }}
 					<div class="row">
 						<div class="col-md-12">
-							<div class="form-group">
+							<div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
 						        <label>Ingrese el nombre (s)</label>
-						        <input class="form-control" name='nombre' required id='nombre' placeholder="Ingrese el nombre" value="{{ old('nombre') }}">
+						        <input class="form-control" name='nombre' id='nombre' placeholder="Ingrese el nombre" value="{{ old('nombre') }}">
+						        @if ($errors->has('nombre'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('nombre') }}</strong>
+                                </span>
+                            	@endif
 						    </div>
-						    <div class="form-group">
+						    <div class="form-group{{ $errors->has('ap_paterno') ? ' has-error' : '' }}">
 						        <label>Ingrese el apellido paterno</label>
-						        <input class="form-control" name='ap_paterno' required id='ap_paterno' placeholder="Ingrese el apellido paterno" value="{{ old('ap_paterno') }}">
+						        <input class="form-control" name='ap_paterno' id='ap_paterno' placeholder="Ingrese el apellido paterno" value="{{ old('ap_paterno') }}">
+						        @if ($errors->has('ap_paterno'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('ap_paterno') }}</strong>
+                                </span>
+                            	@endif
 						    </div>
-						    <div class="form-group">
+						    <div class="form-group{{ $errors->has('ap_materno') ? ' has-error' : '' }}">
 						        <label>Ingrese el apellido materno</label>
-						        <input class="form-control" name='ap_materno' required id='ap_materno' placeholder="Ingrese el apellido materno" value="{{ old('ap_materno') }}">
+						        <input class="form-control" name='ap_materno' id='ap_materno' placeholder="Ingrese el apellido materno" value="{{ old('ap_materno') }}">
+						        @if ($errors->has('ap_materno'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('ap_materno') }}</strong>
+                                </span>
+                            	@endif
 						    </div>
-						    <div class="form-group">
+						    <div class="form-group{{ $errors->has('dia') ? ' has-error' : '' }}">
 						        <label>Ingrese la fecha de nacimiento</label>
 						        <div class="row">
 						          <div class="col-xs-4">
-						            <select class="form-control" name="dia" required>
+						            <select class="form-control" name="dia" >
 						            	<option value="">Dia</option>
 						              <?php
 						                  for($i=1; $i<=31; $i++) {
@@ -48,9 +53,14 @@
 						                  }
 						              ?>
 						            </select>
+						            @if ($errors->has('dia'))
+	                                <span class="help-block">
+	                                    <strong>{{ $errors->first('dia') }}</strong>
+	                                </span>
+	                            	@endif
 						          </div>
 						          <div class="col-xs-4">
-						            <select class="form-control" name="mes" required>
+						            <select class="form-control{{ $errors->has('mes') ? ' has-error' : '' }}" name="mes">
 						            	<option value="">Mes</option>
 						              <?php
 						                  for($i=1; $i<=12; $i++) {
@@ -96,9 +106,14 @@
 						                  }
 						              ?>
 						            </select>
+						            @if ($errors->has('mes'))
+	                                <span class="help-block">
+	                                    <strong>{{ $errors->first('mes') }}</strong>
+	                                </span>
+	                            	@endif
 						          </div>
 						          <div class="col-xs-4">
-						            <select class="form-control" name="anio" required>
+						            <select class="form-control{{ $errors->has('anio') ? ' has-error' : '' }}" name="anio">
 									 <option value="">Año</option>
 						              <?php
 						                  for($i=date("Y"); $i>=1950; $i--) {
@@ -106,29 +121,63 @@
 						                  }
 						              ?>
 						            </select>
+						             @if ($errors->has('anio'))
+	                                <span class="help-block">
+	                                    <strong>{{ $errors->first('anio') }}</strong>
+	                                </span>
+	                            	@endif
 						          </div>
 						        </div>
 						    </div>
 
-						    <div class="form-group">
+						    <div class="form-group{{ $errors->has('domicilio') ? ' has-error' : '' }}">
 						        <label>Ingrese el domicilio</label>
-						        <input class="form-control" name='domicilio' required id='domicilio' placeholder="Ingrese el domicilio" value="{{ old('domicilio') }}">
+						        <input class="form-control" name='domicilio' id='domicilio' placeholder="Ingrese el domicilio" value="{{ old('domicilio') }}">
+						        @if ($errors->has('domicilio'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('domicilio') }}</strong>
+                                </span>
+                            	@endif
 						    </div>
 
-						    <div class="form-group">
+						    <div class="form-group{{ $errors->has('comunidad') ? ' has-error' : '' }}">
 						        <label>Ingrese la comunidad</label>
-						        <input class="form-control" name='comunidad' required id='comunidad' placeholder="Ingrese la comunidad" value="{{ old('comunidad') }}">
+						        <input class="form-control" name='comunidad' id='comunidad' placeholder="Ingrese la comunidad" value="{{ old('comunidad') }}">
+						        @if ($errors->has('comunidad'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('comunidad') }}</strong>
+                                </span>
+                            	@endif
 						    </div>
 
-						     <div class="form-group">
-						        <label>Fotografia</label>
-						        <input type="file"  name="fotografia" >
+						    <div class="row">
+						    	<div class="col-md-6">
+						    		<div class="form-group{{ $errors->has('fotografia') ? ' has-error' : '' }}">
+								        <label>Fotografia</label>
+								        <input type="file"  name="fotografia" >
+								        @if ($errors->has('fotografia'))
+		                                <span class="help-block">
+		                                    <strong>{{ $errors->first('fotografia') }}</strong>
+		                                </span>
+		                            	@endif
+								    </div>
+						    	</div>
+						    	<div class="col-md-6">
+						 			<div class="form-group{{ $errors->has('identificacion') ? ' has-error' : '' }}">
+								        <label>Identificacion</label>
+								        <input type="file"  name="identificacion">
+								        @if ($errors->has('identificacion'))
+		                                <span class="help-block">
+		                                    <strong>{{ $errors->first('identificacion') }}</strong>
+		                                </span>
+		                            	@endif
+								    </div>
+						    	</div>
 						    </div>
 
-						    <div class="form-group">
-						        <label>Identificacion</label>
-						        <input type="file"  name="identificacion">
-						    </div>
+						     
+
+
 
 						</div>
 						<div class="col-md-12">
