@@ -15,6 +15,7 @@ Route::name('ruta_detalle_beneficiario')->get('/beneficiarios/detalles/{idBenefi
 Route::name('ruta_donadores')->get('/donadores', 'DonadorController@mostrarDonadores');
 Route::name('ruta_donador_registro')->get('/donador/registro', 'DonadorController@mostrarRegistro');
 Route::name('ruta_donador_registrar')->post('/donador/registrar', 'DonadorController@registrar');
+Route::name('ruta_medicamentos_donados')->get('/donador/medicamentos-donados/{idDonador}', 'DonadorController@mostrarMedicamentosDonados');
 
 # Rutas para la salida de medicamento
 Route::name('ruta_salida_medicamentos')->get('/salida', 'SalidaMedicamentoController@mostrarBeneficiarios');
@@ -31,13 +32,13 @@ Route::name('ruta_solicitud_guardar_medicamento')->post('/solicitud-pendiente/ag
 Route::name('ruta_cancelar_solicitud')->get('/solicitud/cancelada', 'SolicitudPendienteController@cancelarSolicitud');
 Route::name('ruta_eliminar_medicamento_requerido')->delete('solicitud-pendiente/eliminar/{idMedicamento}/{idMedicamentoRequerido}/{idBeneficiario}', 'SolicitudPendienteController@eliminarMedicamento');
 
-#Rutas para la entrada de medicaento ->esta es la parte pendiente
-Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMedicamentoController@MostrarDonadores');
-Route::name('ruta_seleccionar_donador')->get('/seleccionar/{idDonador}','EntradaMedicamentoController@SelecionarDonador');
-Route::name('ruta_guardar_medicamento_entrada_nuevo')->get('/guardar','EntradaMedicamentoController@GurdarNuevoMedicamento');
-Route::name('ruta_buscar_medicamento_seleccionar')->get('/buscar/{idDonador}','EntradaMedicamentoController@BuscarMedicamentoSeleccionar');
-Route::name('ruta_nuevo_registrar_medicamento')->get('/nuevo/{idDonador}','EntradaMedicamentoController@NuevoMedicamentoRegistrar');
-Route::name('ruta_nuevo_existente_registrar_medicamento')->get('/nuevo/donador/{idDonador}/medicamento/{idMedicamento}','EntradaMedicamentoController@NuevoExistenteMedicamentoRegistrar');
+#Rutas para la entrada de medicaento
+Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMedicamentoController@mostrarDonadores');
+Route::name('ruta_seleccionar_donador')->get('/seleccionar/{idDonador}','EntradaMedicamentoController@selecionarDonador');
+Route::name('ruta_guardar_medicamento_entrada_nuevo')->get('/guardar','EntradaMedicamentoController@gurdarNuevoMedicamento');
+Route::name('ruta_buscar_medicamento_seleccionar')->get('/buscar/{idDonador}','EntradaMedicamentoController@buscarMedicamentoSeleccionar');
+Route::name('ruta_nuevo_registrar_medicamento')->get('/nuevo/{idDonador}','EntradaMedicamentoController@nuevoMedicamentoRegistrar');
+Route::name('ruta_nuevo_existente_registrar_medicamento')->get('/nuevo/donador/{idDonador}/medicamento/{idMedicamento}','EntradaMedicamentoController@nuevoExistenteMedicamentoRegistrar');
 # Rutas del medicamento
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamentos');
 

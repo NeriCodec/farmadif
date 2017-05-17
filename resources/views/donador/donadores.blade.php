@@ -32,7 +32,7 @@
                             <th>No. telefonico</th>
                             <th>Codigo postal</th>
                             <th>Fecha de registro</th>
-                            <th>Actualizar</th>
+                            <th>Medicamentos donados</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,9 +44,13 @@
                             <td>{{ $donador->codigo_postal }}</td>
                             <td>{{ $donador->fecha_registro }}</td>
                             <td>
-                                <center><button class="btn btn-primary btn-small">
-                                    Ir
-                                </button></center>
+                                <center>
+                                    <a href="#">
+                                        <button class="btn btn-success btn-small ">
+                                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                                        </button> 
+                                    </a>
+                                </center>
                             </td>
                         </tr>
                         @endforeach

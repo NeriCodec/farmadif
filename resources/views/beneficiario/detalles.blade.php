@@ -40,16 +40,36 @@
 
                         <td>
                          <center>
-                            <form action="" method="post">
-                                {{ csrf_field() }}
-                                <button class="btn btn-danger btn-small btn-agregar">
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                </button>
-                            </form>
+                            {{-- <form action="" method="post"> --}}
+                                {{-- {{ csrf_field() }} --}}
+                            <button type="button" class="btn btn-danger btn-small btn-agregar" data-toggle="modal" data-target="#confirmacion{{ $medicamento->num_folio }}">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </button>
+                            {{-- </form> --}}
                         </center>
+
                         </td> 
 
                     </tr>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="confirmacion{{ $medicamento->num_folio }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Esta seguro de eliminar</h4>
+                          </div>
+                          <div class="modal-body">
+                            Eliminar este medicamento <b>{{ $medicamento->nombre_comercial }}</b>, una vez realizado esto, el medicamento sera liberado en el inventario.
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary">Confirmar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     @endforeach
                 </tbody>
             </table>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Medicamento;
 use App\Beneficiario;
+use App\SalidaMedicamento;
 use Illuminate\Http\Request;
 use App\SolicitudMedicamento;
 use App\MedicamentoRequerido;
@@ -18,9 +19,14 @@ class SolicitudPendienteController extends Controller
     	$beneficiario = Beneficiario::find($idBeneficiario);
         $solicitudMedicamento = SolicitudMedicamento::all()->last();
         $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnDonador($idBeneficiario, $solicitudMedicamento->id_solicitud);
+        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
+
+      //dd(count($medicamentosRequeridos));
+
 
     	return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
-                                                    ->with('medicamentosRequeridos', $medicamentosRequeridos);
+                                                    ->with('medicamentosRequeridos', $medicamentosRequeridos)
+                                                    ->with('medicamentos', $medicamentosAgregados);
     }
 
     public function agregarMedicamento($idBeneficiario, SolicitudRequest $request)
@@ -35,9 +41,11 @@ class SolicitudPendienteController extends Controller
                                                                 $idBeneficiario);
 
         $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnDonador($idBeneficiario, $solicitudMedicamento->id_solicitud);
+        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
         return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
-                                                    ->with('medicamentosRequeridos', $medicamentosRequeridos);
+                                                    ->with('medicamentosRequeridos', $medicamentosRequeridos)
+                                                    ->with('medicamentos', $medicamentosAgregados);
     }
 
     public function cancelarSolicitud()
@@ -62,8 +70,10 @@ class SolicitudPendienteController extends Controller
         $solicitudMedicamento = SolicitudMedicamento::all()->last();
 
         $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnDonador($idBeneficiario, $solicitudMedicamento->id_solicitud);
+        $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
         return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
-                                                    ->with('medicamentosRequeridos', $medicamentosRequeridos);
+                                                    ->with('medicamentosRequeridos', $medicamentosRequeridos)
+                                                    ->with('medicamentos', $medicamentosAgregados);
     }
 }
