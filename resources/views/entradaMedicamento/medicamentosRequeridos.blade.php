@@ -31,19 +31,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                            @foreach($medicamentos as $medicamento)
+                            @foreach($medicamentoRequerido as $requerido)
                             <tr>
-                                <th>{{ $medicamento->nombre_comercial }}</th>
-                                <th>{{ $medicamento->nombre_compuesto }}</th>
-                                <th>{{ $medicamento->num_etiqueta }}</th>
-                                <th>{{ $medicamento->num_folio }}</th>
-                                <th>{{ $medicamento->mes_caducidad }}</th>
-                                <th>{{ $medicamento->dosis }}</th>
-                                <th>{{ $medicamento->solucion_tableta }}</th>
-                                <th>{{ $medicamento->tipo_contenido }}</th>
+                                <th>{{ $requerido->nombre_comercial }}</th>
+                                <th>{{ $requerido->nombre_compuesto }}</th>
+                                <th>{{ $requerido->num_etiqueta }}</th>
+                                <th>{{ $requerido->num_folio }}</th>
+                                <th>{{ $requerido->mes_caducidad }}</th>
+                                <th>{{ $requerido->dosis }}</th>
+                                <th>{{ $requerido->solucion_tableta }}</th>
+                                <th>{{ $requerido->tipo_contenido }}</th>
                                 <th>
                                   <center>
-                                    <a href="{{ route('ruta_nuevo_existente_registrar_medicamento', ['idDonador' => $donador->id_donador,'idMedicamento' => $medicamento->id_medicamento]) }}">
+                                    <a href="{{ route('ruta_nuevo_existente_registrar_medicamento', ['idDonador' => $donador->id_donador,'idMedicamento' => $requerido->id_medicamento]) }}">
                                          <button class="btn btn-success btn-small ">
                                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                                          </button> 
@@ -55,8 +55,7 @@
                         </tbody>
                 </table>
                 </div>
-                <center>{{ $medicamentos->links() }}</center>
+                <center></center>
             </div>
         </div>
     </div>
-
