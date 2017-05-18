@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Donador;
+use App\Medicamento;
 use Illuminate\Http\Request;
 use App\Http\Database\DonadorDatabase;
 use Yajra\Datatables\Facades\Datatables;
@@ -63,4 +64,12 @@ class DonadorController extends Controller
     {
         return Datatables::eloquent(Donador::query())->make(true);
     }
+
+    public function obtieneMedicamentosDonados($idDonador,Request $request){
+
+        $medicamentoDonado = Medicamento::medicamentosDelDonador($idDonador);
+        $donador = Donador::find($idDonador);
+        return view('donador.medicamentosDelDonador')->with('donador', $donador)->with('medicamentos', $medicamentoDonado);
+    }
+
 }

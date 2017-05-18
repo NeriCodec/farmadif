@@ -36,7 +36,7 @@ Route::name('ruta_eliminar_medicamento_requerido')->delete('solicitud-pendiente/
 
 #Rutas para la entrada de medicaento
 Route::name('ruta_entrada_medicamentos')->get('/entrada-medicamentos','EntradaMedicamentoController@mostrarDonadores');
-Route::name('ruta_seleccionar_donador')->get('/seleccionar/{idDonador}','EntradaMedicamentoController@selecionarDonador');
+Route::name('ruta_seleccionar_donador_entrada')->get('/entrada-medicamentos/{idDonador}','EntradaMedicamentoController@selecionarDonador');
 Route::name('ruta_guardar_medicamento_entrada_nuevo')->get('/guardar','EntradaMedicamentoController@gurdarNuevoMedicamento');
 Route::name('ruta_buscar_medicamento_seleccionar')->get('/buscar/{idDonador}','EntradaMedicamentoController@buscarMedicamentoSeleccionar');
 Route::name('ruta_nuevo_registrar_medicamento')->get('/nuevo/{idDonador}','EntradaMedicamentoController@nuevoMedicamentoRegistrar');
@@ -44,6 +44,8 @@ Route::name('ruta_nuevo_existente_registrar_medicamento')->get('/nuevo/donador/{
 # Rutas del medicamento
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamentos');
 
+#Rutas para la parte de donadores
+Route::name('ruta_seleccionar_donador_donador')->get('/seleccionar/{idDonador}','DonadorController@obtieneMedicamentosDonados');
 
 
 //pruebas para al utilizacion de ajax

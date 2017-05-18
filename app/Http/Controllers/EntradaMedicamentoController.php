@@ -26,7 +26,7 @@ class EntradaMedicamentoController extends Controller
     }
 
     public function selecionarDonador($idDonador,Request $request){
-    	$medicamentos = Medicamento::paginate(5);
+    	$medicamentos = Medicamento::paginate(10);
         $medicamentoDonado = Medicamento::medicamentosDelDonador($idDonador);
         $medicamentoNecesario = Medicamento::obtineMedicamentoRequeridos();
     	$donador = Donador::find($idDonador);
@@ -45,7 +45,7 @@ class EntradaMedicamentoController extends Controller
     }
 
     public function buscarMedicamentoSeleccionar($idDonador,Request $request){
-        $medicamentos = Medicamento::BuscarMedicamento($request->get('medicamento'))->paginate(5);
+        $medicamentos = Medicamento::BuscarMedicamento($request->get('medicamento'))->paginate(10);
         $medicamentoDonado = Medicamento::medicamentosDelDonador($idDonador);
         $medicamentoNecesario = Medicamento::obtineMedicamentoRequeridos();
         $donador = Donador::find($idDonador);
