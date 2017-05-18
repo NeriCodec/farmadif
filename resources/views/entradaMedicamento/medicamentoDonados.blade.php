@@ -32,7 +32,7 @@
                     </thead>
                     <tbody>
                             @foreach($medicamentos as $medicamento)
-                            <tr>
+                            <tr @if($medicamento->estatus=="requerido") class="warning" @else class="success" @endif  >
                                 <th>{{ $medicamento->nombre_comercial }}</th>
                                 <th>{{ $medicamento->nombre_compuesto }}</th>
                                 <th>{{ $medicamento->num_etiqueta }}</th>

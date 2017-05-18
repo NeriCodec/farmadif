@@ -45,7 +45,7 @@
                             <td>{{ $donador->fecha_registro }}</td>
                             <td>
                                 <center>
-                                    <a href="#">
+                                    <a href="{{ route('ruta_seleccionar_donador_donador', ['id' => $donador->id_donador]) }}">
                                         <button class="btn btn-success btn-small ">
                                             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                         </button> 

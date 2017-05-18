@@ -46,12 +46,12 @@
 							<input type="text" class="form-control" name="nombre_compuesto" value="{{ $medicamentos->nombre_compuesto }}">
 							<label>Nombre comercial</label>
 							<input type="text" class="form-control" name="nombre_comercial" value="{{ $medicamentos->nombre_comercial }}" placeholder="Nombre comercial">
-							<label>Nro de etiqueta</label>
-							<input type="text" class="form-control" name="nro_etiqueta" placeholder="Nro de etiqueta" >
-							<label>Nro de folio</label>
-							<input type="text" class="form-control" name="nro_folio" placeholder="Nro de folio">
-							<label>Cantidad</label>
-							<input type="text" class="form-control" name="cantidad_re" placeholder="Ingrese la cantidad">
+							<label>Numero de etiqueta</label>
+							<input type="text" class="form-control" name="nro_etiqueta" placeholder="Numero de etiqueta" >
+							<label>Numero de folio</label>
+							<input type="text" class="form-control" name="nro_folio" placeholder="Numero de folio">
+							<label>Dosis</label>
+							<input type="text" class="form-control" name="cantidad_re" value="{{ $medicamentos->dosis }}"placeholder="Ingrese la cantidad">
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -116,18 +116,25 @@
 								
 							<label>Tipo de precentacion</label>
 							<select class="form-control" name="precentacion">
-								<option value="Solucion">Solucion</option>
-								<option value="Tabletas">Tabletas</option>
+								@if($medicamentos->solucion_tableta=='Solucion')
+									<option value="Solucion">Solucion</option>
+									<option value="Tabletas">Tabletas</option>
+								@else
+									<option value="Tabletas">Tabletas</option>
+									<option value="Solucion">Solucion</option>
+								@endif
+								
+
 							</select>
 							
 							<div class="col-md-5">
 								<label>Tipo de medida</label>
 								</br>
 								<label class="radio-inline">
-								 <input type="radio" name="medida" value="ml"> ml
+								 <input type="radio" name="medida" value="ml" @if($medicamentos->tipo_contenido=='ml')  checked="checked" @endif> ml
 								</label>
 								<label class="radio-inline">
-									 <input type="radio" name="medida" value="gr"> gr
+									 <input type="radio" name="medida" value="gr"@if($medicamentos->tipo_contenido=='gr')  checked="checked" @endif> gr
 								</label>
 							</div>
 							</br>
@@ -165,11 +172,11 @@
 							<input type="text" class="form-control" name="nombre_compuesto" placeholder="Nombre del compuesto">
 							<label>Nombre comercial</label>
 							<input type="text" class="form-control" name="nombre_comercial" placeholder="Nombre comercial">
-							<label>Nro de etiqueta</label>
-							<input type="text" class="form-control" name="nro_etiqueta" placeholder="Nro de etiqueta" >
-							<label>Nro de folio</label>
-							<input type="text" class="form-control" name="nro_folio" placeholder="Nro de folio">
-							<label>Cantidad</label>
+							<label>Numero de etiqueta</label>
+							<input type="text" class="form-control" name="nro_etiqueta" placeholder="Numero de etiqueta" >
+							<label>Numero de folio</label>
+							<input type="text" class="form-control" name="nro_folio" placeholder="Numero de folio">
+							<label>Dosis</label>
 							<input type="text" class="form-control" name="cantidad_re" placeholder="Ingrese la cantidad">
 						</div>
 					</div>
@@ -235,6 +242,7 @@
 								
 							<label>Tipo de precentacion</label>
 							<select class="form-control" name="precentacion">
+								
 								<option value="Solucion">Solucion</option>
 								<option value="Tabletas">Tabletas</option>
 							</select>
