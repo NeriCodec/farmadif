@@ -16,8 +16,8 @@
                             <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
                         </a>
                         
-                        @if(count($medicamentosRequeridos) < 0 && 
-                            count($medicamentosAgregados) < 0) 
+                        @if((count($medicamentosRequeridos) <= 0) and 
+                            (count($medicamentosAgregados) <= 0)) 
                         <a class="btn btn-danger btn-small pull-right" style="margin-right: 10px;" href="{{ route('ruta_salida_sin_medicamentos') }}">
                                 Cancelar y volver
                         </a>

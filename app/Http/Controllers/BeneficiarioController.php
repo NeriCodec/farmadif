@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Beneficiario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Yajra\Datatables\Facades\Datatables;
 use App\Http\Database\BeneficiarioDatabase;
 use App\Http\Requests\RegistrarBeneficiarioRequest;
 
@@ -54,7 +53,11 @@ class BeneficiarioController extends Controller
     	return redirect()->route('ruta_beneficiarios');
     }
 
-
+    /**
+    * Muestra el detalle de un beneficiario
+    * @param Id del beneficiario $idBeneficiario
+    * @return View
+    */
     public function mostrarDetalleBeneficiario($idBeneficiario)
     {
         $beneficiario = Beneficiario::find($idBeneficiario);
@@ -62,5 +65,12 @@ class BeneficiarioController extends Controller
 
         return view('beneficiario.detalles')->with('detalles', $detallesBeneficiario)
                                             ->with('beneficiario', $beneficiario);
+    }
+
+    /**
+    * Inicio de sesion del beneficiario
+    */
+    public function inicioSesionBeneficiario(Request $request) {
+        dd($request);
     }
 }
