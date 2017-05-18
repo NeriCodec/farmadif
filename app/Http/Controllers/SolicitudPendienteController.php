@@ -21,9 +21,6 @@ class SolicitudPendienteController extends Controller
         $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnDonador($idBeneficiario, $solicitudMedicamento->id_solicitud);
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
-      //dd(count($medicamentosRequeridos));
-
-
     	return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
                                                     ->with('medicamentosRequeridos', $medicamentosRequeridos)
                                                     ->with('medicamentos', $medicamentosAgregados);

@@ -1676,3 +1676,54 @@ Verificacion de salida con ID beneficiario { 1 }
 Cantidad de medicamento: 1
 Tipo Verificacion: Exitosa
 ===========================================
+============2017-05-17 07:05:50============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-17 08:05:54============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 1 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-17 08:05:12============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-17 08:05:27============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-17 08:05:59============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 7 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-17 08:05:14============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 7 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-18 07:05:45============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================

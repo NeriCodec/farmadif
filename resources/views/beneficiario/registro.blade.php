@@ -152,6 +152,35 @@
 
 						    <div class="row">
 						    	<div class="col-md-6">
+						    		<div class="form-group{{ $errors->has('usuario') ? ' has-error' : '' }}">
+								        <label>Ingrese el usuario</label>
+								        <input class="form-control" name='usuario' id='usuario' placeholder="Ingrese el usuario" value="{{ old('usuario') }}">
+								        @if ($errors->has('usuario'))
+		                                <span class="help-block">
+		                                    <strong>{{ $errors->first('usuario') }}</strong>
+		                                </span>
+		                            	@endif
+								    </div>
+						    	</div>
+						    	<div class="col-md-6">
+						    		<div class="form-group{{ $errors->has('contrasena') ? ' has-error' : '' }}">
+								        <label>Ingrese la contraseña</label>
+								        <input class="form-control" name='contrasena' id='contrasena' placeholder="Ingrese la contraseña" value="{{ old('contrasena') }}">
+								        @if ($errors->has('contrasena'))
+		                                <span class="help-block">
+		                                    <strong>{{ $errors->first('contrasena') }}</strong>
+		                                </span>
+		                            	@endif
+								    </div>
+						    	</div>
+						    </div>
+
+						    
+
+						    
+
+						    <div class="row">
+						    	<div class="col-md-6">
 						    		<div class="form-group{{ $errors->has('fotografia') ? ' has-error' : '' }}">
 								        <label>Fotografia</label>
 								        <input type="file"  name="fotografia" >
@@ -162,6 +191,7 @@
 		                            	@endif
 								    </div>
 						    	</div>
+
 						    	<div class="col-md-6">
 						 			<div class="form-group{{ $errors->has('identificacion') ? ' has-error' : '' }}">
 								        <label>Identificacion</label>
@@ -174,11 +204,6 @@
 								    </div>
 						    	</div>
 						    </div>
-
-						     
-
-
-
 						</div>
 						<div class="col-md-12">
 					    	<button type="submit" style="float: right;" class="btn btn-success btn-md">Guardar <i class="fa fa-check"></i>

@@ -11,6 +11,9 @@ Route::name('ruta_beneficiario_registro')->get('/beneficiario/registro', 'Benefi
 Route::name('ruta_beneficiario_registrar')->post('/beneficiario/registrar', 'BeneficiarioController@registrar');
 Route::name('ruta_detalle_beneficiario')->get('/beneficiarios/detalles/{idBeneficiario}', 'BeneficiarioController@mostrarDetalleBeneficiario');
 
+Route::resource('/beneficiario/login', 'LoginBeneficiarioController');
+
+
 # Rutas para el Donadores
 Route::name('ruta_donadores')->get('/donadores', 'DonadorController@mostrarDonadores');
 Route::name('ruta_donador_registro')->get('/donador/registro', 'DonadorController@mostrarRegistro');
@@ -29,7 +32,6 @@ Route::name('ruta_eliminar_medicamento')->delete('/salida/eliminar/{idMedicament
 # Ruta para la salida de medicamento pendiente
 Route::name('ruta_solicitud_pendiente')->get('/solicitud-pendiente/{idBeneficiario}', 'SolicitudPendienteController@mostrarSolicitud');
 Route::name('ruta_solicitud_guardar_medicamento')->post('/solicitud-pendiente/agregar/{idBeneficiario}', 'SolicitudPendienteController@agregarMedicamento');
-Route::name('ruta_cancelar_solicitud')->get('/solicitud/cancelada', 'SolicitudPendienteController@cancelarSolicitud');
 Route::name('ruta_eliminar_medicamento_requerido')->delete('solicitud-pendiente/eliminar/{idMedicamento}/{idMedicamentoRequerido}/{idBeneficiario}', 'SolicitudPendienteController@eliminarMedicamento');
 
 #Rutas para la entrada de medicaento

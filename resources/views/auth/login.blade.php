@@ -16,8 +16,8 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="name">
                                     <option value="Administrador" >Administrador</option>
-                                    <option value="Auxiliar" >Auxiliar</option>
-                                    <option value="Invitado" >Invitado</option>
+                                    {{-- <option value="Auxiliar" >Auxiliar</option>
+                                    <option value="Invitado" >Invitado</option> --}}
                                 </select>
                                 @if ($errors->has('name'))
                                     <span class="help-block">
