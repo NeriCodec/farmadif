@@ -23,7 +23,7 @@ class MedicamentoDatabase
         $Medicamento->num_folio = $request->get('nro_folio');
         $Medicamento->mes_caducidad = $request->get('mes_caducidad');
         $Medicamento->anio_caducidad = $request->get('anio_caducidad');
-        $Medicamento->cantidad = $request->get('cantidad_re');
+        $Medicamento->dosis = $request->get('cantidad_re');
         $Medicamento->solucion_tableta = $request->get('precentacion');
         $Medicamento->tipo_contenido = $request->get('medida');
         $Medicamento->fecha_registro = date("Y-m-d");
