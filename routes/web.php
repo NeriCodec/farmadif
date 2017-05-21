@@ -46,6 +46,11 @@ Route::name('ruta_nuevo_existente_registrar_medicamento')->get('/nuevo/donador/{
 # Rutas del medicamento
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamentos');
 
+
+#Rutas de imprecion de Reportes
+
+Route::name('ruta_imprimir_inventario_pdf')->get('/imprimir/inventario','ReporteInventarioPDFController@imprimirReporte');
+
 #Rutas para la parte de donadores
 Route::name('ruta_seleccionar_donador_donador')->get('/seleccionar/{idDonador}','DonadorController@obtieneMedicamentosDonados');
 
