@@ -23,6 +23,7 @@ class VerificacionSalidaDatabase
         $solicitudMedicamento->tipo_solicitud = "En proceso";
         $solicitudMedicamento->descripcion = $request->get('descripcion');
         $solicitudMedicamento->diagnostico = $request->get('diagnostico');
+        $solicitudMedicamento->fecha_solicitud = date('Y-m-d');
     	$solicitudMedicamento->save();
 	}
 

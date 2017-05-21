@@ -46,6 +46,9 @@ Route::name('ruta_nuevo_existente_registrar_medicamento')->get('/nuevo/donador/{
 # Rutas del medicamento
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamentos');
 
+# Rutas de solicitudes
+Route::name('ruta_solicitudes')->get('/solicitudes', 'SolicitudPendienteController@mostrarSolicitudes');
+
 
 #Rutas de imprecion de Reportes
 

@@ -27,6 +27,12 @@ class SolicitudPendienteController extends Controller
                                                     ->with('medicamentos', $medicamentosAgregados);
     }
 
+    public function mostrarSolicitudes()
+    {
+        $solicitudMedicamento = SolicitudMedicamento::orderBy('id_solicitud', 'desc')->paginate(10);
+        return view('solicitudPendiente.solicitudes')->with('solicitudes', $solicitudMedicamento);
+    }
+
     public function agregarMedicamento($idBeneficiario, SolicitudRequest $request)
     {
         $beneficiario = Beneficiario::find($idBeneficiario);

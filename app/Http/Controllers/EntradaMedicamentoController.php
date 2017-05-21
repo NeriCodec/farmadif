@@ -40,17 +40,30 @@ class EntradaMedicamentoController extends Controller
         
         $medicamento = Medicamento::find($idMedicamento);
 
+        // dd($medicamento);
         
-        if($medicamento->estatus == 'requerido') 
+        if($medicamento == null) 
         {
-            MedicamentoDatabase::actualizarMedicamento($request, $idMedicamento); 
+            MedicamentoDatabase::guardarMedicamento($request); 
+           //gaurdar registro en la entrada de medicamento
+            $obtieneUltimoMedicamento = Medicamento::all()->last();
+            EntradaMedicamentoDatabase::guardarEntradaMedicamento($request, $obtieneUltimoMedicamento->id_medicamento);
+            
         }
         else 
         {
-           MedicamentoDatabase::guardarMedicamento($request); 
-           //gaurdar registro en la entrada de medicamento
-           $obtieneUltimoMedicamento = Medicamento::all()->last();
-           EntradaMedicamentoDatabase::guardarEntradaMedicamento($request, $obtieneUltimoMedicamento->id_medicamento);
+           if($medicamento->estatus == 'requerido') 
+           {
+                MedicamentoDatabase::actualizarMedicamento($request, $idMedicamento); 
+           }
+           else 
+           {
+                MedicamentoDatabase::guardarMedicamento($request); 
+                //gaurdar registro en la entrada de medicamento
+                $obtieneUltimoMedicamento = Medicamento::all()->last();
+                EntradaMedicamentoDatabase::guardarEntradaMedicamento($request, $obtieneUltimoMedicamento->id_medicamento);
+           }
+          
         }
         
         
@@ -67,7 +80,7 @@ class EntradaMedicamentoController extends Controller
         return view('entradaMedicamento.panelEntradaMedicamento')->with('donador', $donador)->with('medicamentos', $medicamentos)->with('medicamentosDonador', $medicamentoDonado)->with('medicamentoRequerido', $medicamentoNecesario);
     }
 
-    public function nuevoMedicamentoRegistrar($idDonador,Request $request)
+    public function nuevoMedicamentoRegistrar($idDonador, Request $request)
     {
         $donador = Donador::find($idDonador);
         return view('entradaMedicamento.registrarMedicamentoEntrada')->with('donador', $donador)->with('medicamentos');
@@ -75,7 +88,7 @@ class EntradaMedicamentoController extends Controller
 
     public function nuevoExistenteMedicamentoRegistrar($idDonador,$idMedicamento,Request $request){
         
-        $medicamento = Medicamento::find($idMedicamento);;
+        $medicamento = Medicamento::find($idMedicamento);
         $donador = Donador::find($idDonador);
         return view('entradaMedicamento.registrarMedicamentoEntrada')->with('donador', $donador)->with('medicamentos', $medicamento);
     }

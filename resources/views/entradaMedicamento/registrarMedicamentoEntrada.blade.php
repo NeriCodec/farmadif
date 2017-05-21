@@ -156,15 +156,15 @@
        </div>
 </div>
 @else
+
 <div class="panel panel-default">
             <div class="panel-heading">
                 Nuevo medicamento
             </div>
        <div class="panel-body">
-			<!--inicia el cuerpo-->
 			</br>
 			<div class="row">
-				<form action="{{ route('ruta_guardar_medicamento_entrada_nuevo') }}">
+				<form action="{{ route('ruta_guardar_medicamento_entrada_nuevo' , ['idMedicamento' => 0]) }}">
 					<div class="col-md-6">
 						<input type="hidden" name="idDonador" value="{{ $donador->id_donador }}">
 						<div class="form-horizontal">
@@ -270,9 +270,6 @@
 					
 				</form>
 			</div>
-			<!--modulo de busqueda de medicamento-->
-
-			<!--termina le cuerpo-->
        </div>
 </div>
 

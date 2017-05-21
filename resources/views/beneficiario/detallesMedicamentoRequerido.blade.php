@@ -18,16 +18,17 @@
            
 
             <div style="height:500px; overflow: auto;">
-            <table class="table table-striped">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
+                        <th width="1%"></th>
                         <th width="5%">No. Solicitud</th>
                         <th width="10%">No. Folio</th>
                         <th>Nombre comercial</th>
                         <th>Nombre compuesto</th>
                         <th>Descripcion</th>
                         <th>Diagnostico</th>
-                        {{-- <th><center>Existencia</center></th> --}}
+                        <th><center>Existencia</center></th>
                         <th><center>Estatus Solicitud</center></th>
                         <th>Eliminar</th>
                     </tr>
@@ -36,6 +37,7 @@
                 <tbody>
                     @foreach($detalles as $medicamento)
                     <tr>
+                        <td style="background-color: @if($medicamento->estatus_solicitud == "donado") green @else red @endif ;"></td>
                         <th># {{ $medicamento->id_solicitud }}</th>
                         <th># {{ $medicamento->num_folio }}</th>
                         <td>{{ $medicamento->nombre_comercial }}</td>
@@ -46,11 +48,16 @@
                         @if($medicamento->estatus == "requerido") 
                         <td class="danger"><center><b>Sin provision</b></center></td>
                         @elseif($medicamento->estatus == "donado")
-                         <td class="success"><center><b>Donado</b></center></td>
+                         <td class="warning"><center><b>Donado</b></center></td>
                         @else
                          <td class="success"><center><b>En existencia</b></center></td>
                         @endif
-                        {{-- <td class="success"><center><b>En existencia</b></center></td> --}}
+
+                        @if($medicamento->estatus_solicitud == "donado") 
+                        <td class="success"><center><b>Donado</b></center></td>
+                        @else
+                         <td class="danger"><center><b>Sin donar</b></center></td>
+                        @endif
                        
 {{-- 
                         @if($medicamento->estatus == "donado") 

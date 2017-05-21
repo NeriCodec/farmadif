@@ -6,8 +6,8 @@
                 </div>
                 
                 <form class="navbar-form navbar-left pull-left" action="{{ route('ruta_nuevo_registrar_medicamento', ['id' => $donador->id_donador]) }}" method="get">
-          <button type="submit" class="btn btn-default">Registrar nuevo medicamento</button>
-        </form>
+                  <button type="submit" class="btn btn-default">Registrar nuevo medicamento</button>
+                </form>
          <form class="navbar-form navbar-left pull-right" action="{{ route('ruta_buscar_medicamento_seleccionar', ['id' => $donador->id_donador]) }}" method="get">
           <div class="form-group">
             <input type="text" class="form-control" name="medicamento" placeholder="Buscar">
