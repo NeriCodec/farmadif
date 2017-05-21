@@ -17,7 +17,7 @@
             <div style="height:500px; overflow: auto;">
             <table class="table table-striped">
                 <thead>
-                    <tr class="info">
+                    <tr>
                         <th>Nombre comercial</th>
                         <th>Nombre compuesto</th>
                         <th>Descripcion</th>

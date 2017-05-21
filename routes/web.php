@@ -11,7 +11,9 @@ Route::name('ruta_beneficiario_registro')->get('/beneficiario/registro', 'Benefi
 Route::name('ruta_beneficiario_registrar')->post('/beneficiario/registrar', 'BeneficiarioController@registrar');
 Route::name('ruta_detalle_beneficiario')->get('/beneficiarios/detalles/{idBeneficiario}', 'BeneficiarioController@mostrarDetalleBeneficiario');
 
-Route::resource('/beneficiario/login', 'LoginBeneficiarioController');
+# Rutas para los WS 
+Route::resource('/usuarios/login', 'LoginWSController', ['only'=>['store']] );
+Route::resource('/usuarios/medicamento', 'MedicamentoWSController', ['only'=>['store']] );
 
 
 # Rutas para el Donadores

@@ -55,7 +55,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Iniciar sesion</a></li>
+                            {{-- Sin ninguna accion --}}
+                            {{-- <li><a href="{{ route('login') }}">Iniciar sesion</a></li> --}}
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -83,52 +84,28 @@
                                     </li>
                                 </ul>
                             </li>
-                            {{-- <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Beneficiarios <span class="caret"></span>
-                                </a>
-                                
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('ruta_beneficiarios') }}">Mostrar</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('ruta_beneficiario_registro') }}">Registrar</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Donadores <span class="caret"></span>
-                                </a>
-                                
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('ruta_donadores') }}">Mostrar</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('ruta_donador_registro') }}">Registrar</a>
-                                    </li>
-                                </ul>
-                            </li> --}}
                             <li>
                                 <a href="{{ route('ruta_beneficiarios') }}">
-                                    Beneficiario</span>
+                                    Beneficiario
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('ruta_donadores') }}">
-                                    Donadores</span>
+                                    Donadores
+                                    <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
                                 </a>
                             </li>
                              <li>
                                 <a href="{{ route('ruta_entrada_medicamentos') }}">
-                                    Entrada medicamento</span>
+                                    Entrada medicamento
+                                    <span class="glyphicon glyphicon-open-file" aria-hidden="true"></span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('ruta_salida_medicamentos') }}">
-                                    Salida medicamento</span>
+                                    Salida medicamento
+                                    <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
                                 </a>
                             </li>
                             <li class="dropdown">
@@ -156,7 +133,7 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container-fluid">
             @yield('content')
         </div>
 

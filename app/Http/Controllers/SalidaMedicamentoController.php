@@ -82,7 +82,7 @@ class SalidaMedicamentoController extends Controller
         $solicitudMedicamento = SolicitudMedicamento::all()->last();
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
-       $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnDonador($idBeneficiario, $solicitudMedicamento->id_solicitud);
+       $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiario($idBeneficiario, $solicitudMedicamento->id_solicitud);
 
        // dd(count($medicamentosRequeridos));
 
@@ -140,7 +140,7 @@ class SalidaMedicamentoController extends Controller
 
         $beneficiario = Beneficiario::find($idBeneficiario);
 
-        $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnDonador($idBeneficiario, $solicitudMedicamento->id_solicitud);
+        $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiario($idBeneficiario, $solicitudMedicamento->id_solicitud);
 
 
         return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
@@ -186,7 +186,7 @@ class SalidaMedicamentoController extends Controller
         }
 
  
-        $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnDonador($idbeneficiario, $solicitudMedicamento->id_solicitud);
+        $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiario($idbeneficiario, $solicitudMedicamento->id_solicitud);
 
         return view('salidaMedicamento.panelSalidaMedicamento')->with('beneficiario', $beneficiario)
         ->with('medicamentos', $medicamentos)
