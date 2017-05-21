@@ -27,8 +27,26 @@ class MedicamentoDatabase
         $Medicamento->solucion_tableta = $request->get('precentacion');
         $Medicamento->tipo_contenido = $request->get('medida');
         $Medicamento->fecha_registro = date("Y-m-d");
+        $Medicamento->estatus = 'existencia';
         $Medicamento->save();
 	}
+
+    public static function actualizarMedicamento(RegistrarMedicamentoRequest $request, $idMedicamento)
+    {
+        $medicamento = Medicamento::find($idMedicamento);
+        $medicamento->nombre_compuesto = $request->get('nombre_compuesto');
+        $medicamento->nombre_comercial = $request->get('nombre_comercial');
+        $medicamento->dosis = $request->get('cantidad_re');
+        $medicamento->solucion_tableta = $request->get('precentacion');
+        $medicamento->tipo_contenido = $request->get('medida');
+        $medicamento->num_etiqueta = $request->get('nro_etiqueta');
+        $medicamento->num_folio = $request->get('nro_folio');
+        $medicamento->mes_caducidad = $request->get('mes_caducidad');
+        $medicamento->anio_caducidad = $request->get('anio_caducidad');
+        $medicamento->estatus = 'existencia';
+        $medicamento->fecha_registro = date("Y-m-d");
+        $medicamento->save();
+    }
 
     public static function guardarMedicamentoRequerido(SolicitudRequest $request)
     {

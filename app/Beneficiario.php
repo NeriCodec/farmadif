@@ -67,8 +67,8 @@ class Beneficiario extends Model
 
     public static function medicamentosRequeridosPorUnBeneficiarioId($idBeneficiario)
     {
-        $medicamentosRequeridos = \DB::select('SELECT nombre_comercial, nombre_compuesto,
-        solucion_tableta, tipo_contenido, dosis, id_solicitud
+        $medicamentosRequeridos = \DB::select('SELECT nombre_comercial, nombre_compuesto, id_solicitud, estatus_solicitud,
+        solucion_tableta, tipo_contenido, dosis, id_solicitud, descripcion, diagnostico, num_folio, estatus
         FROM tb_medicamentos_requeridos
         INNER JOIN tb_medicamentos
         ON tb_medicamentos_requeridos.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento

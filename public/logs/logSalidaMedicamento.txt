@@ -1801,3 +1801,150 @@ Lineas-codigo: 58-68
 Verificacion de salida con ID beneficiario { 6 } 
 Tipo Verificacion: Exitosa
 ===========================================
+============2017-05-21 01:05:02============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 03:05:25============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 4 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 04:05:00============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 4 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 04:05:07============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 2 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 04:05:22============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 2 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 04:05:58============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 7 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 04:05:13============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 8 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 05:05:09============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 05:05:40============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 05:05:49============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 1 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 05:05:07============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 05:05:47============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 05:05:05============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 2 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 06:05:02============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 2 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 06:05:12============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 2 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 06:05:42============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 06:05:50============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 1 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 06:05:55============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 1 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 06:05:42============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 8 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-21 06:05:49============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 8 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================

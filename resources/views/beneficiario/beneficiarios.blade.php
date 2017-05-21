@@ -27,24 +27,18 @@
                 <table width="100%" class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th width="5%" style="font-size: 13px;">Actualizar</th>
+                            <th width="5%" style="font-size: 13px;">Eliminar</th>
                             <th>Nombre</th>
                             <th>Domicilio</th>
                             <th>Comunidad</th>
                             <th>Fecha de nacimiento</th>
                             <th>Fecha de registro</th>
-                            {{-- <th>Detalles</th> --}}
-                            <th>Actualizar</th>
-                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($beneficiarios as $beneficiario)
                         <tr>
-                            <td>{{ $beneficiario->nombre . " " . $beneficiario->ap_paterno . " " .$beneficiario->ap_materno}}</td>
-                            <td>{{ $beneficiario->domicilio}}</td>
-                            <td>{{ $beneficiario->comunidad}}</td>
-                            <td>{{ $beneficiario->fecha_nacimiento}}</td>
-                            <td>{{ $beneficiario->fecha_registro}}</td>
                             <td>
                                 <center>
                                     <a href="#">
@@ -63,6 +57,11 @@
                                     </a>
                                 </center>
                             </td>
+                            <td>{{ $beneficiario->nombre . " " . $beneficiario->ap_paterno . " " .$beneficiario->ap_materno}}</td>
+                            <td>{{ $beneficiario->domicilio}}</td>
+                            <td>{{ $beneficiario->comunidad}}</td>
+                            <td>{{ $beneficiario->fecha_nacimiento}}</td>
+                            <td>{{ $beneficiario->fecha_registro}}</td>
                         </tr>
                         @endforeach
                     </tbody>

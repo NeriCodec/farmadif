@@ -7,7 +7,7 @@
     <div class="panel-heading">
     	<div class="row">
     		<div class="col-md-8">
-    			<h4>Agregar medicamentos a la solicitud pendiente</h4>
+    			Solicitud pendiente ( No. {{$noSolicitud}} )
     		</div>
 
             <a href="{{ route('ruta_salida_verificada_medicamentos', ['idBeneficiario' => $beneficiario->id_beneficiario]) }}">

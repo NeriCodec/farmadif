@@ -58,7 +58,7 @@ class BeneficiarioController extends Controller
     * @param Id del beneficiario $idBeneficiario
     * @return View
     */
-    public function mostrarDetalleBeneficiario($idBeneficiario)
+    public function mostrarDetalle($idBeneficiario)
     {
         $beneficiario = Beneficiario::find($idBeneficiario);
         $detallesBeneficiario = Beneficiario::medicamentosDelBeneficiario($idBeneficiario);
@@ -67,10 +67,12 @@ class BeneficiarioController extends Controller
                                             ->with('beneficiario', $beneficiario);
     }
 
-    /**
-    * Inicio de sesion del beneficiario
-    */
-    public function inicioSesionBeneficiario(Request $request) {
-        dd($request);
+    public function mostrarDetalleMedicamentoRequerido($idBeneficiario)
+    {
+        $beneficiario = Beneficiario::find($idBeneficiario);
+        $detallesBeneficiario = Beneficiario::medicamentosRequeridosPorUnBeneficiarioId($idBeneficiario);
+
+        return view('beneficiario.detallesMedicamentoRequerido')->with('detalles', $detallesBeneficiario)
+                                            ->with('beneficiario', $beneficiario);
     }
 }

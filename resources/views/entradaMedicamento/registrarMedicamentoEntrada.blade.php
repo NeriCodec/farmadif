@@ -32,13 +32,13 @@
 @if(count($medicamentos) > 0)
 <div class="panel panel-default">
             <div class="panel-heading">
-                Agregar a existente
+                Agregar a existente (# {{$medicamentos->id_medicamento}} )
             </div>
        <div class="panel-body">
 			<!--inicia el cuerpo-->
 			</br>
 			<div class="row">
-				<form action="{{ route('ruta_guardar_medicamento_entrada_nuevo') }}">
+				<form action="{{ route('ruta_guardar_medicamento_entrada_nuevo', ['idMedicamento' => $medicamentos->id_medicamento]) }}">
 					<div class="col-md-6">
 						<input type="hidden" name="idDonador" value="{{ $donador->id_donador }}">
 						<div class="form-horizontal">
@@ -51,7 +51,7 @@
 							<label>Numero de folio</label>
 							<input type="text" class="form-control" name="nro_folio" placeholder="Numero de folio">
 							<label>Dosis</label>
-							<input type="text" class="form-control" name="cantidad_re" value="{{ $medicamentos->dosis }}"placeholder="Ingrese la cantidad">
+							<input type="text" class="form-control" name="cantidad_re" value="{{ $medicamentos->dosis }}" placeholder="Ingrese la cantidad">
 						</div>
 					</div>
 					<div class="col-md-6">

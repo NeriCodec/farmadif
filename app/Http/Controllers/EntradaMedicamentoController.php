@@ -25,7 +25,8 @@ class EntradaMedicamentoController extends Controller
     	return view('entradaMedicamento.panel')->with('donadores', $donadores);
     }
 
-    public function selecionarDonador($idDonador,Request $request){
+    public function selecionarDonador($idDonador,Request $request)
+    {
     	$medicamentos = Medicamento::paginate(10);
         $medicamentoDonado = Medicamento::medicamentosDelDonador($idDonador);
         $medicamentoNecesario = Medicamento::obtineMedicamentoRequeridos();
@@ -34,17 +35,31 @@ class EntradaMedicamentoController extends Controller
 
     }
 
-    public function gurdarNuevoMedicamento(RegistrarMedicamentoRequest $request){
+    public function gurdarNuevoMedicamento(RegistrarMedicamentoRequest $request, $idMedicamento)
+    {
+        
+        $medicamento = Medicamento::find($idMedicamento);
 
-        MedicamentoDatabase::guardarMedicamento($request);
-        //gaurdar registro en la entrada de medicamento
-        $obtieneUltimoMedicamento = Medicamento::all()->last();
-        EntradaMedicamentoDatabase::guardarEntradaMedicamento($request,$obtieneUltimoMedicamento->id_medicamento);
+        
+        if($medicamento->estatus == 'requerido') 
+        {
+            MedicamentoDatabase::actualizarMedicamento($request, $idMedicamento); 
+        }
+        else 
+        {
+           MedicamentoDatabase::guardarMedicamento($request); 
+           //gaurdar registro en la entrada de medicamento
+           $obtieneUltimoMedicamento = Medicamento::all()->last();
+           EntradaMedicamentoDatabase::guardarEntradaMedicamento($request, $obtieneUltimoMedicamento->id_medicamento);
+        }
+        
+        
         
         return redirect()->route('ruta_medicamentos');
     }
 
-    public function buscarMedicamentoSeleccionar($idDonador,Request $request){
+    public function buscarMedicamentoSeleccionar($idDonador,Request $request)
+    {
         $medicamentos = Medicamento::BuscarMedicamento($request->get('medicamento'))->paginate(10);
         $medicamentoDonado = Medicamento::medicamentosDelDonador($idDonador);
         $medicamentoNecesario = Medicamento::obtineMedicamentoRequeridos();
