@@ -37,8 +37,8 @@ class Beneficiario extends Model
 
     public static function medicamentosDelBeneficiario($idDonador)
     {
-        $medicamentosDonador  = \DB::select('SELECT nombre_comercial, nombre_compuesto, num_etiqueta,
-        num_folio, mes_caducidad, anio_caducidad, solucion_tableta, tipo_contenido, diagnostico, descripcion
+        $medicamentosDonador  = \DB::select('SELECT nombre_comercial, nombre_compuesto, num_etiqueta, id_medicamento,
+        num_folio, mes_caducidad, anio_caducidad, solucion_tableta, tipo_contenido, diagnostico, descripcion, dosis
         FROM tb_salida_medicamento
         INNER JOIN tb_medicamentos
         ON tb_salida_medicamento.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
@@ -50,7 +50,7 @@ class Beneficiario extends Model
 
     }
 
-    public static function medicamentosRequeridosPorUnDonador($idBeneficiario, $idSolicitud)
+    public static function medicamentosRequeridosPorUnBeneficiario($idBeneficiario, $idSolicitud)
     {
         $medicamentosRequeridos = \DB::select('SELECT nombre_comercial, nombre_compuesto, num_etiqueta,
         num_folio, mes_caducidad, anio_caducidad, solucion_tableta, tipo_contenido, dosis, id_medicamentos_requeridos, id_medicamento
@@ -63,6 +63,36 @@ class Beneficiario extends Model
         AND tb_solicitudes.id_solicitud =' . $idSolicitud );
 
         return $medicamentosRequeridos;
+    }
+
+    public static function medicamentosRequeridosPorUnBeneficiarioId($idBeneficiario)
+    {
+        $medicamentosRequeridos = \DB::select('SELECT nombre_comercial, nombre_compuesto,
+        solucion_tableta, tipo_contenido, dosis, id_solicitud
+        FROM tb_medicamentos_requeridos
+        INNER JOIN tb_medicamentos
+        ON tb_medicamentos_requeridos.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
+        INNER JOIN tb_solicitudes
+        ON tb_medicamentos_requeridos.tb_solicitudes_id_solicitud = tb_solicitudes.id_solicitud
+        WHERE tb_beneficiarios_id_beneficiario = ' . $idBeneficiario);
+
+        return $medicamentosRequeridos;
+    }
+
+    /**
+    * Metodo que realiza una busqueda del beneficiario
+    * @param $query 
+    * @param String nombre, nombre comercial del medicamento
+    * @return $void
+    */
+    public static function buscarBeneficiarioLogin($usuario, $contrasenia)
+    {
+
+        $beneficiario = \DB::select("SELECT usuario, id_beneficiario
+        FROM tb_beneficiarios
+        WHERE usuario = '" . $usuario . "' AND contrasenia = '" . $contrasenia ."'");
+
+        return $beneficiario;
     }
 
 }

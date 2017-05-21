@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Beneficiario;
 use Illuminate\Http\Request;
 
-class LoginBeneficiarioController extends Controller
+class MedicamentoWSController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,26 +14,7 @@ class LoginBeneficiarioController extends Controller
      */
     public function index()
     {
-        $beneficiarios = Beneficiario::all(
-            ['only' => 'id_beneficiario', 'nombre', 'usuario' ]
-        );
-
-         if($beneficiarios == null)
-        {
-            return response()->json( 
-                [
-                    "error" => "Usuarios no encontrado",
-                ] ,
-                404
-            );
-        }
-
-        return response()->json( 
-            [
-                "usuarios" => $beneficiarios
-            ] ,
-            200
-        );
+        //
     }
 
     /**
@@ -55,7 +35,43 @@ class LoginBeneficiarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tokenAutenticacion = "5c73ca7f-1ecf-417e-862c-7695614d18be";
+        $idBeneficiario = $request->input('id_beneficiario');
+        $token = $request->input('token');
+
+        if($idBeneficiario == null || $token == null) 
+        {
+            return response()->json( 
+                [
+                    "status" => "400",
+                    "error" => "datos no obtenidos",
+                ] ,
+                400
+            );
+        }
+
+        if($tokenAutenticacion == $token) 
+        {
+            $medicamentosDonados = Beneficiario::medicamentosDelBeneficiario($idBeneficiario);
+            $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiarioId($idBeneficiario);
+
+            return response()->json( 
+                [
+                    "status" => "200",
+                    "medicamento_donado" => $medicamentosDonados,
+                    "medicamento_requerido" => $medicamentosRequeridos
+                ] ,
+                200
+            );
+        }
+
+        return response()->json( 
+            [
+                "status" => "401",
+                "error" => "autenticacion fallida",
+            ] ,
+            401
+        );
     }
 
     /**
@@ -66,31 +82,7 @@ class LoginBeneficiarioController extends Controller
      */
     public function show($id)
     {
-
-        $beneficiario = Beneficiario::find(
-            $id, 
-            [
-                'only' => 'id_beneficiario', 'nombre', 'usuario' 
-            ]
-        );
-
-        if($beneficiario == null)
-        {
-            return response()->json( 
-                [
-                    "error" => "Usuario no encontrado",
-                ] ,
-                404
-            );
-        }
-
-        return response()->json( 
-            [
-                "nombre" => $beneficiario->nombre,
-                "usuario" => $beneficiario->usuario
-            ] ,
-            200
-        );
+        //
     }
 
     /**

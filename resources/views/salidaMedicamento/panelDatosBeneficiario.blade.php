@@ -1,6 +1,6 @@
 <table width="100%" class="table table-striped">
     <thead>
-        <tr class="warning">
+        <tr>
             <th>Nombre</th>
             <th>Domicilio</th>
             <th>Comunidad</th>

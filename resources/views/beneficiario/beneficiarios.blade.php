@@ -32,7 +32,9 @@
                             <th>Comunidad</th>
                             <th>Fecha de nacimiento</th>
                             <th>Fecha de registro</th>
-                            <th>Detalles</th>
+                            {{-- <th>Detalles</th> --}}
+                            <th>Actualizar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,9 +47,18 @@
                             <td>{{ $beneficiario->fecha_registro}}</td>
                             <td>
                                 <center>
-                                    <a href="{{ route('ruta_detalle_beneficiario',$beneficiario->id_beneficiario) }}">
-                                        <button class="btn btn-success btn-small ">
-                                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                                    <a href="#">
+                                        <button class="btn btn-default btn-small ">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        </button> 
+                                    </a>
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    <a href="#">
+                                        <button class="btn btn-default btn-small ">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                         </button> 
                                     </a>
                                 </center>

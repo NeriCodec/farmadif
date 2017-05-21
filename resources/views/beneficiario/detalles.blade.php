@@ -17,7 +17,7 @@
             <div style="height:500px; overflow: auto;">
             <table class="table table-striped">
                 <thead>
-                    <tr class="info">
+                    <tr>
                         <th>Nombre comercial</th>
                         <th>Nombre compuesto</th>
                         <th>Descripcion</th>
@@ -43,7 +43,7 @@
                             {{-- <form action="" method="post"> --}}
                                 {{-- {{ csrf_field() }} --}}
                             <button type="button" class="btn btn-danger btn-small btn-agregar" data-toggle="modal" data-target="#confirmacion{{ $medicamento->num_folio }}">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </button>
                             {{-- </form> --}}
                         </center>

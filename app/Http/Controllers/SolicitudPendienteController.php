@@ -18,7 +18,7 @@ class SolicitudPendienteController extends Controller
     {
     	$beneficiario = Beneficiario::find($idBeneficiario);
         $solicitudMedicamento = SolicitudMedicamento::all()->last();
-        $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnDonador($idBeneficiario, $solicitudMedicamento->id_solicitud);
+        $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiario($idBeneficiario, $solicitudMedicamento->id_solicitud);
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
     	return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
@@ -37,7 +37,7 @@ class SolicitudPendienteController extends Controller
                                                                 $solicitudMedicamento->id_solicitud,
                                                                 $idBeneficiario);
 
-        $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnDonador($idBeneficiario, $solicitudMedicamento->id_solicitud);
+        $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiario($idBeneficiario, $solicitudMedicamento->id_solicitud);
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
         return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
@@ -66,7 +66,7 @@ class SolicitudPendienteController extends Controller
 
         $solicitudMedicamento = SolicitudMedicamento::all()->last();
 
-        $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnDonador($idBeneficiario, $solicitudMedicamento->id_solicitud);
+        $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiario($idBeneficiario, $solicitudMedicamento->id_solicitud);
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
         return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
