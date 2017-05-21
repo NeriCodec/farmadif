@@ -49,7 +49,7 @@
                             <td>
                                 <center>
                                 <a href="{{ route('ruta_seleccionar_donador_entrada', ['id' => $donador->id_donador]) }}">
-                                     <button class="btn btn-success btn-small ">
+                                     <button class="btn btn-default btn-small ">
                                            <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
                                      </button> 
                                 </a>

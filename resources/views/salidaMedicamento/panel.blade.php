@@ -36,6 +36,7 @@
                                 <th>Fecha de nacimiento</th>
                                 <th>Fecha de registro</th>
                                 <th>Salida medicamento</th>
+                                <th>Detalles salida</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,8 +50,17 @@
                                 <td>
                                     <center>
                                         <a href="{{ route('ruta_salida_medicamento',$beneficiario->id_beneficiario) }}">
-                                            <button class="btn btn-success btn-small ">
-                                                <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+                                            <button class="btn btn-default btn-small ">
+                                                <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+                                            </button> 
+                                        </a>
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <a href="{{ route('ruta_detalle_beneficiario',$beneficiario->id_beneficiario) }}">
+                                            <button class="btn btn-default btn-small ">
+                                                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                             </button> 
                                         </a>
                                     </center>
