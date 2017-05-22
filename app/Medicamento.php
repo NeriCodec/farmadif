@@ -59,6 +59,27 @@ class Medicamento extends Model
         $medicamentosRequeridos = \DB::select('select * from tb_medicamentos where tb_medicamentos.estatus=\'requerido\'');
         return $medicamentosRequeridos;
     }
+    public static function medicamentosVencidos(){
+        $medicamentos = \DB::select('select * from tb_medicamentos where mes_caducidad < MONTH(NOW())  and anio_caducidad < YEAR(NOW())');
+        return $medicamentos;
+    }
+
+    public static function salidasMedicamentos(){
+        $medicamentos = \DB::select('select * from tb_salida_medicamento,tb_medicamentos,tb_beneficiarios where tb_medicamentos.id_medicamento = tb_salida_medicamento.tb_medicamentos_id_medicamento and tb_beneficiarios.id_beneficiario=tb_salida_medicamento.tb_beneficiarios_id_beneficiario');
+        return $medicamentos;
+    }
+
+    public static function entradaMedicamentos(){
+
+        $medicamentos = \DB::select('select * from tb_entrada_medicamento,tb_medicamentos,tb_donadores where tb_medicamentos.id_medicamento = tb_entrada_medicamento.tb_medicamentos_id_medicamento and tb_donadores.id_donador = tb_entrada_medicamento.tb_donadores_id_donador');
+        return $medicamentos;
+    }
+
+    public static function medicamentosProximosVencer(){
+        $medicamentos = \DB::select('select *  from tb_medicamentos where anio_caducidad = YEAR(NOW()) and mes_caducidad= MONTH(NOW())');
+        return $medicamentos;
+    }
+
 
 
 }

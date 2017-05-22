@@ -68,19 +68,19 @@
                                         <a href="{{ route('ruta_medicamentos') }}">Medicamentos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Medicamentos vencidos</a>
+                                        <a href="{{ route('ruta_mostrar_medicementos_vencidos') }}">Medicamentos vencidos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Medicamentos prox. vencer</a>
+                                        <a href="{{ route('ruta_mostrar_medicamentos_prox_vencer') }}">Medicamentos prox. vencer</a>
                                     </li>
                                     <li>
-                                        <a href="#">Medicamentos requeridos</a>
+                                        <a href="{{ route('ruta_mostrar_medicamentos_requerido') }}">Medicamentos requeridos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Entrada de medicamentos</a>
+                                        <a href="{{ route('ruta_mostrar_medicamentos_entrada') }}">Entrada de medicamentos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Salida de medicamentos</a>
+                                        <a href="{{ route('ruta_mostrar_medicamentos_salida') }}">Salida de medicamentos</a>
                                     </li>
                                 </ul>
                             </li>
