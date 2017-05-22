@@ -29,8 +29,8 @@
                         <tr>
                             <th width="1%"></th>
                             <th width="5%"><center>Salida Medicamento</center></th>
-                            <th width="8%"><center>Dias para liberar</center></th>
-                            <th width="5%"><center>Liberar Medicamento</center></th>
+                            {{-- <th width="8%"><center>Dias para liberar</center></th> --}}
+                            {{-- <th width="5%"><center>Liberar Medicamento</center></th> --}}
                             <th width="5%" style="font-size: 13px;">No. solicitud</th>
                             <th>Beneficiario</th>
                             <th>Medicamento</th>
@@ -53,7 +53,7 @@
                                 </center>
                             </td>
                             {{-- <td><center><b>{{ $solicitud->dia_bloqueo }}</b></center></td> --}}
-                            <td>
+                            {{-- <td>
                                 <center>
                                     <a href="#">
                                         <button class="btn btn-default btn-small">
@@ -61,7 +61,7 @@
                                         </button> 
                                     </a>
                                 </center>
-                            </td>
+                            </td> --}}
                             <td><center><b># {{ $solicitud->id_solicitud }}</b></center></td>
                             <td><b>{{ $solicitud->nombre }}</b></td>
                             <td>{{ $solicitud->nombre_comercial }}</td>

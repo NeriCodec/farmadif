@@ -38,7 +38,7 @@ class SolicitudMedicamento extends Model
     public static function medicamentosRequeridos()
     {
 
-        $medicamentosRequeridos = \DB::select('SELECT nombre_comercial, nombre_compuesto, id_solicitud, estatus_solicitud, nombre, id_medicamento, solucion_tableta, tipo_contenido, dosis, id_solicitud, descripcion, diagnostico, fecha_solicitud, estatus, id_medicamentos_requeridos, id_beneficiario, dia_bloqueo
+        $medicamentosRequeridos = \DB::select('SELECT nombre_comercial, nombre_compuesto, id_solicitud, estatus_solicitud, nombre, id_medicamento, solucion_tableta, tipo_contenido, dosis, id_solicitud, descripcion, diagnostico, fecha_solicitud, estatus, id_medicamentos_requeridos, id_beneficiario, dia_bloqueo, dia_desbloqueo
         FROM tb_medicamentos_requeridos
         INNER JOIN tb_medicamentos
         ON tb_medicamentos_requeridos.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
