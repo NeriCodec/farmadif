@@ -20,4 +20,5 @@ class MedicamentoRequerido extends Model
     * @param $timestamps, especifica si se requiere fechas en la tabla.
     */
     public	$timestamps	=	false;
+
 }

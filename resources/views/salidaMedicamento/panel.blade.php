@@ -27,26 +27,23 @@
                 @include('salidaMedicamento.buscadorBeneficiario')
 
                 <div class="panel-body">
-                    <table width="100%" class="table table-striped table-bordered table-hover">
+                    <table width="100%" class="table table-striped table-hover">
                         <thead>
                             <tr>
+                                <th width="5%" style="font-size: 13px;">Salida de medicamento</th>
+                                <th width="5%" style="font-size: 13px;">Detalles salida</th>
+                                <th width="5%" style="font-size: 13px;">Detalles M. requeridos</th>
                                 <th>Nombre</th>
                                 <th>Domicilio</th>
                                 <th>Comunidad</th>
                                 <th>Fecha de nacimiento</th>
                                 <th>Fecha de registro</th>
-                                <th>Salida medicamento</th>
-                                <th>Detalles salida</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($beneficiarios as $beneficiario)
                             <tr>
-                                <td>{{ $beneficiario->nombre . ' ' . $beneficiario->ap_paterno . ' ' . $beneficiario->ap_materno }}</td>
-                                <td>{{ $beneficiario->domicilio }}</td>
-                                <td>{{ $beneficiario->comunidad }}</td>
-                                <td>{{ $beneficiario->fecha_nacimiento }}</td>
-                                <td>{{ $beneficiario->fecha_registro }}</td>
                                 <td>
                                     <center>
                                         <a href="{{ route('ruta_salida_medicamento',$beneficiario->id_beneficiario) }}">
@@ -65,6 +62,21 @@
                                         </a>
                                     </center>
                                 </td>
+                                <td>
+                                    <center>
+                                        <a href="{{ route('ruta_medicamento_requerido_detalle', $beneficiario->id_beneficiario) }}">
+                                            <button class="btn btn-default btn-small ">
+                                                <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
+                                            </button> 
+                                        </a>
+                                    </center>
+                                </td>
+                                <td>{{ $beneficiario->nombre . ' ' . $beneficiario->ap_paterno . ' ' . $beneficiario->ap_materno }}</td>
+                                <td>{{ $beneficiario->domicilio }}</td>
+                                <td>{{ $beneficiario->comunidad }}</td>
+                                <td>{{ $beneficiario->fecha_nacimiento }}</td>
+                                <td>{{ $beneficiario->fecha_registro }}</td>
+                                
                             </tr>
                             @endforeach
                         </tbody>

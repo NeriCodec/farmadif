@@ -5,7 +5,7 @@
                     Medicamentos Donados
                 </div>
                 <div class="panel-body">
-                     <table width="100%" class="table table-striped table-bordered table-hover">
+                     <table width="100%" class="table table-striped table-hover">
                     <thead>
                         <tr>
                                 <th>Nombre comercial</th>
@@ -20,16 +20,16 @@
                     </thead>
                     <tbody>
                             @foreach($medicamentos as $medicamento)
-                            <tr @if($medicamento->estatus=="requerido") class="warning" @else class="success" @endif  >
-                                <th>{{ $medicamento->nombre_comercial }}</th>
-                                <th>{{ $medicamento->nombre_compuesto }}</th>
-                                <th>{{ $medicamento->num_etiqueta }}</th>
-                                <th>{{ $medicamento->num_folio }}</th>
-                                <th>{{ $medicamento->mes_caducidad }}</th>
-                                <th>{{ $medicamento->dosis }}</th>
-                                <th>{{ $medicamento->solucion_tableta }}</th>
-                                <th>{{ $medicamento->tipo_contenido }}</th>
-                            </tr>
+                                <tr>
+                                    <th>{{ $medicamento->nombre_comercial }}</th>
+                                    <th>{{ $medicamento->nombre_compuesto }}</th>
+                                    <th>{{ $medicamento->num_etiqueta }}</th>
+                                    <th>{{ $medicamento->num_folio }}</th>
+                                    <th>{{ $medicamento->mes_caducidad }}</th>
+                                    <th>{{ $medicamento->dosis }}</th>
+                                    <th>{{ $medicamento->solucion_tableta }}</th>
+                                    <th>{{ $medicamento->tipo_contenido }}</th>
+                                </tr>
                             @endforeach
                         </tbody>
                 </table>

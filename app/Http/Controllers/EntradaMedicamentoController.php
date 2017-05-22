@@ -25,7 +25,8 @@ class EntradaMedicamentoController extends Controller
     	return view('entradaMedicamento.panel')->with('donadores', $donadores);
     }
 
-    public function selecionarDonador($idDonador,Request $request){
+    public function selecionarDonador($idDonador,Request $request)
+    {
     	$medicamentos = Medicamento::paginate(10);
         $medicamentoDonado = Medicamento::medicamentosDelDonador($idDonador);
         $medicamentoNecesario = Medicamento::obtineMedicamentoRequeridos();
@@ -34,17 +35,44 @@ class EntradaMedicamentoController extends Controller
 
     }
 
-    public function gurdarNuevoMedicamento(RegistrarMedicamentoRequest $request){
+    public function gurdarNuevoMedicamento(RegistrarMedicamentoRequest $request, $idMedicamento)
+    {
+        
+        $medicamento = Medicamento::find($idMedicamento);
 
-        MedicamentoDatabase::guardarMedicamento($request);
-        //gaurdar registro en la entrada de medicamento
-        $obtieneUltimoMedicamento = Medicamento::all()->last();
-        EntradaMedicamentoDatabase::guardarEntradaMedicamento($request,$obtieneUltimoMedicamento->id_medicamento);
+        // dd($medicamento);
+        
+        if($medicamento == null) 
+        {
+            MedicamentoDatabase::guardarMedicamento($request); 
+           //gaurdar registro en la entrada de medicamento
+            $obtieneUltimoMedicamento = Medicamento::all()->last();
+            EntradaMedicamentoDatabase::guardarEntradaMedicamento($request, $obtieneUltimoMedicamento->id_medicamento);
+            
+        }
+        else 
+        {
+           if($medicamento->estatus == 'requerido') 
+           {
+                MedicamentoDatabase::actualizarMedicamento($request, $idMedicamento); 
+           }
+           else 
+           {
+                MedicamentoDatabase::guardarMedicamento($request); 
+                //gaurdar registro en la entrada de medicamento
+                $obtieneUltimoMedicamento = Medicamento::all()->last();
+                EntradaMedicamentoDatabase::guardarEntradaMedicamento($request, $obtieneUltimoMedicamento->id_medicamento);
+           }
+          
+        }
+        
+        
         
         return redirect()->route('ruta_medicamentos');
     }
 
-    public function buscarMedicamentoSeleccionar($idDonador,Request $request){
+    public function buscarMedicamentoSeleccionar($idDonador,Request $request)
+    {
         $medicamentos = Medicamento::BuscarMedicamento($request->get('medicamento'))->paginate(10);
         $medicamentoDonado = Medicamento::medicamentosDelDonador($idDonador);
         $medicamentoNecesario = Medicamento::obtineMedicamentoRequeridos();
@@ -52,7 +80,7 @@ class EntradaMedicamentoController extends Controller
         return view('entradaMedicamento.panelEntradaMedicamento')->with('donador', $donador)->with('medicamentos', $medicamentos)->with('medicamentosDonador', $medicamentoDonado)->with('medicamentoRequerido', $medicamentoNecesario);
     }
 
-    public function nuevoMedicamentoRegistrar($idDonador,Request $request)
+    public function nuevoMedicamentoRegistrar($idDonador, Request $request)
     {
         $donador = Donador::find($idDonador);
         return view('entradaMedicamento.registrarMedicamentoEntrada')->with('donador', $donador)->with('medicamentos');
@@ -60,7 +88,7 @@ class EntradaMedicamentoController extends Controller
 
     public function nuevoExistenteMedicamentoRegistrar($idDonador,$idMedicamento,Request $request){
         
-        $medicamento = Medicamento::find($idMedicamento);;
+        $medicamento = Medicamento::find($idMedicamento);
         $donador = Donador::find($idDonador);
         return view('entradaMedicamento.registrarMedicamentoEntrada')->with('donador', $donador)->with('medicamentos', $medicamento);
     }

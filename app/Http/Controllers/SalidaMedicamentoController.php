@@ -199,6 +199,6 @@ class SalidaMedicamentoController extends Controller
     {
         $solicitudMedicamento = SolicitudMedicamento::all()->last();
         $solicitudMedicamento->delete();
-        return redirect()->route('ruta_beneficiarios');
+        return redirect()->route('ruta_salida_medicamentos');
     }
 }

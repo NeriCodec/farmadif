@@ -9,6 +9,7 @@
  <table width="100%" class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
+            <th width="8%">Bloqueo</th>
             <th>Nombre comercial</th>
             <th>Nombre compuesto</th>
             <th>No. etiqueta</th>
@@ -22,6 +23,7 @@
     <tbody>
         @foreach($medicamentos as $medicamento)
         <tr>
+            <th>@if($medicamento->tipo_bloqueo == 'bloqueado') Bloqueado @else Desbloqueado @endif </th>
             <th>{{ $medicamento->nombre_comercial }}</th>
             <th>{{ $medicamento->nombre_compuesto }}</th>
             <th>{{ $medicamento->num_etiqueta }}</th>
@@ -36,14 +38,22 @@
             <th>{{ $medicamento->solucion_tableta }}</th>
             <th>{{ $medicamento->dosis . ' ' .$medicamento->tipo_contenido }}</th>
             <th>
+                @if($medicamento->tipo_bloqueo == 'bloqueado')
+                <center>
+                        <button class="btn btn-default disabled" type="submit">
+                            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                        </button>
+                    </center>
+                @else
                 <form action="{{ route('ruta_agregar_medicamento', ['idMedicamento' => $medicamento->id_medicamento, 'idBeneficiario' => $beneficiario->id_beneficiario]) }}" method="post">
                     {{ csrf_field() }}
                     <center>
-                        <button class="btn btn-info" type="submit">
+                        <button class="btn btn-default" type="submit">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
                     </center>
                 </form>
+                @endif
             </th>
         </tr>
         @endforeach

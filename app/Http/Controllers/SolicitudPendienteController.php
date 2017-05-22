@@ -22,8 +22,35 @@ class SolicitudPendienteController extends Controller
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
     	return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
+                                                    ->with('noSolicitud', $solicitudMedicamento->id_solicitud)
                                                     ->with('medicamentosRequeridos', $medicamentosRequeridos)
                                                     ->with('medicamentos', $medicamentosAgregados);
+    }
+
+    public function mostrarSolicitudes()
+    {
+        //$solicitudMedicamento = SolicitudMedicamento::orderBy('id_solicitud', 'desc')->where('tipo_solicitud', 'En proceso')->paginate(10);
+        $medicamentoRequerido = SolicitudMedicamento::medicamentosRequeridos();
+
+
+        //$solicitudMedicamento = SolicitudMedicamento::find($medicamentoRequerido->tb_solicitudes_id_solicitud);
+        //dd($medicamentoRequerido);
+
+        return view('solicitudPendiente.solicitudes')->with('solicitudes', $medicamentoRequerido);
+    }
+
+    public function mostrarSolicitudDetalle($idSolicitud)
+    {
+        $solicitud = SolicitudMedicamento::find($idSolicitud);
+
+        // $medicamentosRequeridos = MedicamentosRequeridos::find();
+
+        $medicamentos = SolicitudMedicamento::medicamentosDeUnaSolicitud($idSolicitud);
+
+        //dd($medicamentos);
+
+        return view('solicitudPendiente.detalles')->with('solicitud', $solicitud)
+                                                  ->with('medicamentos', $medicamentos);
     }
 
     public function agregarMedicamento($idBeneficiario, SolicitudRequest $request)
@@ -41,6 +68,7 @@ class SolicitudPendienteController extends Controller
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
         return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
+                                                    ->with('noSolicitud', $solicitudMedicamento->id_solicitud)
                                                     ->with('medicamentosRequeridos', $medicamentosRequeridos)
                                                     ->with('medicamentos', $medicamentosAgregados);
     }
@@ -70,6 +98,7 @@ class SolicitudPendienteController extends Controller
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
         return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
+                                                    ->with('noSolicitud', $solicitudMedicamento->id_solicitud)
                                                     ->with('medicamentosRequeridos', $medicamentosRequeridos)
                                                     ->with('medicamentos', $medicamentosAgregados);
     }
