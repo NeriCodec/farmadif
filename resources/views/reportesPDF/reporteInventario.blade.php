@@ -52,7 +52,7 @@
 
 
 <div class="centrar-tabla" >
-    <table border="1px" cellspacing="0px">
+    <table border="1px" cellspacing="0px" style="width:auto; height: auto;">
         <thead>
             <tr>
                 <th>Nombre comercial</th>
@@ -68,20 +68,20 @@
         <tbody>
             @foreach($medicamentos as $medicamento)
             <tr>
-                <td>{{ $medicamento->nombre_comercial }}</td>
-                <td>{{ $medicamento->nombre_compuesto }}</td>
-                <td>{{ $medicamento->num_etiqueta }}</td>
-                <td>{{ $medicamento->num_folio }}</td>
+                <td style="width:auto; height: auto;">{{ $medicamento->nombre_comercial }}</td>
+                <td style="width:auto; height: auto;">{{ $medicamento->nombre_compuesto }}</td>
+                <td style="width:auto; height: auto;">{{ $medicamento->num_etiqueta }}</td>
+                <td style="width:auto; height: auto;">{{ $medicamento->num_folio }}</td>
 
                 @if($medicamento->mes_caducidad <= 9)
-                    <td>{{ "0" . $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</td>
+                    <td style="width:auto; height: auto;">{{ "0" . $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</td>
                 @else
-                    <td>{{ $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</td>
+                    <td style="width:auto; height: auto;">{{ $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</td>
                 @endif
                 
-                <td>{{ $medicamento->dosis }}</td>
-                <td>{{ $medicamento->solucion_tableta }}</td>
-                <td>{{ $medicamento->tipo_contenido }}</td>
+                <td style="width:auto; height: auto;">{{ $medicamento->dosis }}</td>
+                <td style="width:auto; height: auto;">{{ $medicamento->solucion_tableta }}</td>
+                <td style="width:auto; height: auto;">{{ $medicamento->tipo_contenido }}</td>
             </tr>
             @endforeach
         </tbody>

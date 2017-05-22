@@ -40,7 +40,7 @@ class DonadorController extends Controller
     */
     public function mostrarRegistro()
     {
-    	return view('donador.registro');
+    	return view('donador.registro')->with('actualizar',FALSE);
     }
 
     /**
@@ -70,6 +70,42 @@ class DonadorController extends Controller
         $medicamentoDonado = Medicamento::medicamentosDelDonador($idDonador);
         $donador = Donador::find($idDonador);
         return view('donador.medicamentosDelDonador')->with('donador', $donador)->with('medicamentos', $medicamentoDonado);
+    }
+
+
+    public function eliminarDonador($idDonador,Request $request){
+
+        $donador = Donador::find($idDonador);
+        
+        if ($donador->delete()) {
+                return redirect()->route('ruta_donadores');
+
+        }
+    }
+
+    public function actualizarDonador($idDonador,Request $request){
+        $donador = Donador::find($idDonador);
+        return view('donador.registro')->with('donador',$donador)->with('actualizar',TRUE);
+    }
+
+    public function guardaActualizarDonador(RegistrarDonadorRequest $request){
+              //DonadorDatabase::guardarActualizarDonador($request);
+        $donador=Donador::where('id_donador', '=', $request->get('idDonador'))->first();
+        if (count($donador)>0) {
+            $donador->nombre =$request->get('nombre');
+            $donador->domicilio =$request->get('domicilio');
+            $donador->num_telefonico =$request->get('telefono');
+            $donador->codigo_postal =$request->get('codigo');
+            $donador->observaciones =$request->get('observaciones');
+            $donador->fecha_registro =date("Y-m-d h:m:s");
+            if ($donador->save()) {
+                    return redirect()->route('ruta_donadores');
+                }else{
+                    echo "Error al actualizar";
+                }    
+            
+        }
+    
     }
 
 }

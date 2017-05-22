@@ -52,7 +52,7 @@
 
 
 <div class="centrar-tabla" >
-    <table border="1px" cellspacing="0px">
+    <table border="1px" cellspacing="0px" style="width:auto; height: auto;">
         <thead>
                 <tr>
                     {{-- <th>ID</th> --}}

@@ -69,6 +69,15 @@ Route::name('ruta_imprimir_inventario_salida_pdf')->get('/imprimir/salida','Medi
 #Rutas para la parte de donadores
 Route::name('ruta_seleccionar_donador_donador')->get('/seleccionar/{idDonador}','DonadorController@obtieneMedicamentosDonados');
 
+#Rutas para realizar modificaciones 
+Route::name('ruta_guardar_donador_actualizar')->post('/donador/actualizar','DonadorController@guardaActualizarDonador');
+Route::name('ruta_eliminar_donador')->get('/eliminar-donador/{idDonador}','DonadorController@eliminarDonador');
+Route::name('ruta_seleccionar_actualizar_donador')->get('/actializar-donador/{idDonador}','DonadorController@actualizarDonador');
+
+
+
+
+
 
 # Rutas para la autenticacion
 Auth::routes();

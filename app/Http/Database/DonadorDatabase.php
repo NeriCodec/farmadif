@@ -25,4 +25,5 @@ class DonadorDatabase
         $donador->tb_usuarios_id_usuario = Auth::id();
         $donador->save();
 	}
+
 }

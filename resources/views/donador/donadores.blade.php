@@ -41,7 +41,7 @@
                         <tr>
                             <td>
                                 <center>
-                                    <a href="#">
+                                    <a href="{{ route('ruta_seleccionar_actualizar_donador', ['idDonador' => $donador->id_donador]) }}">
                                         <button class="btn btn-default btn-small ">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </button> 
@@ -50,7 +50,7 @@
                             </td>
                             <td>
                                 <center>
-                                    <a href="#">
+                                    <a href="{{ route('ruta_eliminar_donador', ['idDonador' => $donador->id_donador]) }}">
                                         <button class="btn btn-default btn-small ">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                         </button> 
@@ -72,6 +72,8 @@
     </div>
     <center>{{ $donadores->links() }}</center>
 </div>
+
+
 @endif
    
 @endsection
