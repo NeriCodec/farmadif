@@ -6,11 +6,11 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4>Detalles de beneficiario</h4>
+                Detalles de beneficiario
             </div>
              @include('beneficiario.datos')
              <div class="panel-heading">
-                <h4>Medicamentos donados</h4>
+                Medicamentos donados
             </div>
            
 
@@ -18,12 +18,12 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>No. folio</th>
                         <th>Nombre comercial</th>
                         <th>Nombre compuesto</th>
                         <th>Descripcion</th>
                         <th>Diagnostico</th>
                         <th>No. etiqueta</th>
-                        <th>No. folio</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
@@ -31,12 +31,12 @@
                 <tbody>
                     @foreach($detalles as $medicamento)
                     <tr>
+                        <td><b># {{ $medicamento->num_folio }}</b></td>
                         <td>{{ $medicamento->nombre_comercial }}</td>
                         <td>{{ $medicamento->nombre_compuesto }}</td>
                         <td>{{ $medicamento->descripcion }}</td>
                         <td>{{ $medicamento->diagnostico }}</td>
                         <td>{{ $medicamento->num_etiqueta }}</td>
-                        <td>{{ $medicamento->num_folio }}</td>
 
                         <td>
                          <center>

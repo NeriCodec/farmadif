@@ -48,7 +48,7 @@ Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mo
 
 # Rutas de solicitudes
 Route::name('ruta_solicitudes')->get('/solicitudes', 'SolicitudPendienteController@mostrarSolicitudes');
-
+Route::name('ruta_solicitud_detalle')->get('solicitud/detalle/{idSolicitud}', 'SolicitudPendienteController@mostrarSolicitudDetalle');
 
 #Rutas de imprecion de Reportes
 

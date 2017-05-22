@@ -28,6 +28,7 @@ class MedicamentoDatabase
         $Medicamento->tipo_contenido = $request->get('medida');
         $Medicamento->fecha_registro = date("Y-m-d");
         $Medicamento->estatus = 'existencia';
+        $medicamento->tipo_bloqueo = 'desbloqueado';
         $Medicamento->save();
 	}
 
@@ -45,6 +46,7 @@ class MedicamentoDatabase
         $medicamento->anio_caducidad = $request->get('anio_caducidad');
         $medicamento->estatus = 'existencia';
         $medicamento->fecha_registro = date("Y-m-d");
+        $medicamento->tipo_bloqueo = 'bloqueado';
         $medicamento->save();
     }
 

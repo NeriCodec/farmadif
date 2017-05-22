@@ -13,7 +13,7 @@
             </div>
              @include('beneficiario.datos')
              <div class="panel-heading">
-                Medicamentos donados
+                Medicamentos solicitados
             </div>
            
 
@@ -21,7 +21,6 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th width="1%"></th>
                         <th width="5%">No. Solicitud</th>
                         <th width="10%">No. Folio</th>
                         <th>Nombre comercial</th>
@@ -30,14 +29,13 @@
                         <th>Diagnostico</th>
                         <th><center>Existencia</center></th>
                         <th><center>Estatus Solicitud</center></th>
-                        <th>Eliminar</th>
+                        {{-- <th>Eliminar</th> --}}
                     </tr>
                 </thead>
                 
                 <tbody>
                     @foreach($detalles as $medicamento)
                     <tr>
-                        <td style="background-color: @if($medicamento->estatus_solicitud == "donado") green @else red @endif ;"></td>
                         <th># {{ $medicamento->id_solicitud }}</th>
                         <th># {{ $medicamento->num_folio }}</th>
                         <td>{{ $medicamento->nombre_comercial }}</td>
@@ -72,17 +70,17 @@
                         <td class="danger"><center><b>Sin donar</b></center></td>
                         @endif --}}
 
-                        <td>
-                         <center>
+                        {{-- <td>
+                         <center> --}}
                             {{-- <form action="" method="post"> --}}
                                 {{-- {{ csrf_field() }} --}}
-                            <button type="button" class="btn btn-danger btn-small btn-agregar" data-toggle="modal" data-target="#confirmacion{{ $medicamento->num_folio }}">
+                           {{--  <button type="button" class="btn btn-danger btn-small btn-agregar" data-toggle="modal" data-target="#confirmacion{{ $medicamento->num_folio }}">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </button>
+                            </button> --}}
                             {{-- </form> --}}
-                        </center>
+                       {{--  </center>
 
-                        </td> 
+                        </td>  --}}
 
                     </tr>
 

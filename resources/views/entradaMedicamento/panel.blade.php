@@ -27,7 +27,7 @@
                 @include('entradaMedicamento.buscarDonador')
 
                 <div class="panel-body">
-                     <table width="100%" class="table table-striped table-bordered table-hover">
+                     <table width="100%" class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th width="5%" style="font-size: 13px;">Entrada medicamento</th>
