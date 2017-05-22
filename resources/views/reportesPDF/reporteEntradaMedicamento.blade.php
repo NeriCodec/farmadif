@@ -54,37 +54,42 @@
 <div class="centrar-tabla" >
     <table border="1px" cellspacing="0px">
         <thead>
-            <tr>
-                <th>Nombre comercial</th>
-                <th>Nombre compuesto</th>
-                <th>No. etiqueta</th>
-                <th>No. folio</th>
-                <th>Fecha caducidad</th>
-                <th>Dosis</th>
-                <th>Solucion/Tableta</th>
-                <th>Contenido</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($medicamentos as $medicamento)
-            <tr>
-                <td>{{ $medicamento->nombre_comercial }}</td>
-                <td>{{ $medicamento->nombre_compuesto }}</td>
-                <td>{{ $medicamento->num_etiqueta }}</td>
-                <td>{{ $medicamento->num_folio }}</td>
+        <tr>
+            {{-- <th>ID</th> --}}
+            <th>Fecha entrada</th>
+            <th>Nombre comercial</th>
+            <th>Nombre compuesto</th>
+            <th>No. etiqueta</th>
+            <th>No. folio</th>
+            <th>Fecha caducidad</th>
+            <th>Dosis</th>
+            <th>Solucion/Tableta</th>
+            <th>Contenido</th>
+            <th>Nombre Donador</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($medicamentos as $medicamento)
+        <tr>
+            <td>{{ $medicamento->fecha_entrada }}</td>
+            <td>{{ $medicamento->nombre_comercial }}</td>
+            <td>{{ $medicamento->nombre_compuesto }}</td>
+            <td>{{ $medicamento->num_etiqueta }}</td>
+            <td>{{ $medicamento->num_folio }}</td>
 
-                @if($medicamento->mes_caducidad <= 9)
-                    <td>{{ "0" . $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</td>
-                @else
-                    <td>{{ $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</td>
-                @endif
-                
-                <td>{{ $medicamento->dosis }}</td>
-                <td>{{ $medicamento->solucion_tableta }}</td>
-                <td>{{ $medicamento->tipo_contenido }}</td>
-            </tr>
-            @endforeach
-        </tbody>
+            @if($medicamento->mes_caducidad <= 9)
+                <td>{{ "0" . $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</td>
+            @else
+                <td>{{ $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</td>
+            @endif
+            
+            <td>{{ $medicamento->dosis }}</td>
+            <td>{{ $medicamento->solucion_tableta }}</td>
+            <td>{{ $medicamento->tipo_contenido }}</td>
+            <td>{{ $medicamento->nombre  }}</td>
+        </tr>
+        @endforeach
+    </tbody>
     </table>
 </div>
 

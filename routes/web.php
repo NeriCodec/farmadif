@@ -45,6 +45,13 @@ Route::name('ruta_nuevo_registrar_medicamento')->get('/nuevo/{idDonador}','Entra
 Route::name('ruta_nuevo_existente_registrar_medicamento')->get('/nuevo/donador/{idDonador}/medicamento/{idMedicamento}','EntradaMedicamentoController@nuevoExistenteMedicamentoRegistrar');
 # Rutas del medicamento
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamentos');
+#rutas para inventarios
+Route::name('ruta_mostrar_medicementos_vencidos')->get('medicamento/vencido','MedicamentosVencidosController@mostrarMedicementosVencidos');
+Route::name('ruta_mostrar_medicamentos_requerido')->get('medicamento/requrido','MedicamentoRequeridoController@mostrarMedicementosRequeridos');
+Route::name('ruta_mostrar_medicamentos_salida')->get('medicamento/salida','MedicamentoSalidaController@mostrarMedicementosSalidas');
+Route::name('ruta_mostrar_medicamentos_entrada')->get('medicamento/entrada','MedicamentoEntradaController@mostrarMedicementosEntrada');
+Route::name('ruta_mostrar_medicamentos_prox_vencer')->get('medicamento/proximos/vencer','MedicamentosProximoVencerController@mostrarMedicementosProxVencidos');
+
 
 # Rutas de solicitudes
 Route::name('ruta_solicitudes')->get('/solicitudes', 'SolicitudPendienteController@mostrarSolicitudes');
@@ -53,6 +60,11 @@ Route::name('ruta_solicitud_salida')->get('solicitud/salida/{idSolicitud}/{idMed
 #Rutas de imprecion de Reportes
 
 Route::name('ruta_imprimir_inventario_pdf')->get('/imprimir/inventario','ReporteInventarioPDFController@imprimirReporte');
+Route::name('ruta_imprimir_inventario_vencidos_pdf')->get('/imprimir/vencidos','MedicamentosVencidosController@imprimirReporte');
+Route::name('ruta_imprimir_inventario_prox_vencer_pdf')->get('/imprimir/proxvencidos','MedicamentosProximoVencerController@imprimirReporte');
+Route::name('ruta_imprimir_inventario_requerido_pdf')->get('/imprimir/requeridos','MedicamentoRequeridoController@imprimirReporte');
+Route::name('ruta_imprimir_inventario_entrada_pdf')->get('/imprimir/entrada','MedicamentoEntradaController@imprimirReporte');
+Route::name('ruta_imprimir_inventario_salida_pdf')->get('/imprimir/salida','MedicamentoSalidaController@imprimirReporte');
 
 #Rutas para la parte de donadores
 Route::name('ruta_seleccionar_donador_donador')->get('/seleccionar/{idDonador}','DonadorController@obtieneMedicamentosDonados');

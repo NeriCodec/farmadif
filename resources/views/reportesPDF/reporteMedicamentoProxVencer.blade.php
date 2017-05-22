@@ -55,6 +55,7 @@
     <table border="1px" cellspacing="0px">
         <thead>
             <tr>
+                {{-- <th>ID</th> --}}
                 <th>Nombre comercial</th>
                 <th>Nombre compuesto</th>
                 <th>No. etiqueta</th>

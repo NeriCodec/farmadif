@@ -28,6 +28,7 @@ class MedicamentoController extends Controller
         $medicamentos = Medicamento::paginate(20);
     	return view('medicamento.medicamentos')->with('medicamentos', $medicamentos);
     }
+    
 
     /**
     * Permite obtener todos los medicamentos registrados dentro de la aplicacion

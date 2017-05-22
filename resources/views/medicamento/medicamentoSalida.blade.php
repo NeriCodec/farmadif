@@ -7,27 +7,30 @@
                 <div class="panel-heading">
                     Donadores registrados
                 </div>
-            <form class="navbar-form navbar-left pull-left" action="{{ route('ruta_imprimir_inventario_pdf') }}" method="get" target="_blank">
-              <button type="submit" class="btn btn-default">Imprimir reporte PDF</button>
+            <form class="navbar-form navbar-left pull-left" action="{{ route('ruta_imprimir_inventario_salida_pdf') }}" method="get" target="_blank">
+              <button  type="submit" class="btn btn-default">Imprimir reporte PDF</button>
             </form>
                 <div class="panel-body">
                     <table width="100%" class="table table-striped table-bordered table-hover" id="tmedicamento">
                         <thead>
                             <tr>
                                 {{-- <th>ID</th> --}}
+                                <th>Fecha salida</th>
                                 <th>Nombre comercial</th>
                                 <th>Nombre compuesto</th>
                                 <th>No. etiqueta</th>
                                 <th>No. folio</th>
                                 <th>Fecha caducidad</th>
-                                <th>Cantidad</th>
+                                <th>Dosis</th>
                                 <th>Solucion/Tableta</th>
                                 <th>Contenido</th>
+                                <th>Beneficiario</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($medicamentos as $medicamento)
                             <tr>
+                                <td>{{ $medicamento->fecha_salida_medicamento }}</td>
                                 <td>{{ $medicamento->nombre_comercial }}</td>
                                 <td>{{ $medicamento->nombre_compuesto }}</td>
                                 <td>{{ $medicamento->num_etiqueta }}</td>
@@ -39,14 +42,15 @@
                                     <td>{{ $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</td>
                                 @endif
                                 
-                                <td>{{ $medicamento->cantidad }}</td>
+                                <td>{{ $medicamento->dosis }}</td>
                                 <td>{{ $medicamento->solucion_tableta }}</td>
                                 <td>{{ $medicamento->tipo_contenido }}</td>
+                                <td>{{ $medicamento->nombre ." ".$medicamento->ap_paterno ." " . $medicamento->ap_materno   }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <center>{{ $medicamentos->links() }}</center>
+                    <center></center>
                 </div>
             </div>
             
