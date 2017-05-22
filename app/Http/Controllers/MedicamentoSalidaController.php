@@ -38,7 +38,7 @@ class MedicamentoSalidaController extends Controller
             $html2pdf->pdf->SetTitle('Inventario FARMADIF');
             $html2pdf->pdf->SetDisplayMode('fullpage');
             $html2pdf->WriteHTML($vista);
-            $html2pdf->Output('example.pdf');
+            $html2pdf->Output('salidaMedicamento.pdf');
 
             ob_flush();
             ob_end_clean();
