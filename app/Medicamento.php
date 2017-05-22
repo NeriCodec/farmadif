@@ -36,7 +36,7 @@ class Medicamento extends Model
     		$query->where('nombre_comercial', 'LIKE', "%$medicamento%")->where('estatus', 'existencia');
     	}
     }
-
+    
     /**
     * Metodo que obtiene los medicamentos para la API
     * @return Array (JSON)

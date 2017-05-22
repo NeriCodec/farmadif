@@ -52,7 +52,7 @@
                                     </button>
                                 </center>
                             </td>
-                            <td><center><b>2 dias</b></center></td>
+                            {{-- <td><center><b>{{ $solicitud->dia_bloqueo }}</b></center></td> --}}
                             <td>
                                 <center>
                                     <a href="#">
@@ -69,7 +69,6 @@
                             <td>{{ $solicitud->descripcion }}</td>
                             <td>{{ $solicitud->diagnostico }}</td>
                             <td>{{ $solicitud->fecha_solicitud }}</td>
-                            {{-- <th>{{ $solicitud->id_medicamentos_requeridos}}</th> --}}
                             
                         </tr>
 
@@ -89,9 +88,8 @@
                                     <div class="col-md-12">
                                          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
                                          
-                                         <a href="{{ route('ruta_solicitud_salida', ['idSolicitu' => $solicitud->id_solicitud, 'idMedicamento' => $solicitud->id_medicamento, 'idBeneficiario' => $solicitud->id_beneficiario, 'idMedicamentoRequerido' => $solicitud->id_medicamentos_requeridos]) }}" >
+                                        <a href="{{ route('ruta_solicitud_salida', ['idSolicitu' => $solicitud->id_solicitud, 'idMedicamento' => $solicitud->id_medicamento, 'idBeneficiario' => $solicitud->id_beneficiario, 'idMedicamentoRequerido' => $solicitud->id_medicamentos_requeridos]) }}" >
 
-                                            {{-- {{ csrf_field() }} --}}
                                             <button type="submit" class="btn btn-success">Confirmar</button>
 
                                         </a>
