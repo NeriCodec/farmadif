@@ -47,6 +47,7 @@ class MedicamentoDatabase
         $medicamento->estatus = 'existencia';
         $medicamento->fecha_registro = date("Y-m-d");
         $medicamento->tipo_bloqueo = 'bloqueado';
+        $medicamento->dia_bloqueo = strftime("%A");
         $medicamento->save();
     }
 

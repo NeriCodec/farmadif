@@ -16,6 +16,17 @@ use App\Http\Database\MedicamentoRequeridoDatabase;
 
 class SolicitudPendienteController extends Controller
 {
+    /**
+    * Determina si el usuario esta autenticado en la aplicacion.
+    *
+    * @return void
+    */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function mostrarSolicitud($idBeneficiario)
     {
     	$beneficiario = Beneficiario::find($idBeneficiario);
@@ -31,13 +42,7 @@ class SolicitudPendienteController extends Controller
 
     public function mostrarSolicitudes()
     {
-        //$solicitudMedicamento = SolicitudMedicamento::orderBy('id_solicitud', 'desc')->where('tipo_solicitud', 'En proceso')->paginate(10);
         $medicamentoRequerido = SolicitudMedicamento::medicamentosRequeridos();
-
-
-        //$solicitudMedicamento = SolicitudMedicamento::find($medicamentoRequerido->tb_solicitudes_id_solicitud);
-        //dd($medicamentoRequerido);
-
         return view('solicitudPendiente.solicitudes')->with('solicitudes', $medicamentoRequerido);
     }
 

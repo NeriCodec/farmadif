@@ -86,7 +86,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('ruta_beneficiarios') }}">
-                                    Beneficiario
+                                    Beneficiarios
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                 </a>
                             </li>
