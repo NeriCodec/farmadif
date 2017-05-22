@@ -10,6 +10,8 @@ use App\SolicitudMedicamento;
 use App\MedicamentoRequerido;
 use App\Http\Requests\SolicitudRequest;
 use App\Http\Database\MedicamentoDatabase;
+use App\Http\Database\VerificacionSalidaDatabase;
+use App\Http\Database\SalidaMedicamentoDatabase;
 use App\Http\Database\MedicamentoRequeridoDatabase;
 
 class SolicitudPendienteController extends Controller
@@ -39,20 +41,6 @@ class SolicitudPendienteController extends Controller
         return view('solicitudPendiente.solicitudes')->with('solicitudes', $medicamentoRequerido);
     }
 
-    public function mostrarSolicitudDetalle($idSolicitud)
-    {
-        $solicitud = SolicitudMedicamento::find($idSolicitud);
-
-        // $medicamentosRequeridos = MedicamentosRequeridos::find();
-
-        $medicamentos = SolicitudMedicamento::medicamentosDeUnaSolicitud($idSolicitud);
-
-        //dd($medicamentos);
-
-        return view('solicitudPendiente.detalles')->with('solicitud', $solicitud)
-                                                  ->with('medicamentos', $medicamentos);
-    }
-
     public function agregarMedicamento($idBeneficiario, SolicitudRequest $request)
     {
         $beneficiario = Beneficiario::find($idBeneficiario);
@@ -71,6 +59,33 @@ class SolicitudPendienteController extends Controller
                                                     ->with('noSolicitud', $solicitudMedicamento->id_solicitud)
                                                     ->with('medicamentosRequeridos', $medicamentosRequeridos)
                                                     ->with('medicamentos', $medicamentosAgregados);
+    }
+
+    public function salidaDeMedicamentoRequerido($idSolicitud, $idMedicamento, $idBeneficiario, $idMedicamentoRequerido)
+    {
+        $cantidadADonar = 1;
+        $medicamento = Medicamento::find($idMedicamento);
+        $solicitudMedicamento = SolicitudMedicamento::find($idSolicitud);
+        $medicamentoRequerido = MedicamentoRequerido::find($idMedicamentoRequerido);
+
+        SalidaMedicamentoDatabase::guardarSalidaMedicamento (
+            $idMedicamento,
+            $idBeneficiario,
+            $idSolicitud,
+            $cantidadADonar
+        );
+
+        $medicamento->estatus = 'donado';
+        $medicamento->save();
+
+        $medicamentoRequerido->estatus_solicitud = 'donado';
+        $medicamentoRequerido->save();
+
+        // Se genera el registro en el LOG
+        VerificacionSalidaDatabase::actualizarTipoSolicitud($idSolicitud);
+        //LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario, 'Exitosa', $cantidadADonar);
+        
+        return redirect()->route('ruta_solicitudes');
     }
 
     public function cancelarSolicitud()

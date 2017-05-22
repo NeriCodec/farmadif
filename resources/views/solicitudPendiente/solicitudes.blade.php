@@ -64,7 +64,7 @@
                             </td>
                             <td><center><b># {{ $solicitud->id_solicitud }}</b></center></td>
                             <td><b>{{ $solicitud->nombre }}</b></td>
-                            <td>{{ $solicitud->nombre_comercial}}</td>
+                            <td>{{ $solicitud->nombre_comercial }}</td>
                             <td><b>{{ $solicitud->estatus }}</b></td>
                             <td>{{ $solicitud->descripcion }}</td>
                             <td>{{ $solicitud->diagnostico }}</td>
@@ -85,8 +85,19 @@
                                 Donar el medicamento <b>{{ $solicitud->nombre_comercial . ' (' . $solicitud->nombre_compuesto . ')'}}</b>
                               </div>
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-primary">Confirmar</button>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                         <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancelar</button>
+                                         
+                                         <a href="{{ route('ruta_solicitud_salida', ['idSolicitu' => $solicitud->id_solicitud, 'idMedicamento' => $solicitud->id_medicamento, 'idBeneficiario' => $solicitud->id_beneficiario, 'idMedicamentoRequerido' => $solicitud->id_medicamentos_requeridos]) }}" >
+
+                                            {{-- {{ csrf_field() }} --}}
+                                            <button type="submit" class="btn btn-success">Confirmar</button>
+
+                                        </a>
+
+                                    </div>
+                                </div>
                               </div>
                             </div>
                           </div>

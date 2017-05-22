@@ -24,7 +24,7 @@
                         <th>Descripcion</th>
                         <th>Diagnostico</th>
                         <th>No. etiqueta</th>
-                        <th>Eliminar</th>
+                        {{-- <th>Eliminar</th> --}}
                     </tr>
                 </thead>
                 
@@ -38,22 +38,22 @@
                         <td>{{ $medicamento->diagnostico }}</td>
                         <td>{{ $medicamento->num_etiqueta }}</td>
 
-                        <td>
-                         <center>
+                        {{-- <td>
+                         <center> --}}
                             {{-- <form action="" method="post"> --}}
                                 {{-- {{ csrf_field() }} --}}
-                            <button type="button" class="btn btn-danger btn-small btn-agregar" data-toggle="modal" data-target="#confirmacion{{ $medicamento->num_folio }}">
+                          {{--   <button type="button" class="btn btn-danger btn-small btn-agregar" data-toggle="modal" data-target="#confirmacion{{ $medicamento->num_folio }}">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </button>
+                            </button> --}}
                             {{-- </form> --}}
-                        </center>
+                        {{-- </center>
 
-                        </td> 
+                        </td>  --}}
 
                     </tr>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="confirmacion{{ $medicamento->num_folio }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    {{-- <div class="modal fade" id="confirmacion{{ $medicamento->num_folio }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -69,7 +69,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> --}}
                     @endforeach
                 </tbody>
             </table>

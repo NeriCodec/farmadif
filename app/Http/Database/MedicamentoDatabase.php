@@ -28,7 +28,7 @@ class MedicamentoDatabase
         $Medicamento->tipo_contenido = $request->get('medida');
         $Medicamento->fecha_registro = date("Y-m-d");
         $Medicamento->estatus = 'existencia';
-        $medicamento->tipo_bloqueo = 'desbloqueado';
+        $Medicamento->tipo_bloqueo = 'desbloqueado';
         $Medicamento->save();
 	}
 
