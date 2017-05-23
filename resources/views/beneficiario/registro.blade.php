@@ -47,7 +47,7 @@
 						        <div class="row">
 						          <div class="col-xs-4">
 						            <select class="form-control" name="dia" >
-						            	<option value="{{date_format($beneficiario->ap_paterno, 'd'); }}">Dia</option>
+						            	<option value="">Dia</option>
 						              <?php
 						                  for($i=1; $i<=31; $i++) {
 						                     echo "<option value=$i>$i</option>";

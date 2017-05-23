@@ -77,8 +77,8 @@ function cambiarNombreAEspanol($diaActual)
                                     </button>
                                 </center>
                             </td>
-                            <td>Fue el, <b>{{ cambiarNombreAEspanol($solicitud->dia_bloqueo) }}</b></td>
-                            <td>Próximo <b>{{ cambiarNombreAEspanol($solicitud->dia_desbloqueo) }}</b></td>
+                            <td><center><b>{{ cambiarNombreAEspanol($solicitud->dia_bloqueo) }}</b></center></td>
+                            <td><center><b>{{ cambiarNombreAEspanol($solicitud->dia_desbloqueo) }}</b></center></td>
                             <td><center><b># {{ $solicitud->id_solicitud }}</b></center></td>
                             <td><b>{{ $solicitud->nombre }}</b></td>
                             <td>{{ $solicitud->nombre_comercial }}</td>

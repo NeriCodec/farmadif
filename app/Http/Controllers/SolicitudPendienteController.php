@@ -44,22 +44,6 @@ class SolicitudPendienteController extends Controller
     public function mostrarSolicitudes()
     {
         $medicamentoRequerido = SolicitudMedicamento::medicamentosRequeridos();
-
-        // $diaActual = strftime("%A");
-        // foreach ($medicamentoRequerido as $solicitud) 
-        // {
-        //     if($diaActual == $solicitud->dia_desbloqueo) 
-        //     {
-        //         $medicamento = Medicamento::find($solicitud->id_medicamento);
-        //         $medicamento->tipo_bloqueo = 'desbloqueado';
-        //         $medicamento->save();
-
-        //         $solicitud = MedicamentoRequerido::find($solicitud->id_medicamentos_requeridos);
-        //         $solicitud->estatus_solicitud = 'liberado';
-        //         $solicitud->save();
-        //     }
-        // }
-
         return view('solicitudPendiente.solicitudes')->with('solicitudes', $medicamentoRequerido);
     }
 

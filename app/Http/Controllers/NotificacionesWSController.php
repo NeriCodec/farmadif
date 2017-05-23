@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Beneficiario;
-use App\Medicamento;
 use Illuminate\Http\Request;
 
-class MedicamentoWSController extends Controller
+class NotificacionesWSController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +14,7 @@ class MedicamentoWSController extends Controller
      */
     public function index()
     {
-        $medicamentos = Medicamento::obtenerTodosLosMedicamentos();
-
-        return response()->json( 
-            [
-                "status" => "200",
-                "medicamentos" => $medicamentos,
-            ] ,
-            200
-        );
+        //
     }
 
     /**
@@ -61,13 +52,11 @@ class MedicamentoWSController extends Controller
 
         if($tokenAutenticacion == $token) 
         {
-            $medicamentosDonados = Beneficiario::medicamentosDelBeneficiario($idBeneficiario);
-            $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiarioId($idBeneficiario);
+            $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiarioParaNotificaciones($idBeneficiario);
 
             return response()->json( 
                 [
                     "status" => "200",
-                    "medicamento_donado" => $medicamentosDonados,
                     "medicamento_requerido" => $medicamentosRequeridos
                 ] ,
                 200

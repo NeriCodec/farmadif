@@ -13,7 +13,8 @@ Route::name('ruta_detalle_beneficiario')->get('/beneficiarios/detalles/{idBenefi
 Route::name('ruta_medicamento_requerido_detalle')->get('/medicamento-requerido/detalles/{idBeneficiario}', 'BeneficiarioController@mostrarDetalleMedicamentoRequerido');
 # Rutas para los WS 
 Route::resource('/usuarios/login', 'LoginWSController', ['only'=>['store']] );
-Route::resource('/usuarios/medicamento', 'MedicamentoWSController', ['only'=>['store']] );
+Route::resource('/usuarios/medicamento', 'MedicamentoWSController', ['only'=>['index', 'store']] );
+Route::resource('/usuarios/notificacion', 'NotificacionesWSController', ['only'=>['store']] );
 
 
 # Rutas para el Donadores
