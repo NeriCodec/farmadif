@@ -48,7 +48,32 @@ class MedicamentoDatabase
         $medicamento->fecha_registro = date("Y-m-d");
         $medicamento->tipo_bloqueo = 'bloqueado';
         $medicamento->dia_bloqueo = strftime("%A");
+        $medicamento->dia_desbloqueo = MedicamentoDatabase::obtenerElDiaDeDesbloqueo(strftime("%A"));
         $medicamento->save();
+    }
+
+    public static function obtenerElDiaDeDesbloqueo($diaActual)
+    {
+        if($diaActual == 'Monday')
+        {
+            return 'Friday';
+        }
+        else if($diaActual == 'Tuesday') 
+        {
+            return 'Monday';
+        }
+        else if($diaActual == 'Wednesday') 
+        {
+            return 'Tuesday';   
+        }
+        else if($diaActual == 'Thursday') 
+        {
+            return 'Wednesday';
+        }
+        else if($diaActual == 'Friday') 
+        {
+            return 'Thursday';
+        }
     }
 
     public static function guardarMedicamentoRequerido(SolicitudRequest $request)

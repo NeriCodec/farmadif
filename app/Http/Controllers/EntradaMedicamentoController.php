@@ -16,6 +16,7 @@ class EntradaMedicamentoController extends Controller
 	public function __construct()
     {
         $this->middleware('auth');
+        parent::__construct();
     }
     
     public function mostrarDonadores(Request $request)

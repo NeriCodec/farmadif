@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Medicamento extends Model
 {
-    use SyncsWithFirebase;
+    // use SyncsWithFirebase;
 
 	/**
     * @param $table, nombre de la tabla de la base de datos
