@@ -88,4 +88,26 @@ class BeneficiarioController extends Controller
         $beneficiario = Beneficiario::find($idBeneficiario);
         return view('beneficiario.registro')->with('beneficiario', $beneficiario)->with('actualizar',TRUE);
     }
+
+    public function guardaActualizarBeneficiario(RegistrarBeneficiarioRequest $request){
+        
+         $beneficiario = Beneficiario::where('id_beneficiario', '=', $request->get('idBeneficiario'))->first();
+         if(count($beneficiario)>0){
+            $beneficiario->nombre=$request->get('nombre');
+            $beneficiario->ap_paterno=$request->get('ap_paterno');
+            $beneficiario->ap_materno=$request->get('ap_materno');
+            $beneficiario->domicilio=$request->get('domicilio');
+            $beneficiario->comunidad=$request->get('comunidad');
+            $beneficiario->fecha_nacimiento=$request->get('anio')."-".$request->get('mes')."-".$request->get('dia');
+            $beneficiario->usuario=$request->get('usuario');
+            $beneficiario->contrasenia=$request->get('contrasena');
+            if ($beneficiario->save()) {
+                return redirect()->route('ruta_beneficiarios');
+            }else{
+                echo "error al actualizar";
+            }
+
+
+         }
+    }
 }

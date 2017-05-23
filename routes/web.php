@@ -73,10 +73,10 @@ Route::name('ruta_seleccionar_donador_donador')->get('/seleccionar/{idDonador}',
 Route::name('ruta_guardar_donador_actualizar')->post('/donador/actualizar','DonadorController@guardaActualizarDonador');
 Route::name('ruta_eliminar_donador')->get('/eliminar-donador/{idDonador}','DonadorController@eliminarDonador');
 Route::name('ruta_seleccionar_actualizar_donador')->get('/actializar-donador/{idDonador}','DonadorController@actualizarDonador');
-#beneficiario
+#beneficiario modifi
 Route::name('ruta_eliminar_beneficiario')->get('/eliminar-beneficiario/{idBeneficiario}','BeneficiarioController@eliminarBeneficiario');
 Route::name('ruta_seleccionar_actualizar_beneficiario')->get('/actializar-beneficiario/{idBeneficiario}','BeneficiarioController@actualizarBeneficiario');
-
+Route::name('ruta_guardar_beneficiario_actualizar')->post('/beneficiario/actualizar','BeneficiarioController@guardaActualizarBeneficiario');
 
 
 
