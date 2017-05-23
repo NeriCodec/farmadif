@@ -16,6 +16,31 @@
         </div>
     </div>
 @else
+<?php
+function cambiarNombreAEspanol($diaActual)
+    {
+        if($diaActual == 'Monday')
+        {
+            return 'Lunes';
+        }
+        else if($diaActual == 'Tuesday') 
+        {
+            return 'Martes';
+        }
+        else if($diaActual == 'Wednesday') 
+        {
+            return 'Miercoles';   
+        }
+        else if($diaActual == 'Thursday') 
+        {
+            return 'Juevez';
+        }
+        else if($diaActual == 'Friday') 
+        {
+            return 'Viernes';
+        }
+    }
+?>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -29,15 +54,15 @@
                         <tr>
                             <th width="1%"></th>
                             <th width="5%"><center>Salida Medicamento</center></th>
-                            {{-- <th width="8%"><center>Dias para liberar</center></th> --}}
-                            {{-- <th width="5%"><center>Liberar Medicamento</center></th> --}}
+                            <th width="12%">Fecha de bloqueo</th>
+                            <th width="12%">Fecha de liberacion</th>
                             <th width="5%" style="font-size: 13px;">No. solicitud</th>
                             <th>Beneficiario</th>
                             <th>Medicamento</th>
-                            <th>Estatus</th>
+                            {{-- <th>Estatus</th> --}}
                             <th>Descripcion</th>
                             <th>Diagnostico</th>
-                            <th>Fecha</th>
+                            {{-- <th>Fecha</th> --}}
                             
                         </tr>
                     </thead>
@@ -52,23 +77,15 @@
                                     </button>
                                 </center>
                             </td>
-                            {{-- <td><center><b>{{ $solicitud->dia_bloqueo }}</b></center></td> --}}
-                            {{-- <td>
-                                <center>
-                                    <a href="#">
-                                        <button class="btn btn-default btn-small">
-                                            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                                        </button> 
-                                    </a>
-                                </center>
-                            </td> --}}
+                            <td>Fue el, <b>{{ cambiarNombreAEspanol($solicitud->dia_bloqueo) }}</b></td>
+                            <td>Próximo <b>{{ cambiarNombreAEspanol($solicitud->dia_desbloqueo) }}</b></td>
                             <td><center><b># {{ $solicitud->id_solicitud }}</b></center></td>
                             <td><b>{{ $solicitud->nombre }}</b></td>
                             <td>{{ $solicitud->nombre_comercial }}</td>
-                            <td><b>{{ $solicitud->estatus }}</b></td>
+                            {{-- <td><b>{{ $solicitud->estatus }}</b></td> --}}
                             <td>{{ $solicitud->descripcion }}</td>
                             <td>{{ $solicitud->diagnostico }}</td>
-                            <td>{{ $solicitud->fecha_solicitud }}</td>
+                            {{-- <td>{{ $solicitud->fecha_solicitud }}</td> --}}
                             
                         </tr>
 

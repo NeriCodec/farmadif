@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        parent::__construct();
     }
 
     /**
@@ -25,4 +26,24 @@ class HomeController extends Controller
     {
         return view('/home');
     }
+
+    // public static function verificarSolicitudes()
+    // {
+    //     $medicamentoRequerido = SolicitudMedicamento::medicamentosRequeridos();
+
+    //     $diaActual = strftime("%A");
+    //     foreach ($medicamentoRequerido as $solicitud) 
+    //     {
+    //         if($diaActual == $solicitud->dia_desbloqueo) 
+    //         {
+    //             $medicamento = Medicamento::find($solicitud->id_medicamento);
+    //             $medicamento->tipo_bloqueo = 'desbloqueado';
+    //             $medicamento->save();
+
+    //             $solicitud = MedicamentoRequerido::find($solicitud->id_medicamentos_requeridos);
+    //             $solicitud->estatus_solicitud = 'liberado';
+    //             $solicitud->save();
+    //         }
+    //     }
+    // }
 }

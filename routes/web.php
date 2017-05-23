@@ -75,10 +75,6 @@ Route::name('ruta_eliminar_donador')->get('/eliminar-donador/{idDonador}','Donad
 Route::name('ruta_seleccionar_actualizar_donador')->get('/actializar-donador/{idDonador}','DonadorController@actualizarDonador');
 
 
-
-
-
-
 # Rutas para la autenticacion
 Auth::routes();
 Route::get('/home', 'HomeController@index');

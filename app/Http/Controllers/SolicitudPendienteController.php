@@ -24,6 +24,8 @@ class SolicitudPendienteController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        parent::__construct();
+
     }
     
     public function mostrarSolicitud($idBeneficiario)
@@ -43,20 +45,20 @@ class SolicitudPendienteController extends Controller
     {
         $medicamentoRequerido = SolicitudMedicamento::medicamentosRequeridos();
 
-        $diaActual = strftime("%A");
-        foreach ($medicamentoRequerido as $solicitud) 
-        {
-            if($diaActual == $solicitud->dia_desbloqueo) 
-            {
-                $medicamento = Medicamento::find($solicitud->id_medicamento);
-                $medicamento->tipo_bloqueo = 'desbloqueado';
-                $medicamento->save();
+        // $diaActual = strftime("%A");
+        // foreach ($medicamentoRequerido as $solicitud) 
+        // {
+        //     if($diaActual == $solicitud->dia_desbloqueo) 
+        //     {
+        //         $medicamento = Medicamento::find($solicitud->id_medicamento);
+        //         $medicamento->tipo_bloqueo = 'desbloqueado';
+        //         $medicamento->save();
 
-                $solicitud = MedicamentoRequerido::find($solicitud->id_medicamentos_requeridos);
-                $solicitud->estatus_solicitud = 'liberado';
-                $solicitud->save();
-            }
-        }
+        //         $solicitud = MedicamentoRequerido::find($solicitud->id_medicamentos_requeridos);
+        //         $solicitud->estatus_solicitud = 'liberado';
+        //         $solicitud->save();
+        //     }
+        // }
 
         return view('solicitudPendiente.solicitudes')->with('solicitudes', $medicamentoRequerido);
     }
