@@ -38,7 +38,7 @@ class BeneficiarioController extends Controller
     */
     public function mostrarRegistro()
     {
-    	return view('beneficiario.registro');
+    	return view('beneficiario.registro')->with('actualizar',FALSE);
     }
 
     /**
@@ -74,5 +74,17 @@ class BeneficiarioController extends Controller
 
         return view('beneficiario.detallesMedicamentoRequerido')->with('detalles', $detallesBeneficiario)
                                             ->with('beneficiario', $beneficiario);
+    }
+
+    public function eliminarBeneficiario($idBeneficiario,Request $request){
+        $beneficiario = Beneficiario::find($idBeneficiario);
+        if ($beneficiario->delete()) {
+            return redirect()->route('ruta_beneficiarios');
+        }
+    }
+
+    public function actualizarBeneficiario($idBeneficiario,Request $request){
+        $beneficiario = Beneficiario::find($idBeneficiario);
+        return view('beneficiario.registro')->with('beneficiario', $beneficiario)->with('actualizar',TRUE);
     }
 }

@@ -41,7 +41,7 @@
                         <tr>
                             <td>
                                 <center>
-                                    <a href="#">
+                                    <a href="{{ route('ruta_seleccionar_actualizar_beneficiario', ['idBeneficiario' => $beneficiario->id_beneficiario]) }}">
                                         <button class="btn btn-default btn-small ">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </button> 
@@ -50,7 +50,7 @@
                             </td>
                             <td>
                                 <center>
-                                    <a href="#">
+                                    <a href="{{ route('ruta_eliminar_beneficiario', ['idBeneficiario' => $beneficiario->id_beneficiario]) }}">
                                         <button class="btn btn-default btn-small ">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                         </button> 
