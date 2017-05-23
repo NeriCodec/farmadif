@@ -3,6 +3,12 @@
 @section('content')
 
 @if($actualizar)
+<?php 
+	$date = new DateTime($beneficiario->fecha_nacimiento);
+	$Fdia =$date->format('d');
+	$Fmes =$date->format('m');
+	$Fanio =$date->format('Y');
+ ?>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -11,7 +17,7 @@
             </div>
             <div class="panel-body">
 
-				<form action="{{ route('ruta_beneficiario_registrar') }}" method="post" enctype="multipart/form-data">
+				<form action="{{ route('ruta_guardar_beneficiario_actualizar') }}" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					<div class="row">
 						<div class="col-md-12">
@@ -25,6 +31,7 @@
                             	@endif
 						    </div>
 						    <div class="form-group{{ $errors->has('ap_paterno') ? ' has-error' : '' }}">
+
 						        <label>Ingrese el apellido paterno</label>
 						        <input class="form-control" name='ap_paterno' id='ap_paterno' placeholder="Ingrese el apellido paterno" value="{{ $beneficiario->ap_paterno }}">
 						        @if ($errors->has('ap_paterno'))
@@ -44,10 +51,11 @@
 						    </div>
 						    <div class="form-group{{ $errors->has('dia') ? ' has-error' : '' }}">
 						        <label>Ingrese la fecha de nacimiento</label>
+						        <input type="hidden" name="idBeneficiario" value="{{ $beneficiario->id_beneficiario }}">
 						        <div class="row">
 						          <div class="col-xs-4">
 						            <select class="form-control" name="dia" >
-						            	<option value="">Dia</option>
+						            	<option value="$Fdia"><?php echo $Fdia ?></option>
 						              <?php
 						                  for($i=1; $i<=31; $i++) {
 						                     echo "<option value=$i>$i</option>";
@@ -62,7 +70,7 @@
 						          </div>
 						          <div class="col-xs-4">
 						            <select class="form-control{{ $errors->has('mes') ? ' has-error' : '' }}" name="mes">
-						            	<option value="">Mes</option>
+						            	<option value="<?php echo $Fmes ?>"><?php echo $Fmes ?></option>
 						              <?php
 						                  for($i=1; $i<=12; $i++) {
 						                      switch($i) {
@@ -115,7 +123,7 @@
 						          </div>
 						          <div class="col-xs-4">
 						            <select class="form-control{{ $errors->has('anio') ? ' has-error' : '' }}" name="anio">
-									 <option value="">Año</option>
+									 <option value="<?php echo $Fanio ?>"><?php echo $Fanio ?></option>
 						              <?php
 						                  for($i=date("Y"); $i>=1950; $i--) {
 						                     echo "<option value=$i>$i</option>";
@@ -155,7 +163,7 @@
 						    	<div class="col-md-6">
 						    		<div class="form-group{{ $errors->has('usuario') ? ' has-error' : '' }}">
 								        <label>Ingrese el usuario</label>
-								        <input class="form-control" name='usuario' id='usuario' placeholder="Ingrese el usuario" value="{{ old('usuario') }}">
+								        <input class="form-control" name='usuario' id='usuario' placeholder="Ingrese el usuario" value="{{ $beneficiario->usuario }}">
 								        @if ($errors->has('usuario'))
 		                                <span class="help-block">
 		                                    <strong>{{ $errors->first('usuario') }}</strong>
@@ -166,7 +174,7 @@
 						    	<div class="col-md-6">
 						    		<div class="form-group{{ $errors->has('contrasena') ? ' has-error' : '' }}">
 								        <label>Ingrese la contraseña</label>
-								        <input class="form-control" name='contrasena' id='contrasena' placeholder="Ingrese la contraseña" value="{{ old('contrasena') }}">
+								        <input class="form-control" name='contrasena' id='contrasena' placeholder="Ingrese la contraseña" value="{{ $beneficiario->contrasenia }}">
 								        @if ($errors->has('contrasena'))
 		                                <span class="help-block">
 		                                    <strong>{{ $errors->first('contrasena') }}</strong>
