@@ -51,6 +51,7 @@ class BeneficiarioController extends Controller
     public function registrar(RegistrarBeneficiarioRequest $request)
     {
         BeneficiarioDatabase::guardarBeneficiario($request);
+        session()->flash('mensaje', 'EL BENEFICIARIO FUE REGISTRADO CON EXITO ');
     	return redirect()->route('ruta_beneficiarios');
     }
 
@@ -78,8 +79,16 @@ class BeneficiarioController extends Controller
     }
 
     public function eliminarBeneficiario($idBeneficiario,Request $request){
-        $beneficiario = Beneficiario::find($idBeneficiario);
-        if ($beneficiario->delete()) {
+        try
+        {
+            $beneficiario = Beneficiario::find($idBeneficiario);
+            $beneficiario->delete();
+            session()->flash('mensaje', 'EL BENEFICIARIO FUE ELIMINADO CON EXITO ');
+            return redirect()->route('ruta_beneficiarios');
+        } 
+        catch(\Exception $e) 
+        {
+            session()->flash('mensaje', 'EL BENEFICIARIO NO SE PUEDE ELIMINAR, ESTA EN USO.');
             return redirect()->route('ruta_beneficiarios');
         }
     }
@@ -102,6 +111,8 @@ class BeneficiarioController extends Controller
             $beneficiario->usuario=$request->get('usuario');
             $beneficiario->contrasenia=$request->get('contrasena');
             if ($beneficiario->save()) {
+                session()->flash('mensaje', 'EL BENEFICIARIO FUE ACTUALIZADO CON EXITO ');
+                session()->flash('tipo', 'success');
                 return redirect()->route('ruta_beneficiarios');
             }else{
                 echo "error al actualizar";

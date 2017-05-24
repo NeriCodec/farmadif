@@ -36,6 +36,6 @@ class BeneficiarioDatabase
         $beneficiario->identificacion = "'" . 'public/identificaciones/' . $request->identificacion->hashName() . "'";
         $beneficiario->fotografia = "'" . 'public/fotografias/' . $request->fotografia->hashName() . "'";
     	$beneficiario->tb_usuarios_id_usuario = Auth::id();
-    	$beneficiario->save();
+    	$beneficiario->save();     
 	}
 }

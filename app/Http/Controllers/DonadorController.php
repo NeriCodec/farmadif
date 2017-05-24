@@ -53,6 +53,7 @@ class DonadorController extends Controller
     public function registrar(RegistrarDonadorRequest $request)
     {
         DonadorDatabase::guardarDonador($request);
+        session()->flash('mensaje', 'EL DONADOR FUE REGISTRADO CON EXITO');
     	return redirect()->route('ruta_donadores');
     }
 
@@ -75,12 +76,17 @@ class DonadorController extends Controller
 
 
     public function eliminarDonador($idDonador,Request $request){
-
-        $donador = Donador::find($idDonador);
-        
-        if ($donador->delete()) {
-                return redirect()->route('ruta_donadores');
-
+        try
+        {
+            $donador = Donador::find($idDonador);
+            $donador->delete();
+            session()->flash('mensaje', 'EL DONADOR FUE ELIMINADO CON EXITO');
+            return redirect()->route('ruta_donadores');
+        }
+        catch(\Exception $e)
+        {
+            session()->flash('mensaje', 'EL DONADOR NO SE PUEDE ELIMINAR, ESTA EN USO.');
+            return redirect()->route('ruta_donadores');
         }
     }
 
@@ -91,7 +97,7 @@ class DonadorController extends Controller
 
     public function guardaActualizarDonador(RegistrarDonadorRequest $request){
               //DonadorDatabase::guardarActualizarDonador($request);
-        $donador=Donador::where('id_donador', '=', $request->get('idDonador'))->first();
+        $donador = Donador::where('id_donador', '=', $request->get('idDonador'))->first();
         if (count($donador)>0) {
             $donador->nombre =$request->get('nombre');
             $donador->domicilio =$request->get('domicilio');
@@ -100,6 +106,7 @@ class DonadorController extends Controller
             $donador->observaciones =$request->get('observaciones');
             $donador->fecha_registro =date("Y-m-d h:m:s");
             if ($donador->save()) {
+                    session()->flash('mensaje', 'EL DONADOR FUE ACTUALIZADO CON EXITO');
                     return redirect()->route('ruta_donadores');
                 }else{
                     echo "Error al actualizar";

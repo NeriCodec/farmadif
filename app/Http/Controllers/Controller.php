@@ -19,17 +19,17 @@ class Controller extends BaseController
         date_default_timezone_set("America/Mexico_City");
         $medicamentoRequerido = SolicitudMedicamento::medicamentosRequeridos();
         $diaActual = strftime("%A");
-        foreach ($medicamentoRequerido as $solicitud) 
+        foreach ($medicamentoRequerido as $mMedicamentoRequerido) 
         {
-            if($diaActual == $solicitud->dia_desbloqueo) 
+            if($diaActual == $mMedicamentoRequerido->dia_desbloqueo) 
             {
-                $medicamento = Medicamento::find($solicitud->id_medicamento);
+                $medicamento = Medicamento::find($mMedicamentoRequerido->id_medicamento);
                 $medicamento->tipo_bloqueo = 'desbloqueado';
                 $medicamento->save();
 
-                $solicitud = MedicamentoRequerido::find($solicitud->id_medicamentos_requeridos);
-                $solicitud->estatus_solicitud = 'liberado';
-                $solicitud->save();
+                $mMedicamentoRequerido = MedicamentoRequerido::find($mMedicamentoRequerido->id_medicamentos_requeridos);
+                $mMedicamentoRequerido->estatus_solicitud = 'liberado';
+                $mMedicamentoRequerido->save();
             }
         }
     }
