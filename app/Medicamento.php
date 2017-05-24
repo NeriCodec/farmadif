@@ -80,6 +80,14 @@ class Medicamento extends Model
         return $medicamentos;
     }
 
+    public static function obtenerTodosLosMedicamentos()
+    {
+        $medicamentos = \DB::select('SELECT * FROM tb_medicamentos WHERE estatus = \'existencia\' AND tipo_bloqueo = \'desbloqueado\'');
+
+        return $medicamentos;
+
+    }
+
 
 
 }

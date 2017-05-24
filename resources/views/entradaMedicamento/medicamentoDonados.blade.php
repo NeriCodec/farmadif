@@ -19,6 +19,7 @@
                      <table width="100%" class="table table-striped table-hover">
                     <thead>
                         <tr>
+                                <th width="1%"></th>
                                 <th>Nombre comercial</th>
                                 <th>Nombre compuesto</th>
                                 <th>No. etiqueta</th>
@@ -32,16 +33,18 @@
                     </thead>
                     <tbody>
                             @foreach($medicamentos as $medicamento)
-                            <tr @if($medicamento->estatus=="requerido") class="warning" @else class="success" @endif  >
-                                <th>{{ $medicamento->nombre_comercial }}</th>
-                                <th>{{ $medicamento->nombre_compuesto }}</th>
-                                <th>{{ $medicamento->num_etiqueta }}</th>
-                                <th>{{ $medicamento->num_folio }}</th>
-                                <th>{{ $medicamento->mes_caducidad }}</th>
-                                <th>{{ $medicamento->dosis }}</th>
-                                <th>{{ $medicamento->solucion_tableta }}</th>
-                                <th>{{ $medicamento->tipo_contenido }}</th>
-                                <th>
+                            <tr>
+                                <td style="background-color: @if($medicamento->estatus=="requerido") #FFE161 @else #1F8A70 @endif ;">
+                                </td>
+                                <td>{{ $medicamento->nombre_comercial }}</td>
+                                <td>{{ $medicamento->nombre_compuesto }}</td>
+                                <td>{{ $medicamento->num_etiqueta }}</td>
+                                <td>{{ $medicamento->num_folio }}</td>
+                                <td>{{ $medicamento->mes_caducidad }}</td>
+                                <td>{{ $medicamento->dosis }}</td>
+                                <td>{{ $medicamento->solucion_tableta }}</td>
+                                <td>{{ $medicamento->tipo_contenido }}</td>
+                                <td>
                                   <center>
                                     <a href="{{ route('ruta_nuevo_existente_registrar_medicamento', ['idDonador' => $donador->id_donador,'idMedicamento' => $medicamento->id_medicamento]) }}">
                                          <button class="btn btn-success btn-small ">
@@ -49,7 +52,7 @@
                                          </button> 
                                     </a>
                                   </center>
-                                </th>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

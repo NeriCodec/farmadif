@@ -79,6 +79,22 @@ class Beneficiario extends Model
         return $medicamentosRequeridos;
     }
 
+    public static function medicamentosRequeridosPorUnBeneficiarioParaNotificaciones($idBeneficiario)
+    {
+        $medicamentosRequeridos = \DB::select('SELECT nombre_comercial, nombre_compuesto, id_solicitud, estatus_solicitud,
+        solucion_tableta, tipo_contenido, dosis, id_solicitud, descripcion, diagnostico, num_folio, estatus
+        FROM tb_medicamentos_requeridos
+        INNER JOIN tb_medicamentos
+        ON tb_medicamentos_requeridos.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
+        INNER JOIN tb_solicitudes
+        ON tb_medicamentos_requeridos.tb_solicitudes_id_solicitud = tb_solicitudes.id_solicitud
+        WHERE tb_beneficiarios_id_beneficiario = ' . $idBeneficiario . '
+        AND estatus_solicitud = \'solicitado\'');
+
+        return $medicamentosRequeridos;
+
+    }
+
     /**
     * Metodo que realiza una busqueda del beneficiario
     * @param $query 

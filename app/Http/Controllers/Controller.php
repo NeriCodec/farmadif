@@ -16,12 +16,11 @@ class Controller extends BaseController
 
     public function __construct()
     {
+        date_default_timezone_set("America/Mexico_City");
         $medicamentoRequerido = SolicitudMedicamento::medicamentosRequeridos();
-
         $diaActual = strftime("%A");
         foreach ($medicamentoRequerido as $solicitud) 
         {
-            echo $solicitud->dia_desbloqueo;
             if($diaActual == $solicitud->dia_desbloqueo) 
             {
                 $medicamento = Medicamento::find($solicitud->id_medicamento);
