@@ -89,7 +89,7 @@ class BeneficiarioController extends Controller
         return view('beneficiario.registro')->with('beneficiario', $beneficiario)->with('actualizar',TRUE);
     }
 
-    public function guardaActualizarBeneficiario(RegistrarBeneficiarioRequest $request){
+    public function guardaActualizarBeneficiario(Request $request){
         
          $beneficiario = Beneficiario::where('id_beneficiario', '=', $request->get('idBeneficiario'))->first();
          if(count($beneficiario)>0){

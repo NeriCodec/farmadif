@@ -55,7 +55,7 @@
 						        <div class="row">
 						          <div class="col-xs-4">
 						            <select class="form-control" name="dia" >
-						            	<option value="$Fdia"><?php echo $Fdia ?></option>
+						            	<option value="<?php echo $Fdia; ?>"><?php echo $Fdia; ?></option>
 						              <?php
 						                  for($i=1; $i<=31; $i++) {
 						                     echo "<option value=$i>$i</option>";
@@ -70,7 +70,7 @@
 						          </div>
 						          <div class="col-xs-4">
 						            <select class="form-control{{ $errors->has('mes') ? ' has-error' : '' }}" name="mes">
-						            	<option value="<?php echo $Fmes; ?>"><?php echo $Fmes ?></option>
+						            	<option value="<?php echo $Fmes; ?>"><?php echo $Fmes; ?></option>
 						              <?php
 						                  for($i=1; $i<=12; $i++) {
 						                      switch($i) {
