@@ -39,7 +39,7 @@ class Medicamento extends Model
     public function scopeBuscarMedicamentoSalida($query, $medicamento)
     {
         if (trim($medicamento) != "") {
-            $query->where('nombre_comercial', 'LIKE', "%$medicamento%")->where('estatus', 'existencia');
+            $query->where(\DB::raw("CONCAT(nombre_comercial, ' ', nombre_compuesto, ' ', num_etiqueta, ' ', num_folio, ' ', anio_caducidad, ' ', mes_caducidad, ' ', dosis, ' ', asolucion_tableta, ' ', tipo_contenido)"), 'LIKE', "%$medicamento%");
         }
     }
 
