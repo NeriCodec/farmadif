@@ -33,9 +33,17 @@ class Medicamento extends Model
     public function scopeBuscarMedicamento($query, $medicamento)
     {
     	if (trim($medicamento) != "") {
-    		$query->where('nombre_comercial', 'LIKE', "%$medicamento%")->where('estatus', 'existencia');
+    		$query->where('nombre_comercial', 'LIKE', "%$medicamento%");
     	}
     }
+    public function scopeBuscarMedicamentoSalida($query, $medicamento)
+    {
+        if (trim($medicamento) != "") {
+            $query->where('nombre_comercial', 'LIKE', "%$medicamento%")->where('estatus', 'existencia');
+        }
+    }
+
+
     
     /**
     * Metodo que obtiene los medicamentos para la API

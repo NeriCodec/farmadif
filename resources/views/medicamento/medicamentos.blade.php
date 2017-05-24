@@ -5,11 +5,16 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Donadores registrados
+                    Medicamentos registrados
                 </div>
-            <form class="navbar-form navbar-left pull-left" action="{{ route('ruta_imprimir_inventario_pdf') }}" method="get" target="_blank">
+
+            
+            <form class="navbar-form navbar-left pull-right" action="{{ route('ruta_imprimir_inventario_pdf') }}" method="get" target="_blank">
+            <input type="month" name="fecha" />
               <button type="submit" class="btn btn-default">Imprimir reporte PDF</button>
             </form>
+
+
                 <div class="panel-body">
                     <table width="100%" class="table table-striped table-bordered table-hover" id="tmedicamento">
                         <thead>
@@ -29,7 +34,7 @@
                             @foreach($medicamentos as $medicamento)
                             <tr>
                                 <td>{{ $medicamento->nombre_comercial }}</td>
-                                <td>{{ $medicamento->nombre_compuesto }}</td>
+                                <td >{{ $medicamento->nombre_compuesto }}</td>
                                 <td>{{ $medicamento->num_etiqueta }}</td>
                                 <td>{{ $medicamento->num_folio }}</td>
 

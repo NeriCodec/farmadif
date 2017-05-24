@@ -18,9 +18,10 @@ class ReporteInventarioPDFController extends Controller
         $this->middleware('auth');
     }
 
-    public function imprimirReporte(){
+    public function imprimirReporte(Request $request){
+        echo $request->get('fecha');
     	//return view('reportesPDF.reporteInventario');
-    	$medicamentos = Medicamento::paginate(1000000);
+    	/*$medicamentos = Medicamento::paginate(1000000);
     	$vista =view('reportesPDF.reporteInventario')->with('medicamentos', $medicamentos);
     	
     	ob_start();
@@ -43,7 +44,7 @@ class ReporteInventarioPDFController extends Controller
         catch (HTML2PDF_exception $e) {
             echo $e;
             exit;
-        }
+        }*/
 		
 
     }
