@@ -45,7 +45,7 @@
 						    </div>
 						    <div class="form-group">
 				                <label>Observaciones</label>
-				                <textarea class="form-control" name="observaciones" id="observaciones" rows="3" required>
+				                <textarea class="form-control" name="observaciones" id="observaciones" required>
 				                	{{ $donador->observaciones }}
 				                </textarea>
 				            </div>

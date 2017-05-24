@@ -18,6 +18,10 @@
     <!-- Estilos propios -->
     <link rel="stylesheet" href="/css/estilos.css">
 
+    <!-- Bootstrap notification -->
+    <link rel="stylesheet" href="/css/bootstrap-notify.css">
+    <link rel="stylesheet" href="/css/styles/alert-bangtidy.css">
+    <link rel="stylesheet" href="/css/styles/alert-blackgloss.css">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -140,6 +144,7 @@
         </nav>
 
         <div class="container-fluid">
+            @include('layouts.mensajes')
             @yield('content')
         </div>
 
@@ -153,5 +158,17 @@
 
     <!-- Scripts -->
     <script src="/js/entradaMedicamento.js"></script>
+
+    <!-- Script Bootstrap notification -->
+    <script src="/js/bootstrap-notify.js"></script>
+
+    <script type="text/javascript">
+        $('.notificacion').notify({
+            type: 'blackgloss',
+            message: { text: $('#mensaje').val() },
+            fadeOut: { enabled: true, delay: 5000 }
+        }).show();
+    </script>
+
 </body>
 </html>

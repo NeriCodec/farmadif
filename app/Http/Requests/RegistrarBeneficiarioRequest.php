@@ -32,8 +32,8 @@ class RegistrarBeneficiarioRequest extends FormRequest
             'anio' => 'required',
             'domicilio' => 'required',
             'comunidad' => 'required',
-            'fotografia' => 'image',
-            'identificacion' => 'image'
+            'fotografia' => 'required|image',
+            'identificacion' => 'required|image'
         ];
     }
 }

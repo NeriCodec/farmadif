@@ -27,7 +27,7 @@
                         <th>Nombre compuesto</th>
                         <th>Descripcion</th>
                         <th>Diagnostico</th>
-                        <th><center>Existencia</center></th>
+                        {{-- <th><center>Existencia</center></th> --}}
                         <th><center>Estatus Solicitud</center></th>
                         {{-- <th>Eliminar</th> --}}
                     </tr>
@@ -43,13 +43,13 @@
                         <td>{{ $medicamento->descripcion }}</td>
                         <td>{{ $medicamento->diagnostico }}</td>
 
-                        @if($medicamento->estatus == "requerido") 
+                       {{--  @if($medicamento->estatus == "requerido") 
                         <td class="danger"><center><b>Sin provision</b></center></td>
                         @elseif($medicamento->estatus == "donado")
                          <td class="warning"><center><b>Donado</b></center></td>
                         @else
                          <td class="success"><center><b>En existencia</b></center></td>
-                        @endif
+                        @endif --}}
 
                         @if($medicamento->estatus_solicitud == "donado") 
                         <td class="success"><center><b>Donado</b></center></td>
