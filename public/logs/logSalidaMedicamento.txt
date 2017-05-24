@@ -2337,3 +2337,55 @@ Lineas-codigo: 58-68
 Verificacion de salida con ID beneficiario { 1 } 
 Tipo Verificacion: Exitosa
 ===========================================
+============2017-05-23 01:05:47============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 6 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-23 01:05:02============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 6 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-23 01:05:16============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 6 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-23 01:05:32============
+Controller: SalidaMedicamentoController
+Funcion: agregarMedicamento
+Lineas-codigo: 92-134
+Verificacion de salida con ID beneficiario { 6 } 
+Cantidad de medicamento: 1
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-23 01:05:56============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 6 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-23 01:05:56============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 6 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-23 01:05:39============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 1 } 
+Tipo Verificacion: Exitosa
+===========================================

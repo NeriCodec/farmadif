@@ -31,6 +31,8 @@ class BeneficiarioDatabase
     	$beneficiario->domicilio = $request->get('domicilio');
     	$beneficiario->comunidad = $request->get('comunidad');
     	$beneficiario->fecha_registro = date("Y-m-d h:m:s");
+        $beneficiario->usuario = $request->get('usuario');
+        $beneficiario->contrasenia = $request->get('contrasena');
         $beneficiario->identificacion = "'" . 'public/identificaciones/' . $request->identificacion->hashName() . "'";
         $beneficiario->fotografia = "'" . 'public/fotografias/' . $request->fotografia->hashName() . "'";
     	$beneficiario->tb_usuarios_id_usuario = Auth::id();

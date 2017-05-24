@@ -70,7 +70,7 @@
 						          </div>
 						          <div class="col-xs-4">
 						            <select class="form-control{{ $errors->has('mes') ? ' has-error' : '' }}" name="mes">
-						            	<option value="<?php echo $Fmes ?>"><?php echo $Fmes ?></option>
+						            	<option value="<?php echo $Fmes; ?>"><?php echo $Fmes ?></option>
 						              <?php
 						                  for($i=1; $i<=12; $i++) {
 						                      switch($i) {
@@ -123,7 +123,7 @@
 						          </div>
 						          <div class="col-xs-4">
 						            <select class="form-control{{ $errors->has('anio') ? ' has-error' : '' }}" name="anio">
-									 <option value="<?php echo $Fanio ?>"><?php echo $Fanio ?></option>
+									 <option value="<?php echo $Fanio; ?>"><?php echo $Fanio; ?></option>
 						              <?php
 						                  for($i=date("Y"); $i>=1950; $i--) {
 						                     echo "<option value=$i>$i</option>";
