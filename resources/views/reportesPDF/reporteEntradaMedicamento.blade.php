@@ -22,7 +22,15 @@
     .separacionAbajo{
         margin-top: 30px;
     }
-
+    
+    .tablecu {
+    width: 50%;
+    height: 300px;
+    }
+    th,td{
+        width: 30px;
+        height: 40px;
+    }
 </style>
 
 
@@ -36,7 +44,7 @@
         <tr>
             <td style="text-align: left;    width: 33%"><img src="img/logoReporteDIF.jpg" class="logoizquierdo" ></td>
             <td style="text-align: center;    width: 34%"><h1 align="center">Inventario FARMADIF</h1></td>
-            <td style="text-align: right;    width: 34%"><img src="img/logoHidalgo.jpg" class="logoderecho"><?php //echo date('d/m/Y'); ?></td>
+            <td style="text-align: right;    width: 50%"><img src="img/logoHidalgo.jpg" class="logoderecho"><?php //echo date('d/m/Y'); ?></td>
         </tr>
     </table>
 
@@ -51,8 +59,8 @@
 </page_footer>
 
 
-<div class="centrar-tabla" >
-    <table border="1px" cellspacing="0px" style="width:auto; height: auto;">
+<div class="centrar-tabla"  >
+    <table border="1px" cellspacing="0px" class="tablecu" style="width: 100%;">
         <thead>
         <tr>
             {{-- <th>ID</th> --}}
@@ -72,7 +80,7 @@
         @foreach($medicamentos as $medicamento)
         <tr>
             <td>{{ $medicamento->fecha_entrada }}</td>
-            <td>{{ $medicamento->nombre_comercial }}</td>
+            <td >{{ $medicamento->nombre_comercial }}</td>
             <td>{{ $medicamento->nombre_compuesto }}</td>
             <td>{{ $medicamento->num_etiqueta }}</td>
             <td>{{ $medicamento->num_folio }}</td>
