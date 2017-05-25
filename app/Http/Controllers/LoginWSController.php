@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Donador;
 use App\Beneficiario;
 use Illuminate\Http\Request;
 
@@ -38,9 +39,11 @@ class LoginWSController extends Controller
         $tokenAutenticacion = "5c73ca7f-1ecf-417e-862c-7695614d18be";
         $usuario = $request->input('usuario');
         $contrasenia = $request->input('contrasenia');
+        $tipo_usuario = $request->input('tipo_usuario');
         $token = $request->input('token');
 
-        if($usuario == null || $contrasenia == null || $token == null) 
+        if($usuario == null || $contrasenia == null 
+            || $token == null || $tipo_usuario == null) 
         {
             return response()->json( 
                 [
@@ -53,36 +56,70 @@ class LoginWSController extends Controller
 
         if($tokenAutenticacion == $token) 
         {
-            $beneficiario = Beneficiario::BuscarBeneficiarioLogin(
-            $usuario,
-            $contrasenia
-            );
-            
-
-            if($beneficiario == null) 
+            if($tipo_usuario == 'Beneficiario')
             {
+                $beneficiario = Beneficiario::BuscarBeneficiarioLogin(
+                    $usuario,
+                    $contrasenia
+                );
+
+                if($beneficiario == null) 
+                {
+                    return response()->json( 
+                        [
+                            "status" => "404",
+                            "error" => "usuario no encontrado",
+                        ] ,
+                        404
+                    );
+                }
+
+                $medicamentosDonados = Beneficiario::medicamentosDelBeneficiario($beneficiario[0]->id_beneficiario);
+                $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiarioId($beneficiario[0]->id_beneficiario);
+
                 return response()->json( 
                     [
-                        "status" => "404",
-                        "error" => "usuario no encontrado",
+                        "status" => "200",
+                        "id_beneficiario" => $beneficiario[0]->id_beneficiario,
+                        "usuario" => $beneficiario[0]->usuario,
+                        // "medicamento_donado" => $medicamentosDonados,
+                        // "medicamento_requerido" => $medicamentosRequeridos
                     ] ,
-                    404
+                    200
                 );
-            }
+            } 
+            else if ($tipo_usuario == 'Donador')
+            {
+                $donador = Donador::buscarDonadorLogin(
+                    $usuario,
+                    $contrasenia
+                );
 
-            $medicamentosDonados = Beneficiario::medicamentosDelBeneficiario($beneficiario[0]->id_beneficiario);
-            $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiarioId($beneficiario[0]->id_beneficiario);
+                if($donador == null) 
+                {
+                    return response()->json( 
+                        [
+                            "status" => "404",
+                            "error" => "usuario no encontrado",
+                        ] ,
+                        404
+                    );
+                }
 
-            return response()->json( 
-                [
-                    "status" => "200",
-                    "id_beneficiario" => $beneficiario[0]->id_beneficiario,
-                    "usuario" => $beneficiario[0]->usuario,
-                    // "medicamento_donado" => $medicamentosDonados,
-                    // "medicamento_requerido" => $medicamentosRequeridos
-                ] ,
-                200
-            );
+                return response()->json( 
+                    [
+                        "status" => "200",
+                        "usuario" => $donador[0]->usuario,
+                        // "medicamento_donado" => $medicamentosDonados,
+                        // "medicamento_requerido" => $medicamentosRequeridos
+                    ] ,
+                    200
+                );
+            } 
+            
+            
+
+            
         }
 
         return response()->json( 

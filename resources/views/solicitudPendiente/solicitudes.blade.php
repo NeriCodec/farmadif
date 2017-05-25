@@ -64,10 +64,6 @@
                             <td>{{ $solicitud->fecha_fin_bloqueo }}</td>
                             @endif
 
-                            <?php
-                                echo $solicitud->dias_restantes . ' / ';
-                            ?>
-
                             @if($solicitud->estatus == 'requerido')
                             <td><center><b>Sin dias restantes</b></center></td>
                             @elseif($solicitud->dias_restantes > 1)

@@ -32,24 +32,16 @@ class Controller extends BaseController
         	if($fechaFinal < $diaActual) {
         		$medicamento->dias_restantes = -1;	
         		$medicamento->tipo_bloqueo = 'desbloqueado';
-        		$medicamento->save();
-
-        		$mMedicamentoRequerido = MedicamentoRequerido::find($mMedicamentoRequerido->id_medicamentos_requeridos);
+                $mMedicamentoRequerido = MedicamentoRequerido::find($mMedicamentoRequerido->id_medicamentos_requeridos);
                 $mMedicamentoRequerido->estatus_solicitud = 'liberado';
+                
+                $medicamento->save();
                 $mMedicamentoRequerido->save();
         	}
         	else 
         	{
         		$diferencia = $diaActual->diff($fechaFinal)->days;
-                // if($diferencia == 0)
-                // {
-                //     $medicamento->dias_restantes = -1;
-                // }
-                // else
-                // {
-                    $medicamento->dias_restantes = $diferencia;
-                // }
-        		
+                $medicamento->dias_restantes = $diferencia;
             	$medicamento->save();
         	}
         }

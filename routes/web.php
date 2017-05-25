@@ -15,6 +15,7 @@ Route::name('ruta_medicamento_requerido_detalle')->get('/medicamento-requerido/d
 Route::resource('/usuarios/login', 'LoginWSController', ['only'=>['store']] );
 Route::resource('/usuarios/medicamento', 'MedicamentoWSController', ['only'=>['index', 'store']] );
 Route::resource('/usuarios/notificacion', 'NotificacionesWSController', ['only'=>['store']] );
+Route::resource('/usuarios/medicamento-requeridos', 'MedicamentoRequeridoWsController', ['only'=>['index']] );
 
 
 # Rutas para el Donadores

@@ -34,4 +34,20 @@ class Donador extends Model
             $query->where("nombre", 'LIKE', "%$nombre%");
         }
     }
+
+    /**
+    * Metodo que realiza una busqueda del beneficiario
+    * @param $query 
+    * @param String nombre, nombre comercial del medicamento
+    * @return $void
+    */
+    public static function buscarDonadorLogin($usuario, $contrasenia)
+    {
+
+        $donador = \DB::select("SELECT usuario, id_donador
+        FROM tb_donadores
+        WHERE usuario = '" . $usuario . "' AND contrasenia = '" . $contrasenia ."'");
+
+        return $donador;
+    }
 }
