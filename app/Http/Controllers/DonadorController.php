@@ -104,6 +104,8 @@ class DonadorController extends Controller
             $donador->num_telefonico =$request->get('telefono');
             $donador->codigo_postal =$request->get('codigo');
             $donador->observaciones =$request->get('observaciones');
+            $donador->usuario = $request->get('usuario');
+            $donador->contrasenia = $request->get('contrasenia');
             $donador->fecha_registro =date("Y-m-d h:m:s");
             if ($donador->save()) {
                     session()->flash('mensaje', 'EL DONADOR FUE ACTUALIZADO CON EXITO');
