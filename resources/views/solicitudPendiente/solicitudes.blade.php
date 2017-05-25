@@ -16,31 +16,6 @@
         </div>
     </div>
 @else
-<?php
-function cambiarNombreAEspanol($diaActual)
-    {
-        if($diaActual == 'Monday')
-        {
-            return 'Lunes';
-        }
-        else if($diaActual == 'Tuesday') 
-        {
-            return 'Martes';
-        }
-        else if($diaActual == 'Wednesday') 
-        {
-            return 'Miercoles';   
-        }
-        else if($diaActual == 'Thursday') 
-        {
-            return 'Juevez';
-        }
-        else if($diaActual == 'Friday') 
-        {
-            return 'Viernes';
-        }
-    }
-?>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -56,7 +31,8 @@ function cambiarNombreAEspanol($diaActual)
                             <th width="5%"><center>Salida Medicamento</center></th>
                             <th width="12%">Fecha de bloqueo</th>
                             <th width="12%">Fecha de liberacion</th>
-                            <th width="5%" style="font-size: 13px;">No. solicitud</th>
+                            <th width="12%"><center>Dias para la liberacion</center></th>
+                            <th width="5%" style="font-size: 13px;"><center>No. solicitud</center></th>
                             <th>Beneficiario</th>
                             <th>Medicamento</th>
                             {{-- <th>Estatus</th> --}}
@@ -77,8 +53,27 @@ function cambiarNombreAEspanol($diaActual)
                                     </button>
                                 </center>
                             </td>
-                            <td><center><b>{{ cambiarNombreAEspanol($solicitud->dia_bloqueo) }}</b></center></td>
-                            <td><center><b>{{ cambiarNombreAEspanol($solicitud->dia_desbloqueo) }}</b></center></td>
+                            @if($solicitud->fecha_inicio_bloqueo == null)
+                            <td>Sin fecha de inicio</td>
+                            @else
+                            <td>{{ $solicitud->fecha_inicio_bloqueo }}</td>
+                            @endif
+                            @if($solicitud->fecha_fin_bloqueo == null)
+                            <td>Sin fecha final</td>
+                            @else
+                            <td>{{ $solicitud->fecha_fin_bloqueo }}</td>
+                            @endif
+                            
+                            @if($solicitud->dias_restantes > 1)
+                            <td><center><b>{{ 'Faltan ' . $solicitud->dias_restantes . ' dias'}}</b></center></td>
+                            @elseif($solicitud->dias_restantes == 0)
+                            <td><center><b>Mañana se libera</b></center></td>
+                            @elseif($solicitud->dias_restantes == null)
+                            <td><center><b>Sin dias restantes</b></center></td>
+                            @else
+                            <td><center><b>{{ 'Falta ' . $solicitud->dias_restantes . ' dia'}}</b></center></td>
+                            @endif
+
                             <td><center><b># {{ $solicitud->id_solicitud }}</b></center></td>
                             <td><b>{{ $solicitud->nombre }}</b></td>
                             <td>{{ $solicitud->nombre_comercial }}</td>

@@ -74,9 +74,9 @@ class SalidaMedicamentoController extends Controller
         $beneficiario = Beneficiario::find($idBeneficiario);
 
         if ($request->get('medicamento') == "") {
-           $medicamentos = Medicamento::buscarMedicamento("sin_medicamento")->paginate(1);
+           $medicamentos = Medicamento::BuscarMedicamentoSalida("sin_medicamento")->paginate(1);
         } else {
-            $medicamentos = Medicamento::buscarMedicamento($request->get('medicamento'))->paginate(100);
+            $medicamentos = Medicamento::BuscarMedicamentoSalida($request->get('medicamento'))->paginate(100);
         }
 
         // Se obtiene la verificacion y los todos los medicamentos agregados

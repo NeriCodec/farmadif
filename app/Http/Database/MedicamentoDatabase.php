@@ -2,6 +2,7 @@
 
 namespace App\Http\Database;
 
+use Carbon\Carbon;
 use App\Medicamento;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SolicitudRequest;
@@ -34,6 +35,8 @@ class MedicamentoDatabase
 
     public static function actualizarMedicamento(RegistrarMedicamentoRequest $request, $idMedicamento)
     {
+        $diaDeHoy = Carbon::now();
+
         $medicamento = Medicamento::find($idMedicamento);
         $medicamento->nombre_compuesto = $request->get('nombre_compuesto');
         $medicamento->nombre_comercial = $request->get('nombre_comercial');
@@ -47,33 +50,10 @@ class MedicamentoDatabase
         $medicamento->estatus = 'existencia';
         $medicamento->fecha_registro = date("Y-m-d");
         $medicamento->tipo_bloqueo = 'bloqueado';
-        $medicamento->dia_bloqueo = strftime("%A");
-        $medicamento->dia_desbloqueo = MedicamentoDatabase::obtenerElDiaDeDesbloqueo(strftime("%A"));
-        $medicamento->save();
-    }
+        $medicamento->fecha_inicio_bloqueo = Carbon::now();
+        $medicamento->fecha_fin_bloqueo = $diaDeHoy->addWeekDays(4);
 
-    public static function obtenerElDiaDeDesbloqueo($diaActual)
-    {
-        if($diaActual == 'Monday')
-        {
-            return 'Friday';
-        }
-        else if($diaActual == 'Tuesday') 
-        {
-            return 'Monday';
-        }
-        else if($diaActual == 'Wednesday') 
-        {
-            return 'Tuesday';   
-        }
-        else if($diaActual == 'Thursday') 
-        {
-            return 'Wednesday';
-        }
-        else if($diaActual == 'Friday') 
-        {
-            return 'Thursday';
-        }
+        $medicamento->save();
     }
 
     public static function guardarMedicamentoRequerido(SolicitudRequest $request)

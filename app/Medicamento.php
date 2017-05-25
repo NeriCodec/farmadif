@@ -36,6 +36,8 @@ class Medicamento extends Model
     		 $query->where(\DB::raw("CONCAT(nombre_comercial, ' ', nombre_compuesto, ' ', num_etiqueta, ' ', num_folio, ' ', anio_caducidad, ' ', mes_caducidad, ' ', dosis, ' ', solucion_tableta, ' ', tipo_contenido)"), 'LIKE', "%$medicamento%");
     	}
     }
+
+    
     public function scopeBuscarMedicamentoSalida($query, $medicamento)
     {
         if (trim($medicamento) != "") {
