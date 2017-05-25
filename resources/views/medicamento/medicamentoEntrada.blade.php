@@ -5,10 +5,14 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Donadores registrados
+                    Entradas de medicamento
                 </div>
             <form class="navbar-form navbar-left pull-left" action="{{ route('ruta_imprimir_inventario_entrada_pdf') }}" method="get" target="_blank">
-              <button type="submit" class="btn btn-default">Imprimir reporte PDF</button>
+                <label >  Desde </label>
+                <input type="month" name="fechaIni" class="form-control" required />
+                <label >  a </label>
+                <input type="month" name="fechaFin" max="<?php echo date('Y-m');?>" class="form-control" required />
+                <button type="submit" class="btn btn-default">Imprimir reporte PDF</button>
             </form>
                 <div class="panel-body">
                     <table width="100%" class="table table-striped table-bordered table-hover" id="tmedicamento">

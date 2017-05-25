@@ -8,6 +8,10 @@
                     Donadores registrados
                 </div>
             <form class="navbar-form navbar-left pull-left" action="{{ route('ruta_imprimir_inventario_requerido_pdf') }}" method="get" target="_blank">
+                <label >  Desde </label>
+                <input type="month" name="fechaIni" class="form-control" required />
+                <label >  a </label>
+                <input type="month" name="fechaFin" max="<?php echo date('Y-m');?>" class="form-control" required />
               <button type="submit" class="btn btn-default">Imprimir reporte PDF</button>
             </form>
                 <div class="panel-body">

@@ -33,7 +33,7 @@ class Medicamento extends Model
     public function scopeBuscarMedicamento($query, $medicamento)
     {
     	if (trim($medicamento) != "") {
-    		 $query->where(\DB::raw("CONCAT(nombre_comercial, ' ', nombre_compuesto, ' ', num_etiqueta, ' ', num_folio, ' ', anio_caducidad, ' ', mes_caducidad, ' ', dosis, ' ', asolucion_tableta, ' ', tipo_contenido)"), 'LIKE', "%$medicamento%");
+    		 $query->where(\DB::raw("CONCAT(nombre_comercial, ' ', nombre_compuesto, ' ', num_etiqueta, ' ', num_folio, ' ', anio_caducidad, ' ', mes_caducidad, ' ', dosis, ' ', solucion_tableta, ' ', tipo_contenido)"), 'LIKE', "%$medicamento%");
     	}
     }
     public function scopeBuscarMedicamentoSalida($query, $medicamento)
@@ -69,6 +69,10 @@ class Medicamento extends Model
         $medicamentosRequeridos = \DB::select('select * from tb_medicamentos where tb_medicamentos.estatus=\'requerido\'');
         return $medicamentosRequeridos;
     }
+    public static function obtineMedicamentoRequeridosFecha($fechaInicial,$fechaFinal){
+        $medicamentosRequeridos = \DB::select("select * from tb_medicamentos where tb_medicamentos.estatus='requerido' and tb_medicamentos.fecha_registro between '".$fechaInicial."' and '".$fechaFinal."'");
+        return $medicamentosRequeridos;
+    }
     public static function medicamentosVencidos(){
         $medicamentos = \DB::select('select * from tb_medicamentos where mes_caducidad < MONTH(NOW())  and anio_caducidad < YEAR(NOW())');
         return $medicamentos;
@@ -78,6 +82,10 @@ class Medicamento extends Model
         $medicamentos = \DB::select('select * from tb_salida_medicamento,tb_medicamentos,tb_beneficiarios where tb_medicamentos.id_medicamento = tb_salida_medicamento.tb_medicamentos_id_medicamento and tb_beneficiarios.id_beneficiario=tb_salida_medicamento.tb_beneficiarios_id_beneficiario');
         return $medicamentos;
     }
+    public static function salidasMedicamentosFecha($fechaInicial,$fechaFinal){
+        $medicamentos = \DB::select("select * from tb_salida_medicamento,tb_medicamentos,tb_beneficiarios where tb_medicamentos.id_medicamento = tb_salida_medicamento.tb_medicamentos_id_medicamento and tb_beneficiarios.id_beneficiario=tb_salida_medicamento.tb_beneficiarios_id_beneficiario  and tb_salida_medicamento.fecha_salida_medicamento between '".$fechaInicial."' and '".$fechaFinal."'");
+        return $medicamentos;
+    }
 
     public static function entradaMedicamentos(){
 
@@ -85,6 +93,11 @@ class Medicamento extends Model
         return $medicamentos;
     }
 
+    public static function entradaMedicamentosFecha($fechaInicial,$fechaFinal){
+
+        $medicamentos = \DB::select("select * from tb_entrada_medicamento,tb_medicamentos,tb_donadores where tb_medicamentos.id_medicamento = tb_entrada_medicamento.tb_medicamentos_id_medicamento and tb_donadores.id_donador = tb_entrada_medicamento.tb_donadores_id_donador and tb_entrada_medicamento.fecha_entrada between '".$fechaInicial."' and '".$fechaFinal."'");
+        return $medicamentos;
+    }
     public static function medicamentosProximosVencer(){
         $medicamentos = \DB::select('select *  from tb_medicamentos where anio_caducidad = YEAR(NOW()) and mes_caducidad= MONTH(NOW())');
         return $medicamentos;

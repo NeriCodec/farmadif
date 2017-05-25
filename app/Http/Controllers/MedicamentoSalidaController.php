@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Medicamento;
-
+use Illuminate\Http\Request;
+use Yajra\Datatables\Facades\Datatables;
 
 class MedicamentoSalidaController extends Controller
 {
@@ -22,9 +23,20 @@ class MedicamentoSalidaController extends Controller
     	return view('medicamento.medicamentoSalida')->with('medicamentos', $medicamentosSalida);
     }
 
-    public function imprimirReporte(){
+    public function imprimirReporte(Request $request){
         //return view('reportesPDF.reporteInventario');
-        $medicamentos = Medicamento::salidasMedicamentos();
+        $fInicial = $request->get('fechaIni');
+        $fFinal = $request->get('fechaFin');
+        $fechaInicial = "";
+        $fechaFinal ="";
+        if ($fInicial == $fFinal) {
+            $fechaInicial = $fInicial."-01";
+            $fechaFinal = $fFinal."-30";
+        }else{
+            $fechaInicial = $fInicial."-01";
+            $fechaFinal = $fFinal."-01";
+        }
+        $medicamentos = Medicamento::salidasMedicamentosFecha($fechaInicial,$fechaFinal);
         $vista =view('reportesPDF.reporteMedicamentoSalida')->with('medicamentos', $medicamentos);
         
         ob_start();

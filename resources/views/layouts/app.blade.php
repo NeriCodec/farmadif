@@ -72,6 +72,9 @@
                                         <a href="{{ route('ruta_medicamentos') }}">Medicamentos</a>
                                     </li>
                                     <li>
+                                        <a href="#">Medicamentos totales</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('ruta_mostrar_medicementos_vencidos') }}">Medicamentos vencidos</a>
                                     </li>
                                     <li>
