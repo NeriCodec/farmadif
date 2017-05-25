@@ -61,6 +61,12 @@ class Medicamento extends Model
        return $medicamentos;
     }
 
+    public static function medicamentosInventariomos()
+    {
+        $medicamentosDonador  = \DB::select("select * from tb_medicamentos where estatus='existencia' order by nombre_comercial");
+        return $medicamentosDonador;
+    }
+
     public static function medicamentosDelDonador($idDonador)
     {
         $medicamentosDonador  = \DB::select('select tb_medicamentos.* from tb_entrada_medicamento,tb_medicamentos where tb_medicamentos.id_medicamento=tb_entrada_medicamento.tb_medicamentos_id_medicamento and tb_donadores_id_donador ='.$idDonador);
@@ -68,42 +74,53 @@ class Medicamento extends Model
     }
 
     public static function obtineMedicamentoRequeridos(){
-        $medicamentosRequeridos = \DB::select('select * from tb_medicamentos where tb_medicamentos.estatus=\'requerido\'');
+        $medicamentosRequeridos = \DB::select('select * from tb_medicamentos where tb_medicamentos.estatus=\'requerido\' order by nombre_comercial');
         return $medicamentosRequeridos;
     }
     public static function obtineMedicamentoRequeridosFecha($fechaInicial,$fechaFinal){
-        $medicamentosRequeridos = \DB::select("select * from tb_medicamentos where tb_medicamentos.estatus='requerido' and tb_medicamentos.fecha_registro between '".$fechaInicial."' and '".$fechaFinal."'");
+        $medicamentosRequeridos = \DB::select("select * from tb_medicamentos where tb_medicamentos.estatus='requerido' and tb_medicamentos.fecha_registro between '".$fechaInicial."' and '".$fechaFinal."' order by nombre_comercial");
         return $medicamentosRequeridos;
     }
     public static function medicamentosVencidos(){
-        $medicamentos = \DB::select('select * from tb_medicamentos where mes_caducidad < MONTH(NOW())  and anio_caducidad < YEAR(NOW())');
+        $medicamentos = \DB::select('select * from tb_medicamentos where mes_caducidad < MONTH(NOW())  and anio_caducidad < YEAR(NOW()) order by nombre_comercial');
+        return $medicamentos;
+    }
+     public static function medicamentosVencidosFecha($fechaInicial,$fechaFinal){
+        $medicamentos = \DB::select("select * from tb_medicamentos where mes_caducidad <= MONTH(NOW())  and anio_caducidad < YEAR(NOW()) and    ((mes_caducidad between DATE_FORMAT('".$fechaInicial."',\"%m\") and DATE_FORMAT('".$fechaFinal."',\"%m\") and  (anio_caducidad between DATE_FORMAT('".$fechaInicial."',\"%Y\") and DATE_FORMAT('".$fechaFinal."',\"%Y\")) )) order by nombre_comercial ");
         return $medicamentos;
     }
 
     public static function salidasMedicamentos(){
-        $medicamentos = \DB::select('select * from tb_salida_medicamento,tb_medicamentos,tb_beneficiarios where tb_medicamentos.id_medicamento = tb_salida_medicamento.tb_medicamentos_id_medicamento and tb_beneficiarios.id_beneficiario=tb_salida_medicamento.tb_beneficiarios_id_beneficiario');
+        $medicamentos = \DB::select('select * from tb_salida_medicamento,tb_medicamentos,tb_beneficiarios where tb_medicamentos.id_medicamento = tb_salida_medicamento.tb_medicamentos_id_medicamento and tb_beneficiarios.id_beneficiario=tb_salida_medicamento.tb_beneficiarios_id_beneficiario order by nombre_comercial');
         return $medicamentos;
     }
     public static function salidasMedicamentosFecha($fechaInicial,$fechaFinal){
-        $medicamentos = \DB::select("select * from tb_salida_medicamento,tb_medicamentos,tb_beneficiarios where tb_medicamentos.id_medicamento = tb_salida_medicamento.tb_medicamentos_id_medicamento and tb_beneficiarios.id_beneficiario=tb_salida_medicamento.tb_beneficiarios_id_beneficiario  and tb_salida_medicamento.fecha_salida_medicamento between '".$fechaInicial."' and '".$fechaFinal."'");
+        $medicamentos = \DB::select("select * from tb_salida_medicamento,tb_medicamentos,tb_beneficiarios where tb_medicamentos.id_medicamento = tb_salida_medicamento.tb_medicamentos_id_medicamento and tb_beneficiarios.id_beneficiario=tb_salida_medicamento.tb_beneficiarios_id_beneficiario  and (tb_salida_medicamento.fecha_salida_medicamento between '".$fechaInicial."' and '".$fechaFinal."') order by nombre_comercial");
         return $medicamentos;
     }
 
     public static function entradaMedicamentos(){
 
-        $medicamentos = \DB::select('select * from tb_entrada_medicamento,tb_medicamentos,tb_donadores where tb_medicamentos.id_medicamento = tb_entrada_medicamento.tb_medicamentos_id_medicamento and tb_donadores.id_donador = tb_entrada_medicamento.tb_donadores_id_donador');
+        $medicamentos = \DB::select('select * from tb_entrada_medicamento,tb_medicamentos,tb_donadores where tb_medicamentos.id_medicamento = tb_entrada_medicamento.tb_medicamentos_id_medicamento and tb_donadores.id_donador = tb_entrada_medicamento.tb_donadores_id_donador order by nombre_comercial ');
         return $medicamentos;
     }
 
     public static function entradaMedicamentosFecha($fechaInicial,$fechaFinal){
 
-        $medicamentos = \DB::select("select * from tb_entrada_medicamento,tb_medicamentos,tb_donadores where tb_medicamentos.id_medicamento = tb_entrada_medicamento.tb_medicamentos_id_medicamento and tb_donadores.id_donador = tb_entrada_medicamento.tb_donadores_id_donador and tb_entrada_medicamento.fecha_entrada between '".$fechaInicial."' and '".$fechaFinal."'");
+        $medicamentos = \DB::select("select * from tb_entrada_medicamento,tb_medicamentos,tb_donadores where tb_medicamentos.id_medicamento = tb_entrada_medicamento.tb_medicamentos_id_medicamento and tb_donadores.id_donador = tb_entrada_medicamento.tb_donadores_id_donador and (tb_entrada_medicamento.fecha_entrada between '".$fechaInicial."' and '".$fechaFinal."')order by nombre_comercial");
         return $medicamentos;
     }
     public static function medicamentosProximosVencer(){
-        $medicamentos = \DB::select('select *  from tb_medicamentos where anio_caducidad = YEAR(NOW()) and mes_caducidad= MONTH(NOW())');
+        $medicamentos = \DB::select('select *  from tb_medicamentos where anio_caducidad = YEAR(NOW()) and mes_caducidad= MONTH(NOW()) order by nombre_comercial');
         return $medicamentos;
     }
+
+
+    public static function medicamentosTotales(){
+        $medicamentos = \DB::select("select  *, count(estatus) as cantidad from tb_medicamentos where nombre_comercial=nombre_comercial and estatus='existencia' group by nombre_comercial order by nombre_comercial");
+        return $medicamentos;
+    }
+
 
     public static function obtenerTodosLosMedicamentos()
     {

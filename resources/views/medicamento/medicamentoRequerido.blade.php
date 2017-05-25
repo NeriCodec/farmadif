@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Donadores registrados
+                    Medicamentos requeridos
                 </div>
             <form class="navbar-form navbar-left pull-left" action="{{ route('ruta_imprimir_inventario_requerido_pdf') }}" method="get" target="_blank">
                 <label >  Desde </label>
@@ -21,9 +21,6 @@
                                 {{-- <th>ID</th> --}}
                                 <th>Nombre comercial</th>
                                 <th>Nombre compuesto</th>
-                                <th>No. etiqueta</th>
-                                <th>No. folio</th>
-                                <th>Fecha caducidad</th>
                                 <th>Dosis</th>
                                 <th>Solucion/Tableta</th>
                                 <th>Contenido</th>
@@ -34,10 +31,6 @@
                             <tr>
                                 <td>{{ $medicamento->nombre_comercial }}</td>
                                 <td>{{ $medicamento->nombre_compuesto }}</td>
-                                <td></td>
-                                <td></td>
-
-                                    <td></td>
                                 <td>{{ $medicamento->dosis }}</td>
                                 <td>{{ $medicamento->solucion_tableta }}</td>
                                 <td>{{ $medicamento->tipo_contenido }}</td>

@@ -5,12 +5,15 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Medicamentos registrados
+                    Medicamentos registrados totales
                 </div>
 
             
             <form class="navbar-form navbar-left pull-right" action="{{ route('ruta_imprimir_inventario_pdf') }}" method="get" target="_blank">
-                
+                <label >  Desde </label>
+                <input type="month" name="fechaIni" class="form-control" />
+                <label >  a </label>
+                <input type="month" name="fechaFin" class="form-control" />
                 <button type="submit" class="btn btn-default">Imprimir reporte PDF</button>
             </form>
 
@@ -28,6 +31,7 @@
                                 <th>Dosis</th>
                                 <th>Solucion/Tableta</th>
                                 <th>Contenido</th>
+                                <th>Cantidad</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,6 +51,7 @@
                                 <td>{{ $medicamento->dosis }}</td>
                                 <td>{{ $medicamento->solucion_tableta }}</td>
                                 <td>{{ $medicamento->tipo_contenido }}</td>
+                                <td>{{ $medicamento->cantidad }}</td>
                             </tr>
                             @endforeach
                         </tbody>

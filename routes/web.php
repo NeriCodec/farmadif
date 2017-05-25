@@ -47,7 +47,9 @@ Route::name('ruta_nuevo_registrar_medicamento')->get('/nuevo/{idDonador}','Entra
 Route::name('ruta_nuevo_existente_registrar_medicamento')->get('/nuevo/donador/{idDonador}/medicamento/{idMedicamento}','EntradaMedicamentoController@nuevoExistenteMedicamentoRegistrar');
 # Rutas del medicamento
 Route::name('ruta_medicamentos')->get('/medicamentos', 'MedicamentoController@mostrarMedicamentos');
+Route::name('ruta_medicamentos_inventario')->get('/medicamentos/inventario', 'MedicamentoController@mostrarInventarioMedicamentos');
 #rutas para inventarios
+Route::name('ruta_mostrar_medicamentos_totales')->get('medicamento/totales','MedicamentosTotalesController@mostrarMedicementosTotales');
 Route::name('ruta_mostrar_medicementos_vencidos')->get('medicamento/vencido','MedicamentosVencidosController@mostrarMedicementosVencidos');
 Route::name('ruta_mostrar_medicamentos_requerido')->get('medicamento/requrido','MedicamentoRequeridoController@mostrarMedicementosRequeridos');
 Route::name('ruta_mostrar_medicamentos_salida')->get('medicamento/salida','MedicamentoSalidaController@mostrarMedicementosSalidas');
