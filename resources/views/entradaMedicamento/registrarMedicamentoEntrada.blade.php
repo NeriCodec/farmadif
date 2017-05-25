@@ -32,7 +32,7 @@
 @if(count($medicamentos) > 0)
 <div class="panel panel-default">
             <div class="panel-heading">
-                Agregar a existente (# {{$medicamentos->id_medicamento}} )
+                Agregar a existente
             </div>
        <div class="panel-body">
 			<!--inicia el cuerpo-->
@@ -51,7 +51,7 @@
 							<label>Numero de folio</label>
 							<input type="text" class="form-control" name="nro_folio" placeholder="Numero de folio">
 							<label>Dosis</label>
-							<input type="text" class="form-control" name="cantidad_re" value="{{ $medicamentos->dosis }}" placeholder="Ingrese la cantidad">
+							<input type="number" class="form-control" name="cantidad_re" value="{{ $medicamentos->dosis }}" placeholder="Ingrese la cantidad">
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -177,7 +177,7 @@
 							<label>Numero de folio</label>
 							<input type="text" class="form-control" name="nro_folio" placeholder="Numero de folio">
 							<label>Dosis</label>
-							<input type="text" class="form-control" name="cantidad_re" placeholder="Ingrese la cantidad">
+							<input type="number" class="form-control" name="cantidad_re" placeholder="Ingrese la cantidad">
 						</div>
 					</div>
 					<div class="col-md-6">

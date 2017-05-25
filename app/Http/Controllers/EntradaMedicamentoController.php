@@ -68,8 +68,8 @@ class EntradaMedicamentoController extends Controller
         }
         
         
-        
-        return redirect()->route('ruta_medicamentos');
+        session()->flash('mensaje', 'EL MEDICAMENTO SE GUARDO CON EXITO');
+        return redirect()->route('ruta_entrada_medicamentos');
     }
 
     public function buscarMedicamentoSeleccionar($idDonador,Request $request)

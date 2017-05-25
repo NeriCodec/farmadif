@@ -166,7 +166,7 @@
         $('.notificacion').notify({
             type: 'blackgloss',
             message: { text: $('#mensaje').val() },
-            fadeOut: { enabled: true, delay: 5000 }
+            fadeOut: { enabled: true, delay: 8000 }
         }).show();
     </script>
 

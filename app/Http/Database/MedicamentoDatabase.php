@@ -28,6 +28,7 @@ class MedicamentoDatabase
         $Medicamento->solucion_tableta = $request->get('precentacion');
         $Medicamento->tipo_contenido = $request->get('medida');
         $Medicamento->fecha_registro = date("Y-m-d");
+        $Medicamento->dias_restantes = -1;
         $Medicamento->estatus = 'existencia';
         $Medicamento->tipo_bloqueo = 'desbloqueado';
         $Medicamento->save();
@@ -65,6 +66,7 @@ class MedicamentoDatabase
         $medicamento->solucion_tableta = $request->get('precentacion');
         $medicamento->tipo_contenido = $request->get('medida');
         $medicamento->estatus = 'requerido';
+        $medicamento->dias_restantes = -1;
         $medicamento->fecha_registro = date("Y-m-d");
         $medicamento->save();
     }

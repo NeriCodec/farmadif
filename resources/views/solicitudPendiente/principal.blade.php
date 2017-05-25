@@ -7,7 +7,7 @@
     <div class="panel-heading">
     	<div class="row">
     		<div class="col-md-8">
-    			Solicitud pendiente ( No. {{$noSolicitud}} )
+    			Solicitud pendiente (# {{$noSolicitud}})
     		</div>
 
             <a href="{{ route('ruta_salida_verificada_medicamentos', ['idBeneficiario' => $beneficiario->id_beneficiario]) }}">

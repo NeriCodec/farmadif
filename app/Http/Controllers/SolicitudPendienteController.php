@@ -61,6 +61,7 @@ class SolicitudPendienteController extends Controller
         $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiario($idBeneficiario, $solicitudMedicamento->id_solicitud);
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 
+
         return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
                                                     ->with('noSolicitud', $solicitudMedicamento->id_solicitud)
                                                     ->with('medicamentosRequeridos', $medicamentosRequeridos)
@@ -105,16 +106,27 @@ class SolicitudPendienteController extends Controller
     public function eliminarMedicamento($idMedicamento, $idMedicamentoRequerido, $idBeneficiario)
     {
         $medicamentoRequerido = MedicamentoRequerido::find($idMedicamentoRequerido);
-        //dd($idMedicamento);
-        $medicamentoRequerido->delete();
-
         $medicamento = Medicamento::find($idMedicamento);
-        $medicamento->delete();
-
         $beneficiario = Beneficiario::find($idBeneficiario);
 
-        $solicitudMedicamento = SolicitudMedicamento::all()->last();
 
+        if($medicamentoRequerido != null && $medicamento != null)
+        {
+            $medicamentoRequerido->delete();
+            $medicamento->delete();
+        }
+        else 
+        {
+            $solicitudMedicamento = SolicitudMedicamento::all()->last();
+            $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiario($idBeneficiario, $solicitudMedicamento->id_solicitud);
+            $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
+            return view('solicitudPendiente.principal')->with('beneficiario', $beneficiario)
+                                                    ->with('noSolicitud', $solicitudMedicamento->id_solicitud)
+                                                    ->with('medicamentosRequeridos', $medicamentosRequeridos)
+                                                    ->with('medicamentos', $medicamentosAgregados);
+        }
+
+        $solicitudMedicamento = SolicitudMedicamento::all()->last();
         $medicamentosRequeridos = Beneficiario::medicamentosRequeridosPorUnBeneficiario($idBeneficiario, $solicitudMedicamento->id_solicitud);
         $medicamentosAgregados = SalidaMedicamento::medicamentosAgregados($solicitudMedicamento->id_solicitud);
 

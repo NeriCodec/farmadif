@@ -38,7 +38,7 @@ class Beneficiario extends Model
     public static function medicamentosDelBeneficiario($idDonador)
     {
         $medicamentosDonador  = \DB::select('SELECT nombre_comercial, nombre_compuesto, num_etiqueta, id_medicamento,
-        num_folio, mes_caducidad, anio_caducidad, solucion_tableta, tipo_contenido, diagnostico, descripcion, dosis
+        num_folio, mes_caducidad, anio_caducidad, solucion_tableta, tipo_contenido, diagnostico, descripcion, dosis, dias_restantes
         FROM tb_salida_medicamento
         INNER JOIN tb_medicamentos
         ON tb_salida_medicamento.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
@@ -68,7 +68,7 @@ class Beneficiario extends Model
     public static function medicamentosRequeridosPorUnBeneficiarioId($idBeneficiario)
     {
         $medicamentosRequeridos = \DB::select('SELECT nombre_comercial, nombre_compuesto, id_solicitud, estatus_solicitud,
-        solucion_tableta, tipo_contenido, dosis, id_solicitud, descripcion, diagnostico, num_folio, estatus
+        solucion_tableta, tipo_contenido, dosis, id_solicitud, descripcion, diagnostico, num_folio, estatus, dias_restantes
         FROM tb_medicamentos_requeridos
         INNER JOIN tb_medicamentos
         ON tb_medicamentos_requeridos.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
@@ -82,14 +82,15 @@ class Beneficiario extends Model
     public static function medicamentosRequeridosPorUnBeneficiarioParaNotificaciones($idBeneficiario)
     {
         $medicamentosRequeridos = \DB::select('SELECT nombre_comercial, nombre_compuesto, id_solicitud, estatus_solicitud,
-        solucion_tableta, tipo_contenido, dosis, id_solicitud, descripcion, diagnostico, num_folio, estatus
+        solucion_tableta, tipo_contenido, dosis, id_solicitud, descripcion, diagnostico, num_folio, estatus, mes_caducidad, anio_caducidad, dias_restantes
         FROM tb_medicamentos_requeridos
         INNER JOIN tb_medicamentos
         ON tb_medicamentos_requeridos.tb_medicamentos_id_medicamento = tb_medicamentos.id_medicamento
         INNER JOIN tb_solicitudes
         ON tb_medicamentos_requeridos.tb_solicitudes_id_solicitud = tb_solicitudes.id_solicitud
         WHERE tb_beneficiarios_id_beneficiario = ' . $idBeneficiario . '
-        AND estatus_solicitud = \'solicitado\'');
+        AND estatus_solicitud = \'solicitado\'
+        AND estatus = \'existencia\'');
 
         return $medicamentosRequeridos;
 

@@ -63,16 +63,28 @@
                             @else
                             <td>{{ $solicitud->fecha_fin_bloqueo }}</td>
                             @endif
-                            
-                            @if($solicitud->dias_restantes > 1)
-                            <td><center><b>{{ 'Faltan ' . $solicitud->dias_restantes . ' dias'}}</b></center></td>
-                            @elseif($solicitud->dias_restantes == 0)
-                            <td><center><b>Mañana se libera</b></center></td>
-                            @elseif($solicitud->dias_restantes == null)
+
+                            <?php
+                                echo $solicitud->dias_restantes . ' / ';
+                            ?>
+
+                            @if($solicitud->estatus == 'requerido')
                             <td><center><b>Sin dias restantes</b></center></td>
+                            @elseif($solicitud->dias_restantes > 1)
+                            <td><center><b>{{ 'Faltan ' . $solicitud->dias_restantes . ' dias'}}</b></center></td>
+                            @elseif($solicitud->dias_restantes == 1)
+                            <td><center><b>{{ 'Falta ' . $solicitud->dias_restantes . ' dia' }}</b></center></td>
                             @else
-                            <td><center><b>{{ 'Falta ' . $solicitud->dias_restantes . ' dia'}}</b></center></td>
+                            <td><center><b>Mañana se libera</b></center></td>
+                            {{-- <td><center><b>{{ 'Falta ' . $solicitud->dias_restantes . ' dia'}}</b></center></td> --}}
                             @endif
+                            {{-- <td></td> --}}
+                            {{-- @elseif(is_null($solicitud->dias_restantes))
+
+                            <td><center><b>Sin dias restantes</b></center></td> --}}
+                            {{-- @else --}}
+                            {{-- <td><center><b>{{ 'Falta ' . $solicitud->dias_restantes . ' dia'}}</b></center></td> --}}
+                            {{-- @endif --}}
 
                             <td><center><b># {{ $solicitud->id_solicitud }}</b></center></td>
                             <td><b>{{ $solicitud->nombre }}</b></td>

@@ -61,7 +61,7 @@ class SalidaMedicamentoController extends Controller
         // Se obtiene el beneficiario y se guarda la verificacion del medicamento
         $beneficiario = Beneficiario::find($idBeneficiario);
         VerificacionSalidaDatabase::guardarVerificacionMedicamento($request);
-
+        session()->flash('mensaje', 'SOLICITUD CREADA CON EXITO');
         // Se genera el registro en el LOG
         LogSalidaMedicamento::guardarLogVerificarSalida($idBeneficiario);
 
@@ -123,6 +123,8 @@ class SalidaMedicamentoController extends Controller
             // Se genera el registro en el LOG
             VerificacionSalidaDatabase::actualizarTipoSolicitud($solicitudMedicamento->id_solicitud);
             LogSalidaMedicamento::guardarLogSalidaMedicamento($idBeneficiario,'Exitosa', $cantidadADonar);
+
+            // session()->flash('mensaje', 'MEDICAMENTO AGREGADO CON EXITO');
         }
         else
         {
@@ -171,6 +173,8 @@ class SalidaMedicamentoController extends Controller
             $medicamento->save(); 
             //$medicamentosAgregados = SalidaMedicamento::find($idSalidaMedicamento);
             $medicamentosAgregados->delete();
+
+            // session()->flash('mensaje', 'MEDICAMENTO QUITADO CON EXITO');
         }
 
         $solicitudMedicamento = SolicitudMedicamento::all()->last();
@@ -198,8 +202,17 @@ class SalidaMedicamentoController extends Controller
 
     public function eliminarVerificacion()
     {
-        $solicitudMedicamento = SolicitudMedicamento::all()->last();
-        $solicitudMedicamento->delete();
+        try 
+        {
+            $solicitudMedicamento = SolicitudMedicamento::all()->last();
+            $solicitudMedicamento->delete();
+            session()->flash('mensaje', 'SOLICITUD CANCELADA CON EXITO');
+        }
+        catch(\Exception $e)
+        {
+            session()->flash('mensaje', 'HUBO UN ERROR AL CANCELAR LA SOLICITUD');
+            return redirect()->route('ruta_salida_medicamentos');
+        }
         return redirect()->route('ruta_salida_medicamentos');
     }
 }
