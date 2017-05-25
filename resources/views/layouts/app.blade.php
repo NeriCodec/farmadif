@@ -69,7 +69,7 @@
                                 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('ruta_medicamentos') }}">Medicamentos</a>
+                                        <a href="{{ route('ruta_medicamentos_inventario') }}">Medicamentos</a>
                                     </li>
                                     <!-- <li>
                                         <a href="{{ route('ruta_mostrar_medicamentos_totales') }}">Medicamentos totales</a>

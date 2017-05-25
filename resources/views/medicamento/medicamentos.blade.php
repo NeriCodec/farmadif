@@ -10,10 +10,7 @@
 
             
             <form class="navbar-form navbar-left pull-right" action="{{ route('ruta_imprimir_inventario_pdf') }}" method="get" target="_blank">
-                <label >  Desde </label>
-                <input type="month" name="fechaIni" class="form-control" />
-                <label >  a </label>
-                <input type="month" name="fechaFin" class="form-control" />
+                
                 <button type="submit" class="btn btn-default">Imprimir reporte PDF</button>
             </form>
 
@@ -54,7 +51,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <center>{{ $medicamentos->links() }}</center>
+                    <center></center>
                 </div>
             </div>
             

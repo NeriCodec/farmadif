@@ -61,6 +61,7 @@
 							<select class="form-control" name="mes_caducidad" required>
 						            	<option value="">Mes</option>
 						              <?php
+						              
 						                  for($i=1; $i<=12; $i++) {
 						                      switch($i) {
 						                       case 1:

@@ -63,7 +63,7 @@ class Medicamento extends Model
 
     public static function medicamentosInventariomos()
     {
-        $medicamentosDonador  = \DB::select('select * from tb_medicamentos order by nombre_comercial');
+        $medicamentosDonador  = \DB::select("select * from tb_medicamentos where estatus='existencia' order by nombre_comercial");
         return $medicamentosDonador;
     }
 
