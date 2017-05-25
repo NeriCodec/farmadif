@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Medicamento;
 use App\Beneficiario;
 use App\SalidaMedicamento;
@@ -25,7 +26,6 @@ class SolicitudPendienteController extends Controller
     {
         $this->middleware('auth');
         parent::__construct();
-
     }
     
     public function mostrarSolicitud($idBeneficiario)

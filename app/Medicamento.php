@@ -36,6 +36,8 @@ class Medicamento extends Model
     		$query->where('nombre_comercial', 'LIKE', "%$medicamento%");
     	}
     }
+
+    
     public function scopeBuscarMedicamentoSalida($query, $medicamento)
     {
         if (trim($medicamento) != "") {
