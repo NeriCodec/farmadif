@@ -22,7 +22,10 @@
     .separacionAbajo{
         margin-top: 30px;
     }
-
+    td,th{
+        height: auto;
+        width: 95px;
+    }
 </style>
 
 

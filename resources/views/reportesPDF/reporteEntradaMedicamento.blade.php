@@ -28,8 +28,8 @@
     height: 300px;
     }
     th,td{
-        width: 30px;
-        height: 40px;
+        height: auto;
+        width: 90px;
     }
 </style>
 
@@ -60,7 +60,7 @@
 
 
 <div class="centrar-tabla"  >
-    <table border="1px" cellspacing="0px" class="tablecu" style="width: 100%;">
+    <table border="1px" cellspacing="0px" class="tablecu" style="width: 100%; height: 100%;">
         <thead>
         <tr>
             {{-- <th>ID</th> --}}

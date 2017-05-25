@@ -19,20 +19,22 @@ class ReporteInventarioPDFController extends Controller
     }
 
     public function imprimirReporte(Request $request){
-        echo $request->get('fecha');
     	//return view('reportesPDF.reporteInventario');
-    	$medicamentos = Medicamento::paginate(1000000);
+        $fechaInicial = $request->get('fechaIni');
+        $fechaFinal = $request->get('fechaFin');
+
+        
+    	$medicamentos = Medicamento::all();
     	$vista =view('reportesPDF.reporteInventario')->with('medicamentos', $medicamentos);
     	
     	ob_start();
     	$vista;
-        //view('reportesPDF.reporteInventario');
         $content = ob_get_clean();
         $html2 = base_path('/vendor/libraryPDF/html2pdf/html2pdf.class.php');
         include_once($html2);
 
         try {
-            $html2pdf = new \HTML2PDF('P', 'A4', 'es', true, 'UTF-8',5);//('P', 'Legal', 'es', true, 'UTF-8', array(25.4, 20.4, 25.4, 20.4));
+            $html2pdf = new \HTML2PDF('P', 'A4', 'es', true, 'UTF-8',5);
             $html2pdf->pdf->SetTitle('Inventario FARMADIF');
             $html2pdf->pdf->SetDisplayMode('fullpage');
             $html2pdf->WriteHTML($vista);
