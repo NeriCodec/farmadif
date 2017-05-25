@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Medicamento;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
 
-class MedicamentosVencidosController extends Controller
+class MedicamentosTotalesController extends Controller
 {
     /**
     * Determina si el usuario esta autenticado en la aplicacion.
@@ -18,9 +19,9 @@ class MedicamentosVencidosController extends Controller
         parent::__construct();
     }
 
-    public function mostrarMedicementosVencidos(){
-    	$medicamentosVencidos = Medicamento::medicamentosVencidos();
-    	return view('medicamento.medicamentoVencido')->with('medicamentos', $medicamentosVencidos);
+    public function mostrarMedicementosTotales(){
+    	$medicamentosTotales = Medicamento::medicamentosTotales();
+    	return view('medicamento.medicamentosTotales')->with('medicamentos', $medicamentosTotales);
     }
 
     public function imprimirReporte(Request $request){
@@ -36,9 +37,8 @@ class MedicamentosVencidosController extends Controller
             $fechaInicial = $fInicial."-01";
             $fechaFinal = $fFinal."-01";
         }
-        
-        $medicamentos = Medicamento::medicamentosVencidosFecha($fechaInicial,$fechaFinal);
-        $vista =view('reportesPDF.reporteMedicamentosVencidos')->with('medicamentos', $medicamentos);
+        $medicamentos = Medicamento::salidasMedicamentosFecha($fechaInicial,$fechaFinal);
+        $vista =view('reportesPDF.reporteMedicamentoSalida')->with('medicamentos', $medicamentos);
         
         ob_start();
         $vista;
@@ -48,11 +48,11 @@ class MedicamentosVencidosController extends Controller
         include_once($html2);
 
         try {
-            $html2pdf = new \HTML2PDF('P', 'A4', 'es', true, 'UTF-8',5);//('P', 'Legal', 'es', true, 'UTF-8', array(25.4, 20.4, 25.4, 20.4));
+            $html2pdf = new \HTML2PDF('L', 'A4', 'es', true, 'UTF-8',5);//('P', 'Legal', 'es', true, 'UTF-8', array(25.4, 20.4, 25.4, 20.4));
             $html2pdf->pdf->SetTitle('Inventario FARMADIF');
             $html2pdf->pdf->SetDisplayMode('fullpage');
             $html2pdf->WriteHTML($vista);
-            $html2pdf->Output('medicamentosVencidos.pdf');
+            $html2pdf->Output('salidaMedicamento.pdf');
 
             ob_flush();
             ob_end_clean();
@@ -64,5 +64,6 @@ class MedicamentosVencidosController extends Controller
         
 
     }
+
 
  }

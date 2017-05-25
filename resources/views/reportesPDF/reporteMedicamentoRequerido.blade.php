@@ -58,9 +58,6 @@
             {{-- <th>ID</th> --}}
             <th>Nombre comercial</th>
             <th>Nombre compuesto</th>
-            <th>No. etiqueta</th>
-            <th>No. folio</th>
-            <th>Fecha caducidad</th>
             <th>Dosis</th>
             <th>Solucion/Tableta</th>
             <th>Contenido</th>
@@ -71,10 +68,6 @@
         <tr>
             <td>{{ $medicamento->nombre_comercial }}</td>
             <td>{{ $medicamento->nombre_compuesto }}</td>
-            <td></td>
-            <td></td>
-
-                <td></td>
             <td>{{ $medicamento->dosis }}</td>
             <td>{{ $medicamento->solucion_tableta }}</td>
             <td>{{ $medicamento->tipo_contenido }}</td>

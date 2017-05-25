@@ -50,9 +50,18 @@
 				                </textarea>
 				            </div>
 						</div>
+						<div class="form-group">
+					        <label>Ingrese un usuario</label>
+					        <input class="form-control" name='usuario' id='usuario' placeholder="Ingrese el nombre" value="{{ $donador->usuario }}" required>
+					    </div>
+					    <div class="form-group">
+					        <label>Ingrese una contraseña</label>
+					        <input class="form-control" name='contrasenia' id='contrasenia' placeholder="Ingrese el nombre" value="{{ $donador->contrasenia }}" required>
+					    </div>
 						<div class="col-md-12">
 					    	<button type="submit" style="float: right;" class="btn btn-success btn-md">Guardar <i class="fa fa-check"></i>
 					    </div>
+					    
 				    </div>
 				</form>
 
@@ -96,10 +105,19 @@
 				                </textarea>
 				            </div>
 						</div>
+						<div class="form-group">
+					        <label>Ingrese un usuario</label>
+					        <input class="form-control" name='usuario' id='usuario' placeholder="Ingrese el nombre" value="{{ old('usuario') }}" required>
+					    </div>
+					    <div class="form-group">
+					        <label>Ingrese una contraseña</label>
+					        <input class="form-control" name='contrasenia' id='contrasenia' placeholder="Ingrese el nombre" value="{{ old('contrasenia') }}" required>
+					    </div>
 						<div class="col-md-12">
 					    	<button type="submit" style="float: right;" class="btn btn-success btn-md">Guardar <i class="fa fa-check"></i>
 					    </div>
 				    </div>
+				    
 				</form>
 
 			</div>

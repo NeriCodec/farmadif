@@ -71,15 +71,15 @@
                                     <li>
                                         <a href="{{ route('ruta_medicamentos') }}">Medicamentos</a>
                                     </li>
-                                    <li>
-                                        <a href="#">Medicamentos totales</a>
-                                    </li>
+                                    <!-- <li>
+                                        <a href="{{ route('ruta_mostrar_medicamentos_totales') }}">Medicamentos totales</a>
+                                    </li> -->
                                     <li>
                                         <a href="{{ route('ruta_mostrar_medicementos_vencidos') }}">Medicamentos vencidos</a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="{{ route('ruta_mostrar_medicamentos_prox_vencer') }}">Medicamentos prox. vencer</a>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <a href="{{ route('ruta_mostrar_medicamentos_requerido') }}">Medicamentos requeridos</a>
                                     </li>

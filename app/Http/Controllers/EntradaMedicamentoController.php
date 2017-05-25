@@ -56,6 +56,8 @@ class EntradaMedicamentoController extends Controller
            if($medicamento->estatus == 'requerido') 
            {
                 MedicamentoDatabase::actualizarMedicamento($request, $idMedicamento); 
+                $obtieneUltimoMedicamento = Medicamento::all()->last();
+                EntradaMedicamentoDatabase::guardarEntradaMedicamento($request, $medicamento->id_medicamento);
            }
            else 
            {

@@ -2788,3 +2788,31 @@ Lineas-codigo: 58-68
 Verificacion de salida con ID beneficiario { 1 } 
 Tipo Verificacion: Exitosa
 ===========================================
+============2017-05-25 02:05:57============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 2 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-25 02:05:39============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 2 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-25 03:05:18============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 2 } 
+Tipo Verificacion: Exitosa
+===========================================
+============2017-05-25 03:05:17============
+Controller: SalidaMedicamentoController
+Funcion: verificarSalidaDeMedicamento
+Lineas-codigo: 58-68
+Verificacion de salida con ID beneficiario { 2 } 
+Tipo Verificacion: Exitosa
+===========================================

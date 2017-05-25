@@ -28,7 +28,7 @@
                                 <th>No. etiqueta</th>
                                 <th>No. folio</th>
                                 <th>Fecha caducidad</th>
-                                <th>Cantidad</th>
+                                <th>Dosis</th>
                                 <th>Solucion/Tableta</th>
                                 <th>Contenido</th>
                             </tr>
@@ -47,7 +47,7 @@
                                     <td>{{ $medicamento->mes_caducidad . " / " . $medicamento->anio_caducidad}}</td>
                                 @endif
                                 
-                                <td>{{ $medicamento->cantidad }}</td>
+                                <td>{{ $medicamento->dosis }}</td>
                                 <td>{{ $medicamento->solucion_tableta }}</td>
                                 <td>{{ $medicamento->tipo_contenido }}</td>
                             </tr>
